@@ -10,10 +10,15 @@ public class GizmoUI : MonoBehaviour {
 	bool isMobile = false;
 	bool draggingObject = false;
 	bool rotatingObject = false;
+	LineRenderer lineRenderer;
 
 	// Use this for initialization
 	void Start () {
 		isMobile = platform == RuntimePlatform.Android || platform == RuntimePlatform.IPhonePlayer;
+
+		lineRenderer = GetComponent<LineRenderer> ();
+
+		lineRenderer.SetVertexCount(3);
 	}
 	
 	// Update is called once per frame
@@ -46,9 +51,6 @@ public class GizmoUI : MonoBehaviour {
 				//Clicked object
 				if(TouchingObject(touchPos)){
 					draggingObject = true;
-
-					//Set original touch position
-					originalTouch0Pos = touchPos;
 				}
 
 			}
@@ -61,14 +63,9 @@ public class GizmoUI : MonoBehaviour {
 			//Two finger rotation
 			if(Input.touchCount == 2 && Input.GetTouch(1).phase == TouchPhase.Began){
 				rotatingObject = true;
-				//Set second touch original position
-				originalTouch1Pos = Input.GetTouch(1).position;
-
-				float deltaX = originalTouch0Pos.x - originalTouch1Pos.x;
-				float deltaY = originalTouch0Pos.y - originalTouch1Pos.y;
 
 				//Set original rotation from original positions
-				orgRotAngleDeg = (Mathf.Rad2Deg * Mathf.Atan2(deltaY, deltaX)) - transform.eulerAngles.z;
+				orgRotAngleDeg =  transform.eulerAngles.z;
 			}
 			//Lifted second finger up, no longer rotating object
 			else if(rotatingObject && Input.touchCount == 2 && Input.GetTouch(1).phase == TouchPhase.Ended){
@@ -76,7 +73,7 @@ public class GizmoUI : MonoBehaviour {
 			}
 
 			//Only drag when not rotating
-			if(!rotatingObject){
+			if(!rotatingObject && draggingObject){
 				DragObject();
 			}
 			//Rotate the object
@@ -118,13 +115,20 @@ public class GizmoUI : MonoBehaviour {
 
 		//Make sure to have atleast two touches
 		if (Input.touchCount == 2) {
-			Vector2 curTouch0Pos = Input.GetTouch(0).position;
-			Vector2 curTouch1Pos = Input.GetTouch(1).position;
+			Vector2 curTouch0Pos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+			Vector2 curTouch1Pos = Camera.main.ScreenToWorldPoint(Input.GetTouch(1).position);
+			Vector2 vertex = transform.position;
 
-			float deltaXPrime = curTouch0Pos.x - curTouch1Pos.x;
-			float deltaYPrime = curTouch0Pos.y - curTouch1Pos.y;
+			lineRenderer.SetPosition(0, curTouch0Pos);
+			lineRenderer.SetPosition(1, vertex);
+			lineRenderer.SetPosition(2, curTouch1Pos);
 
-			float curAngle = Mathf.Rad2Deg * Mathf.Atan2(deltaYPrime, deltaXPrime);
+			Vector2 a = curTouch0Pos - vertex;
+			Vector2 b = vertex - curTouch1Pos;
+
+			float theta = Mathf.Acos(Vector2.Dot(a, b)/(a.magnitude * b.magnitude));
+
+			float curAngle = Mathf.Rad2Deg * theta;
 
 			float deltaAngle = curAngle - orgRotAngleDeg;
 
