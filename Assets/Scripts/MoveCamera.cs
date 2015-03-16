@@ -1,0 +1,49 @@
+﻿using UnityEngine;
+using System.Collections;
+using UnityEngine.UI;
+
+public class MoveCamera : MonoBehaviour {
+	public Slider cameraSlider;
+	public SpriteRenderer backgroundRenderer;
+	private float rightBound;
+	private float leftBound;
+	private float conversionSlope;
+	private float conversionIntercept;
+
+	// Use this for initialization
+	void Start () {
+		SetBoundarySprite(backgroundRenderer);
+	}
+	
+	// Update is called once per frame
+	void Update () {
+
+	}
+
+	public void MoveCameraToSlider () {
+		Vector3 pos = Camera.main.transform.position;
+		pos.x = conversionSlope * cameraSlider.value + conversionIntercept;
+		Camera.main.transform.position = pos;
+	}
+
+	public void SetBoundarySprite (SpriteRenderer newRenderer) {
+		backgroundRenderer = newRenderer;
+
+		// Set the bounds of the camera's horizontal movement so it is limited to the BG sprite
+		float vertExtent = Camera.main.orthographicSize;
+		float horzExtent = vertExtent * Camera.main.aspect;
+		leftBound = (float)(backgroundRenderer.bounds.min.x + horzExtent);
+		rightBound = (float)(backgroundRenderer.bounds.max.x - horzExtent);
+
+		// Do some math
+		float slope = 1.0f / (rightBound - leftBound);
+		float intercept = -(slope * leftBound);
+
+		// Invert the equation we just found
+		conversionSlope = 1.0f / slope;
+		conversionIntercept = -(intercept / slope);
+
+		// Correct the actual position of the slider
+		cameraSlider.value = slope * Camera.main.transform.position.x + intercept;
+	}
+}
