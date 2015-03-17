@@ -2,62 +2,111 @@
 using System.Collections;
 using UnityEngine.EventSystems;
 
-public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler {
+public class DragHandler : MonoBehaviour {
 
+
+	RectTransform thisRectTrans;
 
 	Vector2 startPos;
-	Vector2 clickOffset;
+	Vector3 dragOffest;
+	bool isDragging;
 
-	void Start(){
 
-	}
 
-	#region IPointerDownHandler implementation
-	void IPointerDownHandler.OnPointerDown (PointerEventData eventData)
+	void Start()
 	{
-		print ("Touched");
-	}
-	#endregion
-
-	#region IBeginDragHandler implementation
-
-	public void OnBeginDrag (PointerEventData eventData){
-		startPos = transform.position;
-		clickOffset = startPos - eventData.position;
-		print ("Starting Drag");
+		thisRectTrans = gameObject.GetComponent<RectTransform>();
 	}
 
-	#endregion
-
-	#region IDragHandler implementation
-
-	public void OnDrag (PointerEventData eventData){
-		transform.position = eventData.position + clickOffset;
-		print ("Dragging");
+	void Update()
+	{
+		if(Utils.isMobile)
+		{
+			HandleMobileInput();
+		}
+		else
+		{
+			HandleRegularInput();
+		}
 	}
 
-	#endregion
+	void HandleMobileInput()
+	{
+		if(!isDragging)
+		{
+			if(Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Began)
+			{
 
+				if(IsPointInRectTransform(Input.GetTouch(0).position, thisRectTrans))
+				{
+					print ("Starting drag");
+					isDragging = true;
+					dragOffest = transform.position - (Vector3)(Input.GetTouch(0).position);
+				}
+			}
+		}
+		else
+		{
+			if(Input.GetTouch(0).phase == TouchPhase.Ended) 
+			{
+				isDragging = false;
+				DropGameObject(Input.GetTouch(0).position);
+				return;
+			}
+		}
 
-	#region IEndDropHandler implementation
+		if(isDragging)
+		{
+			DragGameObject(Input.GetTouch(0).position);
+		}
+	}
 
-	public void OnEndDrag (PointerEventData eventData) {
+	void HandleRegularInput()
+	{
+		Vector3 mousePosition = Input.mousePosition;
+		if (!isDragging) {
+			if(Input.GetMouseButtonDown(0) && IsPointInRectTransform(mousePosition, thisRectTrans)){
+				isDragging = true;
+				dragOffest = transform.position - mousePosition;
+			}
+		}
+		else
+		{
+			//No longer dragging object
+			if(Input.GetMouseButtonUp(0))
+			{
+				isDragging = false;
+				DropGameObject(mousePosition);
+				return;
+			}
+		}
 
-		print ("Done Dragging");
+		if(isDragging)
+		{
+			DragGameObject(Input.mousePosition);
+		}
+	}
 
-		//If they drop it in the build area, set the new parent
-		if (IsPointInRectTransform(eventData.position, WorkBenchManager.BuildArea)) {
-			transform.SetParent(WorkBenchManager.BuildArea.transform);
-		}else if (IsPointInRectTransform(eventData.position, WorkBenchManager.Inventory)){
-			//Set parent to null then actual inventory to re-position the element
+	void DragGameObject(Vector3 position) 
+	{
+		gameObject.transform.position = position + dragOffest;
+	}
+
+	void DropGameObject(Vector3 position)
+	{
+		if(IsPointInRectTransform(position, WorkBenchManager.BuildArea))
+		{
+			transform.SetParent(WorkBenchManager.BuildArea);
+		}
+		else if(IsPointInRectTransform(position, WorkBenchManager.Inventory))
+		{
 			transform.SetParent(null);
 			transform.SetParent(WorkBenchManager.Inventory.transform);
 		}
-
 	}
 
-	#endregion
 
+	//Check if a position on screen is within a rect transfrom
 	static bool IsPointInRectTransform(Vector2 point, RectTransform rectTrans){
 		Vector3[] fourCornersArray = new Vector3[4];
 		rectTrans.GetWorldCorners (fourCornersArray);
