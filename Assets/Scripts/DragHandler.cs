@@ -16,6 +16,7 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 	public void OnBeginDrag (PointerEventData eventData){
 		startPos = transform.position;
 		clickOffset = startPos - eventData.position;
+		print ("Starting Drag");
 	}
 
 	#endregion
@@ -24,6 +25,7 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
 	public void OnDrag (PointerEventData eventData){
 		transform.position = eventData.position + clickOffset;
+		print ("Dragging");
 	}
 
 	#endregion
@@ -32,6 +34,8 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 	#region IEndDropHandler implementation
 
 	public void OnEndDrag (PointerEventData eventData) {
+
+		print ("Done Dragging");
 
 		//If they drop it in the build area, set the new parent
 		if (IsPointInRectTransform(eventData.position, WorkBenchManager.BuildArea)) {
