@@ -2,7 +2,8 @@
 using System.Collections;
 using UnityEngine.EventSystems;
 
-public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
+public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler {
+
 
 	Vector2 startPos;
 	Vector2 clickOffset;
@@ -10,6 +11,13 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 	void Start(){
 
 	}
+
+	#region IPointerDownHandler implementation
+	void IPointerDownHandler.OnPointerDown (PointerEventData eventData)
+	{
+		print ("Touched");
+	}
+	#endregion
 
 	#region IBeginDragHandler implementation
 
