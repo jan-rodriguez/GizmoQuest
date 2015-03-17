@@ -49,7 +49,11 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 	static bool IsPointInRectTransform(Vector2 point, RectTransform rectTrans){
 		Vector3[] fourCornersArray = new Vector3[4];
 		rectTrans.GetWorldCorners (fourCornersArray);
-		return point.x > fourCornersArray [0].x && point.x < fourCornersArray [3].x && point.y > fourCornersArray [0].y && point.y < fourCornersArray [1].y;
+
+		Vector3 topLeft = fourCornersArray[0];
+		Vector3 bottomRight = fourCornersArray[2];
+
+		return point.x > topLeft.x && point.x < bottomRight.x && point.y > topLeft.y && point.y < bottomRight.y;
 	}
 	
 }
