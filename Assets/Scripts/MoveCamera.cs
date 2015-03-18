@@ -12,7 +12,7 @@ public class MoveCamera : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		SetBoundarySprite(backgroundRenderer);
+		SetBackground("");
 	}
 	
 	// Update is called once per frame
@@ -26,8 +26,17 @@ public class MoveCamera : MonoBehaviour {
 		Camera.main.transform.position = pos;
 	}
 
-	public void SetBoundarySprite (SpriteRenderer newRenderer) {
-		backgroundRenderer = newRenderer;
+	public void SetBackground (string toBackground) {
+		if (string.IsNullOrEmpty (toBackground)) {
+			toBackground = backgroundRenderer.tag;
+		} else {
+			SpriteRenderer newBackgroundRenderer = GameObject.Find (toBackground + "Background").GetComponent<SpriteRenderer> ();
+			backgroundRenderer = newBackgroundRenderer;
+		}
+
+		// Move the camera to the new background
+		Vector3 newPos = GameObject.Find (toBackground + "Master").transform.position;
+		Camera.main.transform.position = newPos;
 
 		// Set the bounds of the camera's horizontal movement so it is limited to the BG sprite
 		float vertExtent = Camera.main.orthographicSize;
