@@ -25,7 +25,10 @@ public class SceneManager: MonoBehaviour {
 	}
 
 	public void LoadPreviousLevel () {
-		Application.LoadLevel (previousLevel);
+		if (previousLevel != Application.loadedLevel) {
+			Application.LoadLevel (previousLevel);
+		}
+
 	}
 
 	void OnLevelWasLoaded(int level) {

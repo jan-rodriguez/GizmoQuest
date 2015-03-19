@@ -92,6 +92,7 @@ public class GizmoMovementHandler : MonoBehaviour {
 		SelectGizmo ();
 		//Set the canvas as the parent so the dragged object is always on top of everything
 		transform.SetParent (WorkBenchManager.WorkBenchUI);
+		isDragging = true;
 	}
 
 	//Move game object to the position
