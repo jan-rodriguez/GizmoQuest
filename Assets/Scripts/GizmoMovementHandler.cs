@@ -1,21 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class DragHandler : MonoBehaviour {
+public class GizmoMovementHandler : MonoBehaviour {
 
+	private RectTransform m_thisRectTrans;
+	private Image m_thisImage;
+	private bool isDragging;
 
-	RectTransform thisRectTrans;
-
-	Vector2 startPos;
-	Vector3 dragOffest;
-	bool isDragging;
-
-
+	static Color selectedColor = Color.red;
+	static Color deselectedColor = Color.white;
+	static Vector2 startPos;
+	static Vector3 dragOffest;
 
 	void Start()
 	{
-		thisRectTrans = gameObject.GetComponent<RectTransform>();
+		m_thisRectTrans = gameObject.GetComponent<RectTransform>();
+		m_thisImage = gameObject.GetComponent<Image> ();
 	}
 
 	void Update()
@@ -37,23 +38,24 @@ public class DragHandler : MonoBehaviour {
 			if(Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Began)
 			{
 
-				if(IsPointInRectTransform(Input.GetTouch(0).position, thisRectTrans))
+				if(IsPointInRectTransform(Input.GetTouch(0).position, m_thisRectTrans))
 				{
-					print ("Starting drag");
+					SelectGizmo();
 					isDragging = true;
 					dragOffest = transform.position - (Vector3)(Input.GetTouch(0).position);
 				}
 			}
 		}
+		//***Dragging***
 		else
 		{
 			if(Input.GetTouch(0).phase == TouchPhase.Ended) 
 			{
-				isDragging = false;
 				DropGameObject(Input.GetTouch(0).position);
 				return;
 			}
 		}
+		//***/Dragging***
 
 		if(isDragging)
 		{
@@ -65,8 +67,8 @@ public class DragHandler : MonoBehaviour {
 	{
 		Vector3 mousePosition = Input.mousePosition;
 		if (!isDragging) {
-			if(Input.GetMouseButtonDown(0) && IsPointInRectTransform(mousePosition, thisRectTrans)){
-				isDragging = true;
+			if(Input.GetMouseButtonDown(0) && IsPointInRectTransform(mousePosition, m_thisRectTrans)){
+				BeginGameObjectDrag();
 				dragOffest = transform.position - mousePosition;
 			}
 		}
@@ -75,7 +77,6 @@ public class DragHandler : MonoBehaviour {
 			//No longer dragging object
 			if(Input.GetMouseButtonUp(0))
 			{
-				isDragging = false;
 				DropGameObject(mousePosition);
 				return;
 			}
@@ -87,6 +88,13 @@ public class DragHandler : MonoBehaviour {
 		}
 	}
 
+	void BeginGameObjectDrag() {
+		SelectGizmo ();
+		//Set the canvas as the parent so the dragged object is always on top of everything
+		transform.SetParent (WorkBenchManager.WorkBenchUI);
+	}
+
+	//Move game object to the position
 	void DragGameObject(Vector3 position) 
 	{
 		gameObject.transform.position = position + dragOffest;
@@ -94,20 +102,43 @@ public class DragHandler : MonoBehaviour {
 
 	void DropGameObject(Vector3 position)
 	{
+		isDragging = false;
+
+		//Dropped within the game area
 		if(IsPointInRectTransform(position, WorkBenchManager.BuildArea))
 		{
 			transform.SetParent(WorkBenchManager.BuildArea);
 		}
-		else if(IsPointInRectTransform(position, WorkBenchManager.Inventory))
+		//Didn't drop it on the build area, defautl to the inventory
+		else
 		{
 			transform.SetParent(null);
 			transform.SetParent(WorkBenchManager.Inventory.transform);
+			//Only selected in the build area
+			DeselectGizmo();
 		}
+	}
+
+	//Set the gizmo to the highlighted state
+	void SelectGizmo () 
+	{
+		WorkBenchManager.SetSelectedGizmo(this);
+		m_thisImage.color = selectedColor;
+		transform.position = new Vector3 (transform.position.x, transform.position.y, 10);
+	}
+
+	//Set gizmo color back to regular state
+	public void DeselectGizmo() 
+	{
+		WorkBenchManager.selectedGizmoHandler = null;
+		m_thisImage.color = deselectedColor;
+		transform.position = new Vector3 (transform.position.x, transform.position.y, 0);
 	}
 
 
 	//Check if a position on screen is within a rect transfrom
-	static bool IsPointInRectTransform(Vector2 point, RectTransform rectTrans){
+	static bool IsPointInRectTransform(Vector2 point, RectTransform rectTrans)
+	{
 		Vector3[] fourCornersArray = new Vector3[4];
 		rectTrans.GetWorldCorners (fourCornersArray);
 
