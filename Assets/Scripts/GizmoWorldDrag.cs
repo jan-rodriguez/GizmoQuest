@@ -1,20 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GizmoUI : MonoBehaviour {
+public class GizmoWorldDrag : MonoBehaviour {
 
 	Vector2 originalTouch0Pos;
 	Vector2 originalTouch1Pos;
+	Vector3 hitPoint;
 	float orgRotAngleDeg;
 	bool draggingObject = false;
 	bool rotatingObject = false;
-	LineRenderer lineRenderer;
+	HingeJoint2D hinge;
+	Rigidbody2D rigidBody;
+//	LineRenderer lineRenderer;
 
 	// Use this for initialization
 	void Start () {
-		lineRenderer = GetComponent<LineRenderer> ();
-
-		lineRenderer.SetVertexCount(3);
+		hinge = GetComponent<HingeJoint2D> ();
+		rigidBody = GetComponent<Rigidbody2D> ();
+//		lineRenderer = GetComponent<LineRenderer> ();
+//
+//		lineRenderer.SetVertexCount(3);
 	}
 	
 	// Update is called once per frame
@@ -28,11 +33,18 @@ public class GizmoUI : MonoBehaviour {
 	
 	}
 
+	void FixedUpdate() {
+		if (draggingObject) {
+			DragObject(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+		}
+	}
+
 	bool TouchingObject(Vector2 touchPos) {
 
 		RaycastHit2D hitInfo = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touchPos), Vector2.zero);
 
 		if (hitInfo) {
+			hitPoint = hitInfo.point;
 			return hitInfo.collider.gameObject == gameObject;
 		}
 		return false;
@@ -46,13 +58,14 @@ public class GizmoUI : MonoBehaviour {
 
 				//Clicked object
 				if(TouchingObject(touchPos)){
-					draggingObject = true;
+					BeginDragObject(touchPos);
 				}
 
 			}
 		}else{
 			if(Input.GetTouch(0).phase == TouchPhase.Ended) {
-				draggingObject = false;
+				Vector2 touchPos = Input.GetTouch(0).position;
+				EndDragObject(touchPos);
 				return;
 			}
 
@@ -68,42 +81,23 @@ public class GizmoUI : MonoBehaviour {
 				rotatingObject = false;
 			}
 
-			//Only drag when not rotating
-			if(!rotatingObject && draggingObject){
-				DragObject();
-			}
-			//Rotate the object
-			else{
-				RotateObject();
-			}
-
 		}
 
 	}
 
 	void HandleRegularInput(){
 		if (!draggingObject) {
-			if(Input.GetMouseButtonDown(0)){
+			if(Input.GetMouseButtonDown(0) && TouchingObject(Input.mousePosition)){
 
-				Vector2 mousePos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-
-				//Clicked on object
-				draggingObject = TouchingObject(mousePos);
+				BeginDragObject(Input.mousePosition);
 
 			}
 		}else{
 			//No longer dragging object
 			if(Input.GetMouseButtonUp(0)){
-				draggingObject = false;
+				EndDragObject(Input.mousePosition);
 				return;
 			}
-
-			//Handle dragging object
-			Vector2 mousePos = Input.mousePosition;
-			Vector3 mouseScreenPos = Camera.main.ScreenToWorldPoint(mousePos);
-			mouseScreenPos.z = 0;
-
-			transform.position = mouseScreenPos;
 		}
 	}
 
@@ -115,9 +109,9 @@ public class GizmoUI : MonoBehaviour {
 			Vector2 curTouch1Pos = Camera.main.ScreenToWorldPoint(Input.GetTouch(1).position);
 			Vector2 vertex = transform.position;
 
-			lineRenderer.SetPosition(0, curTouch0Pos);
-			lineRenderer.SetPosition(1, vertex);
-			lineRenderer.SetPosition(2, curTouch1Pos);
+//			lineRenderer.SetPosition(0, curTouch0Pos);
+//			lineRenderer.SetPosition(1, vertex);
+//			lineRenderer.SetPosition(2, curTouch1Pos);
 
 			Vector2 a = curTouch0Pos - vertex;
 			Vector2 b = vertex - curTouch1Pos;
@@ -140,11 +134,19 @@ public class GizmoUI : MonoBehaviour {
 
 	}
 
-	void DragObject(){
-		Vector2 touchPos = Input.GetTouch(0).position;
-		Vector3 mouseScreenPos = Camera.main.ScreenToWorldPoint(touchPos);
-		mouseScreenPos.z = 0;
-		
-		transform.position = mouseScreenPos;
+	void BeginDragObject(Vector3 position) {
+		draggingObject = true;
+		rigidBody.isKinematic = false;
+		hinge.anchor = transform.InverseTransformPoint(hitPoint);
+	}
+
+	void DragObject(Vector3 position){
+//		transform.position = position + dragOffset;
+		hinge.connectedAnchor = position;
+	}
+
+	void EndDragObject(Vector3 position){
+		draggingObject = false;
+		rigidBody.isKinematic = true;
 	}
 }
