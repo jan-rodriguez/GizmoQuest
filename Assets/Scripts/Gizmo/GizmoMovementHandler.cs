@@ -106,18 +106,11 @@ public class GizmoMovementHandler : MonoBehaviour {
 		isDragging = false;
 
 		//Dropped within the game area
-		if(IsPointInRectTransform(position, WorkBenchManager.BuildArea))
-		{
-			transform.SetParent(WorkBenchManager.BuildArea);
-		}
-		//Didn't drop it on the build area, defautl to the inventory
-		else
-		{
-			transform.SetParent(null);
-			transform.SetParent(WorkBenchManager.Inventory.transform);
-			//Only selected in the build area
-			DeselectGizmo();
-		}
+
+		transform.SetParent(null);
+		transform.SetParent(WorkBenchManager.Inventory.transform);
+		//Only selected in the build area
+		DeselectGizmo();
 	}
 
 	//Set the gizmo to the highlighted state
