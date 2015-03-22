@@ -1,9 +1,13 @@
 fileFormatVersion: 2
 guid: c8a0ebbc454f8604db7f67bd6d8bbdab
-timeCreated: 1426784549
+timeCreated: 1426999355
 licenseType: Pro
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: WalkieTalkie
+    21300002: MapIcon
+    21300004: GearIcon
+    21300006: BuildIcon
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -30,14 +34,14 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -48,7 +52,47 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: WalkieTalkie
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 312
+        width: 158
+        height: 272
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: MapIcon
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 300
+        width: 282
+        height: 248
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GearIcon
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 51
+        width: 213
+        height: 215
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BuildIcon
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 97
+        width: 176
+        height: 180
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
   assetBundleName: 

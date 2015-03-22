@@ -87,72 +87,6 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &7053192
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 7053193}
-  - 222: {fileID: 7053195}
-  - 114: {fileID: 7053194}
-  m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &7053193
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 7053192}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 369383565}
-  m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
---- !u!114 &7053194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 7053192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: .196078435, g: .196078435, b: .196078435, a: 1}
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: PreviousLevel
---- !u!222 &7053195
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 7053192}
 --- !u!1 &369383564
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,14 +114,13 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 7053193}
+  m_Children: []
   m_Father: {fileID: 1860621587}
   m_RootOrder: 1
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 30}
+  m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &369383566
 MonoBehaviour:
@@ -255,9 +188,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
+  m_Sprite: {fileID: 21300002, guid: c8a0ebbc454f8604db7f67bd6d8bbdab, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -310,19 +243,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22421218, guid: 94cf4205ed0c46c4eb2bb9ef2244efb3, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 88.8000031
       objectReference: {fileID: 0}
     - target: {fileID: 22421218, guid: 94cf4205ed0c46c4eb2bb9ef2244efb3, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -53
       objectReference: {fileID: 0}
     - target: {fileID: 22421218, guid: 94cf4205ed0c46c4eb2bb9ef2244efb3, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 157.600006
       objectReference: {fileID: 0}
     - target: {fileID: 22421218, guid: 94cf4205ed0c46c4eb2bb9ef2244efb3, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 66
       objectReference: {fileID: 0}
     - target: {fileID: 22421218, guid: 94cf4205ed0c46c4eb2bb9ef2244efb3, type: 2}
       propertyPath: m_AnchorMin.x
@@ -330,7 +263,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22421218, guid: 94cf4205ed0c46c4eb2bb9ef2244efb3, type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22421218, guid: 94cf4205ed0c46c4eb2bb9ef2244efb3, type: 2}
       propertyPath: m_AnchorMax.x
@@ -338,7 +271,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22421218, guid: 94cf4205ed0c46c4eb2bb9ef2244efb3, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22421218, guid: 94cf4205ed0c46c4eb2bb9ef2244efb3, type: 2}
       propertyPath: m_Pivot.x
@@ -358,7 +291,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22460176, guid: 94cf4205ed0c46c4eb2bb9ef2244efb3, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 78.3937531
+      value: 69.5656281
       objectReference: {fileID: 0}
     - target: {fileID: 22460176, guid: 94cf4205ed0c46c4eb2bb9ef2244efb3, type: 2}
       propertyPath: m_AnchoredPosition.y
@@ -366,7 +299,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22460176, guid: 94cf4205ed0c46c4eb2bb9ef2244efb3, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 156.787506
+      value: 139.131256
       objectReference: {fileID: 0}
     - target: {fileID: 22460176, guid: 94cf4205ed0c46c4eb2bb9ef2244efb3, type: 2}
       propertyPath: m_SizeDelta.y
@@ -382,7 +315,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22432828, guid: 94cf4205ed0c46c4eb2bb9ef2244efb3, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 167.193756
+      value: 148.365631
       objectReference: {fileID: 0}
     - target: {fileID: 22432828, guid: 94cf4205ed0c46c4eb2bb9ef2244efb3, type: 2}
       propertyPath: m_AnchoredPosition.y
@@ -390,7 +323,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22432828, guid: 94cf4205ed0c46c4eb2bb9ef2244efb3, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 20.8125
+      value: 18.46875
       objectReference: {fileID: 0}
     - target: {fileID: 22432828, guid: 94cf4205ed0c46c4eb2bb9ef2244efb3, type: 2}
       propertyPath: m_SizeDelta.y
@@ -474,8 +407,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
-    m_Right: 0
+    m_Left: 10
+    m_Right: 10
     m_Top: 20
     m_Bottom: 0
   m_ChildAlignment: 0
