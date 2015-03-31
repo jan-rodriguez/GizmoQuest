@@ -6,6 +6,8 @@ TagManager:
   tags:
   - City
   - IMAX
+  - Forest
+  - Dude
   layers:
   - Default
   - TransparentFX

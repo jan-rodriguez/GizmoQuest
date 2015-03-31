@@ -21,6 +21,12 @@ public class AreaTransitions : MonoBehaviour {
 		case "IMAX to City":
 			cameraMovement.SetBackground ("City");
 			break;
+		case "Forest to Dude":
+			cameraMovement.SetBackground ("Dude");
+			break;
+		case "Dude to Forest":
+			cameraMovement.SetBackground ("Forest");
+			break;
 		}
 	}
 }
