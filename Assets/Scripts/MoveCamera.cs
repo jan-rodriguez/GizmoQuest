@@ -3,7 +3,6 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class MoveCamera : MonoBehaviour {
-	public Slider cameraSlider;
 	public SpriteRenderer backgroundRenderer;
 	private float rightBound;
 	private float leftBound;
@@ -22,7 +21,6 @@ public class MoveCamera : MonoBehaviour {
 
 	public void MoveCameraToSlider () {
 		Vector3 pos = Camera.main.transform.position;
-		pos.x = conversionSlope * cameraSlider.value + conversionIntercept;
 		Camera.main.transform.position = pos;
 	}
 
@@ -51,8 +49,5 @@ public class MoveCamera : MonoBehaviour {
 		// Invert the equation we just found
 		conversionSlope = 1.0f / slope;
 		conversionIntercept = -(intercept / slope);
-
-		// Correct the actual position of the slider
-		cameraSlider.value = slope * Camera.main.transform.position.x + intercept;
 	}
 }
