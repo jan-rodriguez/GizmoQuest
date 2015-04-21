@@ -8,6 +8,8 @@ TagManager:
   - IMAX
   - Forest
   - Dude
+  - cloth
+  - long_rod
   layers:
   - Default
   - TransparentFX

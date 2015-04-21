@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class GizmoSlot : MonoBehaviour {
 
-	private int remainingGizmos = 10;
+	private int remainingGizmos = 1;
 	private GizmoUIItem childGizmoItem;
 	private Text gizmoRemainingText;
 	private Image slotImage;
