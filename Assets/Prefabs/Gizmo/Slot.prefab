@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32285556975f606459e9e511956c420f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gizmoPrefab: {fileID: 493162, guid: 8bd0d528c12df37458d1ba233dd13d1a, type: 2}
+  gizmoPrefab: {fileID: 491024, guid: ec15a13591979488387b6ee4370bd367, type: 2}
 --- !u!114 &11419722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -82,7 +82,7 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: 30
+  m_PreferredWidth: 35
   m_PreferredHeight: -1
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
