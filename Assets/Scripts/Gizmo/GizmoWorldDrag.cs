@@ -3,6 +3,12 @@ using System.Collections;
 
 public class GizmoWorldDrag : MonoBehaviour {
 
+	public const string BUILD_AREA_TAG = "BuildArea";
+	private const int SELECTED_Z_POS = -1;
+
+	KiteBuilder buildArea;
+	bool inBuildArea = false;
+
 	Vector2 originalTouch0Pos;
 	Vector2 originalTouch1Pos;
 	Vector3 hitPoint;
@@ -11,12 +17,15 @@ public class GizmoWorldDrag : MonoBehaviour {
 	bool rotatingObject = false;
 	HingeJoint2D hinge;
 	Rigidbody2D rigidBody;
+
 //	LineRenderer lineRenderer;
 
 	// Use this for initialization
 	void Start () {
 		hinge = GetComponent<HingeJoint2D> ();
 		rigidBody = GetComponent<Rigidbody2D> ();
+
+		buildArea = GameObject.FindGameObjectWithTag(BUILD_AREA_TAG).GetComponent<KiteBuilder>();
 //		lineRenderer = GetComponent<LineRenderer> ();
 //
 //		lineRenderer.SetVertexCount(3);
@@ -130,13 +139,24 @@ public class GizmoWorldDrag : MonoBehaviour {
 			rotatingObject = false;
 			return;
 		}
+	}
 
-
+	void OnTriggerEnter2D (Collider2D collider) {
+		if(collider.tag == BUILD_AREA_TAG) {
+			inBuildArea = true;
+		}
+	}
+	
+	void OnTriggerExit2D (Collider2D collider) {
+		if(collider.tag == BUILD_AREA_TAG) {
+			inBuildArea = false;
+		}
 	}
 
 	void BeginDragObject(Vector3 position) {
 		draggingObject = true;
 		rigidBody.isKinematic = false;
+		transform.position = new Vector3(transform.position.x, transform.position.y, SELECTED_Z_POS);
 		hinge.anchor = transform.InverseTransformPoint(hitPoint);
 	}
 
@@ -148,5 +168,10 @@ public class GizmoWorldDrag : MonoBehaviour {
 	void EndDragObject(Vector3 position){
 		draggingObject = false;
 		rigidBody.isKinematic = true;
+		transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+
+		if(inBuildArea) {
+			buildArea.TryAttachGizmo(gameObject);
+		}
 	}
 }
