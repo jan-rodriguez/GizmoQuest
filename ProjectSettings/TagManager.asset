@@ -8,6 +8,8 @@ TagManager:
   - IMAX
   - Forest
   - Dude
+  - Landing
+  - Lake
   layers:
   - Default
   - TransparentFX
