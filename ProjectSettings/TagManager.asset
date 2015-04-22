@@ -9,8 +9,9 @@ TagManager:
   - Forest
   - Dude
   - cloth
-  - long_rod
+  - long rod
   - BuildArea
+  - short rod
   layers:
   - Default
   - TransparentFX

@@ -9,7 +9,8 @@ public class KiteBuilder : MonoBehaviour {
 	private const string STRING = "string";
 	private const string CLOTH = "cloth";
 	private const string TAIL = "tail";
-	private const string LONG_ROD = "long_rod";
+	private const string LONG_ROD = "long rod";
+	private const string SHORT_ROD = "short rod";
 
 	public enum LAYER {
 		STRING = 6,
@@ -19,15 +20,15 @@ public class KiteBuilder : MonoBehaviour {
 		SHORT_ROD = 7
 	}
 
-	private const float DISTANCE_THRESHOLD = .5f;
+	private const float DISTANCE_THRESHOLD = .01f;
 	private const float ANGLE_THRESHOLD = 10f;
 
-	private Vector3 longRodPos = Vector3.zero;
+	private Vector2 longRodPos = Vector2.zero;
 	private const float longRodAngle = 90f;
-	private Vector3 clothPos = Vector3.zero;
+	private Vector2 clothPos = Vector2.zero;
 	private const float clothAngle = 0f;
 	private const float shortRodAngle = 0f;
-	private  Vector3 shortRodPos = Vector3.zero;
+	private  Vector2 shortRodPos = Vector3.zero;
 
 
 	// Use this for initialization
@@ -47,13 +48,11 @@ public class KiteBuilder : MonoBehaviour {
 
 		switch(gizmo.tag) {
 
+		//TODO: MAKE SYMMETRIC CHANGES
 		case CLOTH:
-			
-			float clothDist = (gizmo.transform.position - clothPos).magnitude;
-			float clothAngleDiff = Mathf.Abs(gizmo.transform.eulerAngles.z - clothAngle);
-			
-			print (clothDist);
-			print (clothAngleDiff);
+			float clothDist = ((Vector2)transform.InverseTransformPoint(gizmo.transform.position) - clothPos).magnitude;
+			float gizmoAngle = gizmo.transform.eulerAngles.z > 180 ? gizmo.transform.eulerAngles.z - 360 : gizmo.transform.eulerAngles.z;
+			float clothAngleDiff = Mathf.Abs(clothAngle - gizmoAngle);
 
 			if( clothDist < DISTANCE_THRESHOLD && clothAngleDiff < ANGLE_THRESHOLD) {
 				//Set the kite as the parent
@@ -69,11 +68,9 @@ public class KiteBuilder : MonoBehaviour {
 			break;
 			
 		case LONG_ROD:
-			float longRodDist = (gizmo.transform.position - longRodPos).magnitude;
-			float longRodAngleDiff = Mathf.Abs(gizmo.transform.eulerAngles.z - longRodAngle);
-
-			print (longRodDist);
-			print (longRodAngleDiff);
+			float longRodDist = ((Vector2)transform.InverseTransformPoint(gizmo.transform.position) - longRodPos).magnitude;
+			float rodAngle = gizmo.transform.eulerAngles.z > 180 ? gizmo.transform.eulerAngles.z - 360 : gizmo.transform.eulerAngles.z;
+			float longRodAngleDiff = Mathf.Abs(longRodAngle - rodAngle);
 
 			if( longRodDist < DISTANCE_THRESHOLD && longRodAngleDiff < ANGLE_THRESHOLD) {
 				//Set the kite as the parent
@@ -88,8 +85,9 @@ public class KiteBuilder : MonoBehaviour {
 			}
 			break;
 		case STRING:
-			float stringDist = (gizmo.transform.position - longRodPos).magnitude;
-			float stringAngleDiff = Mathf.Abs(gizmo.transform.eulerAngles.z - longRodAngle);
+			float stringDist = ((Vector2)transform.InverseTransformPoint(gizmo.transform.position) - longRodPos).magnitude;
+			float strAngle = gizmo.transform.eulerAngles.z > 180 ? gizmo.transform.eulerAngles.z - 360 : gizmo.transform.eulerAngles.z;
+			float stringAngleDiff = Mathf.Abs(longRodAngle - strAngle);
 			if( stringDist < DISTANCE_THRESHOLD && stringAngleDiff < ANGLE_THRESHOLD) {
 				//Set the kite as the parent
 				gizmo.transform.parent = this.transform;
@@ -103,9 +101,9 @@ public class KiteBuilder : MonoBehaviour {
 			}
 			break;
 		case TAIL:
-			//TODO: MAKE STUFF FOR TAIL HERE
-			float tailDist = (gizmo.transform.position - longRodPos).magnitude;
-			float tailAngleDiff = Mathf.Abs(gizmo.transform.eulerAngles.z - longRodAngle);
+			float tailDist = ((Vector2)transform.InverseTransformPoint(gizmo.transform.position) - longRodPos).magnitude;
+			float tailAngle = gizmo.transform.eulerAngles.z > 180 ? gizmo.transform.eulerAngles.z - 360 : gizmo.transform.eulerAngles.z;
+			float tailAngleDiff = Mathf.Abs(longRodAngle - tailAngle);
 			if( tailDist < DISTANCE_THRESHOLD && tailAngleDiff < ANGLE_THRESHOLD) {
 				//Set the kite as the parent
 				gizmo.transform.parent = this.transform;
