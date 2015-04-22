@@ -8,8 +8,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Workbench.unity
   - enabled: 1
+    path: Assets/Scenes/TestScene.unity
+  - enabled: 1
     path: Assets/Scenes/CityMap.unity
   - enabled: 1
     path: Assets/Scenes/ForestMap.unity
-  - enabled: 1
-    path: Assets/Scenes/TestScene.unity
