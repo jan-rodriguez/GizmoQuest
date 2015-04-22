@@ -11,7 +11,7 @@ public class MoveCamera : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		SetBackground("");
+		SetBackground (backgroundRenderer.transform.root.gameObject);
 	}
 	
 	// Update is called once per frame
@@ -24,16 +24,19 @@ public class MoveCamera : MonoBehaviour {
 		Camera.main.transform.position = pos;
 	}
 
-	public void SetBackground (string toBackground) {
-		if (string.IsNullOrEmpty (toBackground)) {
-			toBackground = backgroundRenderer.tag;
-		} else {
-			SpriteRenderer newBackgroundRenderer = GameObject.Find (toBackground + "Background").GetComponent<SpriteRenderer> ();
-			backgroundRenderer = newBackgroundRenderer;
-		}
+	public void SetBackground (GameObject toArea) {
+		// Disable the currently active area
+		backgroundRenderer.transform.root.gameObject.SetActive (false);
+
+		// Enable the new active area
+		toArea.SetActive (true);
+
+		// Use the tag (e.g. 'Landing') to get the background ('LandingBackground') sprite renderer
+		backgroundRenderer = GameObject.Find (toArea.tag + "Background").GetComponent<SpriteRenderer> ();
 
 		// Move the camera to the new background
-		Vector3 newPos = GameObject.Find (toBackground + "Master").transform.position;
+		Vector3 newPos = toArea.transform.position;
+		newPos.z = -10;
 		Camera.main.transform.position = newPos;
 
 		// Set the bounds of the camera's horizontal movement so it is limited to the BG sprite

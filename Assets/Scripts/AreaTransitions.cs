@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class AreaTransitions : MonoBehaviour {
+	public GameObject destination;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -13,20 +15,7 @@ public class AreaTransitions : MonoBehaviour {
 	}
 
 	void OnMouseDown() {
-		MoveCamera cameraMovement = Camera.main.GetComponent<MoveCamera> ();
-		switch (this.name) {
-		case "City to IMAX":
-			cameraMovement.SetBackground ("IMAX");
-			break;
-		case "IMAX to City":
-			cameraMovement.SetBackground ("City");
-			break;
-		case "Forest to Dude":
-			cameraMovement.SetBackground ("Dude");
-			break;
-		case "Dude to Forest":
-			cameraMovement.SetBackground ("Forest");
-			break;
-		}
+		SwipeCamera cameraMovement = Camera.main.GetComponent<SwipeCamera> ();
+		cameraMovement.ChangeBackground (destination);
 	}
 }

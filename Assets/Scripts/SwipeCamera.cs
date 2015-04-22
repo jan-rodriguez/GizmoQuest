@@ -42,6 +42,22 @@ public class SwipeCamera : MonoBehaviour {
 
 	}
 
+	public void ChangeBackground(GameObject toArea) {
+		// Disable the currently active area
+		backgroundRenderer.transform.root.gameObject.SetActive (false);
+		
+		// Enable the new active area
+		toArea.SetActive (true);
+		
+		// Use the tag (e.g. 'Landing') to get the background ('LandingBackground') sprite renderer
+		backgroundRenderer = GameObject.Find (toArea.tag + "Background").GetComponent<SpriteRenderer> ();
+
+		// Reset the camera's viewpoint
+		Camera.main.transform.position = new Vector3 (0, 0, -10);
+
+		Start ();
+	}
+
 	void HandleMobileInput () {
 		
 		if (Input.touchCount == 1){
