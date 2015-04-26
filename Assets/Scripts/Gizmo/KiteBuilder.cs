@@ -9,9 +9,8 @@ public class KiteBuilder : MonoBehaviour {
 	private const string STRING = "string";
 	private const string CLOTH = "cloth";
 	private const string TAIL = "tail";
-	private const string LONG_ROD = "long rod";
-	private const string SHORT_ROD = "short rod";
-
+	private const string LONG_ROD = "long_rod";
+	private const string SHORT_ROD = "short_rod";
 	public enum LAYER {
 		STRING = 6,
 		CLOTH = 10,
@@ -20,8 +19,8 @@ public class KiteBuilder : MonoBehaviour {
 		SHORT_ROD = 7
 	}
 
-	private const float DISTANCE_THRESHOLD = .01f;
-	private const float ANGLE_THRESHOLD = 10f;
+	private const float DISTANCE_THRESHOLD = .07f;
+	private const float ANGLE_THRESHOLD = 15f;
 
 	private Vector2 longRodPos = Vector2.zero;
 	private const float longRodAngle = 90f;
@@ -39,11 +38,6 @@ public class KiteBuilder : MonoBehaviour {
 		partsDict.Add (STRING, false);
 		partsDict.Add (TAIL, false);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
 	public void TryAttachGizmo (GameObject gizmo) {
 
@@ -57,19 +51,28 @@ public class KiteBuilder : MonoBehaviour {
 
 			bool hasCloth = false;
 
+			print (clothDist);
+			print (clothAngleDiff);
+
 			if( clothDist < DISTANCE_THRESHOLD && clothAngleDiff < ANGLE_THRESHOLD 
 			   && partsDict.TryGetValue(CLOTH, out hasCloth) && !hasCloth) {
 				//Set the kite as the parent
-				gizmo.transform.parent = this.transform;
-				gizmo.transform.localPosition = clothPos;
-				gizmo.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, clothAngle));
-				gizmo.GetComponent<GizmoWorldDrag>().enabled = false;
-				partsDict.Add(CLOTH, true);
-				
+				ConnectGizmo(gizmo);
 			}
 			break;
-		
-		//TODO: ADD SHORT ROD CASE
+		case SHORT_ROD:
+			float shortRodDist = ((Vector2)transform.InverseTransformPoint(gizmo.transform.position) - shortRodPos).magnitude;
+			float shortRodAngle = gizmo.transform.eulerAngles.z > 180 ? gizmo.transform.eulerAngles.z - 360 : gizmo.transform.eulerAngles.z;
+			float shortRodAngDiff = Mathf.Abs(longRodAngle - shortRodAngle);
+			
+			bool hasShortRod = false;
+			
+			if( shortRodDist < DISTANCE_THRESHOLD && shortRodAngDiff < ANGLE_THRESHOLD 
+			   && partsDict.TryGetValue(LONG_ROD, out hasShortRod) && !hasShortRod) {
+				//Set the kite as the parent
+				ConnectGizmo(gizmo);
+			}
+			break;
 		case LONG_ROD:
 			float longRodDist = ((Vector2)transform.InverseTransformPoint(gizmo.transform.position) - longRodPos).magnitude;
 			float rodAngle = gizmo.transform.eulerAngles.z > 180 ? gizmo.transform.eulerAngles.z - 360 : gizmo.transform.eulerAngles.z;
@@ -80,11 +83,7 @@ public class KiteBuilder : MonoBehaviour {
 			if( longRodDist < DISTANCE_THRESHOLD && longRodAngleDiff < ANGLE_THRESHOLD 
 			   && partsDict.TryGetValue(LONG_ROD, out hasLongRod) && !hasLongRod) {
 				//Set the kite as the parent
-				gizmo.transform.parent = this.transform;
-				gizmo.transform.localPosition = clothPos;
-				gizmo.transform.rotation = Quaternion.Euler(new Vector3(0, 0, longRodAngle));
-				gizmo.GetComponent<GizmoWorldDrag>().enabled = false;
-				partsDict.Add(LONG_ROD, true);
+				ConnectGizmo(gizmo);
 			}
 			break;
 		case STRING:
@@ -95,11 +94,7 @@ public class KiteBuilder : MonoBehaviour {
 			if( stringDist < DISTANCE_THRESHOLD && stringAngleDiff < ANGLE_THRESHOLD 
 			   && partsDict.TryGetValue(STRING, out hasString) && !hasString) {
 				//Set the kite as the parent
-				gizmo.transform.parent = this.transform;
-				gizmo.transform.localPosition = clothPos;
-				gizmo.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, clothAngle));
-				gizmo.GetComponent<GizmoWorldDrag>().enabled = false;
-				partsDict.Add(STRING, true);
+				ConnectGizmo(gizmo);
 				
 			}
 			break;
@@ -110,15 +105,19 @@ public class KiteBuilder : MonoBehaviour {
 			bool hasTail = false;
 			if( tailDist < DISTANCE_THRESHOLD && tailAngleDiff < ANGLE_THRESHOLD
 			   && partsDict.TryGetValue(TAIL, out hasTail) && !hasTail) {
-				//Set the kite as the parent
-				gizmo.transform.parent = this.transform;
-				gizmo.transform.localPosition = clothPos;
-				gizmo.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, clothAngle));
-				gizmo.GetComponent<GizmoWorldDrag>().enabled = false;
-				partsDict.Add(TAIL, true);
+				ConnectGizmo(gizmo);
 			}
 			break;
 		}
 
+	}
+
+	void ConnectGizmo (GameObject gizmo) {
+		//Set the kite as the parent
+		gizmo.transform.parent = this.transform;
+		gizmo.transform.localPosition = clothPos;
+		gizmo.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, clothAngle));
+		gizmo.GetComponent<GizmoWorldDrag>().enabled = false;
+		partsDict[gizmo.tag] = true;
 	}
 }

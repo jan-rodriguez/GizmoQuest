@@ -81,7 +81,7 @@ public class SwipeCamera : MonoBehaviour {
 					break;
 
 				case TouchPhase.Moved :					
-					Vector3 touchPosVec3 = touch.position;
+//					Vector3 touchPosVec3 = touch.position;
 					if (ShouldSwipe (touch.position)) {
 						SwipeToPosition (touch.position);
 						
