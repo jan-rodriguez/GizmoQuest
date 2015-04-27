@@ -73,7 +73,7 @@ public class KiteBuilder : MonoBehaviour {
 			print (shortRodAngDiff);
 			
 			if( shortRodDist < DISTANCE_THRESHOLD && shortRodAngDiff < ANGLE_THRESHOLD 
-			   && partsDict.TryGetValue(LONG_ROD, out hasShortRod) && !hasShortRod) {
+			   && partsDict.TryGetValue(SHORT_ROD, out hasShortRod) && !hasShortRod) {
 				//Set the kite as the parent
 				ConnectGizmo(gizmo, shortRodPos, shortRodAngle);
 			}
@@ -96,9 +96,9 @@ public class KiteBuilder : MonoBehaviour {
 			}
 			break;
 		case STRING:
-			float stringDist = ((Vector2)transform.InverseTransformPoint(gizmo.transform.position) - longRodPos).magnitude;
+			float stringDist = ((Vector2)transform.InverseTransformPoint(gizmo.transform.position) - stringPos).magnitude;
 			float strAngle = gizmo.transform.eulerAngles.z > 180 ? gizmo.transform.eulerAngles.z - 360 : gizmo.transform.eulerAngles.z;
-			float stringAngleDiff = Mathf.Abs(longRodAngle - strAngle);
+			float stringAngleDiff = Mathf.Abs(stringAngle - strAngle);
 			bool hasString = false;
 
 			print (STRING);
@@ -107,7 +107,7 @@ public class KiteBuilder : MonoBehaviour {
 			if( stringDist < DISTANCE_THRESHOLD && stringAngleDiff < ANGLE_THRESHOLD 
 			   && partsDict.TryGetValue(STRING, out hasString) && !hasString) {
 				//TODO: CAHNGE FOR STRING
-				ConnectGizmo(gizmo, longRodPos, longRodAngle);
+				ConnectGizmo(gizmo, stringPos, stringAngle);
 				
 			}
 			break;
