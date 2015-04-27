@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class ForestProgression : MonoBehaviour {
 	public class GizmoBuilder {
 		private Dictionary<string, List<string>> partsHeld;
-		private readonly string[] kiteParts = {"long rod", "short rod", "cloth", "tail", "string"};
+		private readonly string[] kiteParts = {KiteBuilder.CLOTH, KiteBuilder.STRING, KiteBuilder.LONG_ROD, KiteBuilder.SHORT_ROD};
 
 		public GizmoBuilder() {
 			partsHeld = new Dictionary<string, List<string>>();

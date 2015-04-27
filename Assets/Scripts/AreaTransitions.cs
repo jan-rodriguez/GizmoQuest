@@ -2,11 +2,11 @@
 using System.Collections;
 
 public class AreaTransitions : MonoBehaviour {
-	public GameObject destination;
+	SceneManager gameSceneManager;
 
 	// Use this for initialization
 	void Start () {
-	
+		gameSceneManager = GameObject.Find ("_GameManager").GetComponent<SceneManager> ();
 	}
 	
 	// Update is called once per frame
@@ -15,7 +15,16 @@ public class AreaTransitions : MonoBehaviour {
 	}
 
 	void OnMouseDown() {
-		SwipeCamera cameraMovement = Camera.main.GetComponent<SwipeCamera> ();
-		cameraMovement.ChangeBackground (destination);
+		switch (this.name) {
+		case "Airfield to Savannah":
+			gameSceneManager.GoToSavannah ();
+			break;
+		case "Savannah to Cliff":
+			gameSceneManager.GoToCliff ();
+			break;
+		case "Cliff to Boulder":
+			//TODO: add boulder scene
+			break;
+		}
 	}
 }
