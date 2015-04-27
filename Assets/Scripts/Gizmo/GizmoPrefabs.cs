@@ -8,12 +8,14 @@ public class GizmoPrefabs : MonoBehaviour{
 	public const string ClothName = "Cloth";
 	public const string PenName = "Pen";
 	public const string StrawName = "Straw";
+	public const string StringName = "String";
 
 	public static GameObject DiamondClothPrefab;
 	public static GameObject LongStickPrefab;
 	public static GameObject ClothPrefab;
 	public static GameObject PenPrefab;
 	public static GameObject StrawPrefab;
+	public static GameObject StringPrefab;
 
 	void Awake () {
 		DiamondClothPrefab = Resources.Load(DiamonClothName) as GameObject;
@@ -21,6 +23,7 @@ public class GizmoPrefabs : MonoBehaviour{
 		ClothPrefab = Resources.Load(ClothName) as GameObject;
 		PenPrefab = Resources.Load (PenName) as GameObject;
 		StrawPrefab = Resources.Load (StrawName) as GameObject;
+		StringPrefab = Resources.Load(StringName) as GameObject;
 	}
 
 }

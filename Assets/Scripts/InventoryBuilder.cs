@@ -9,10 +9,10 @@ public class InventoryBuilder : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		BuildSlot(GizmoPrefabs.LongStickName);
-		BuildSlot(GizmoPrefabs.DiamonClothName);
 		BuildSlot(GizmoPrefabs.ClothName);
 		BuildSlot(GizmoPrefabs.PenName);
 		BuildSlot(GizmoPrefabs.StrawName);
+		BuildSlot(GizmoPrefabs.StringName);
 	}
 
 	void BuildSlot (string itemName) {
@@ -34,6 +34,9 @@ public class InventoryBuilder : MonoBehaviour {
 			break;
 		case GizmoPrefabs.StrawName:
 			actualSlot.GetComponent<GizmoSlot>().SetGizmoPrefab(GizmoPrefabs.StrawPrefab);
+			break;
+		case GizmoPrefabs.StringName:
+			actualSlot.GetComponent<GizmoSlot>().SetGizmoPrefab(GizmoPrefabs.StringPrefab);
 			break;
 		}
 

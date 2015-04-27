@@ -284,7 +284,7 @@ MonoBehaviour:
   m_ChildAlignment: 1
   m_Spacing: 5
   m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 0
+  m_ChildForceExpandHeight: 1
 --- !u!114 &614151188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,9 +379,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 957819157}
   - 212: {fileID: 957819156}
-  - 61: {fileID: 957819158}
-  - 50: {fileID: 957819160}
   - 114: {fileID: 957819159}
+  - 50: {fileID: 957819160}
+  - 61: {fileID: 957819158}
   m_Layer: 0
   m_Name: KiteBuilder
   m_TagString: BuildArea
@@ -411,9 +411,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1261394849
+  m_SortingLayerID: -1518977995
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 715f73e2bfa134da5a754088a96fb85c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 61b0460f8e5a9425d8d894693e8e696f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &957819157
 Transform:
@@ -422,8 +422,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 957819155}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -435,11 +435,11 @@ BoxCollider2D:
   m_GameObject: {fileID: 957819155}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: .0133846402, y: -.464000106}
   serializedVersion: 2
-  m_Size: {x: .150000006, y: .150000006}
+  m_Size: {x: 1.12, y: 2.6099999}
 --- !u!114 &957819159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -655,7 +655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 100
+  m_ReferencePixelsPerUnit: 10
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0

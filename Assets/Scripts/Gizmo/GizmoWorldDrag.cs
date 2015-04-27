@@ -161,7 +161,6 @@ public class GizmoWorldDrag : MonoBehaviour {
 	}
 
 	void DragObject(Vector3 position){
-//		transform.position = position + dragOffset;
 		hinge.connectedAnchor = position;
 	}
 
