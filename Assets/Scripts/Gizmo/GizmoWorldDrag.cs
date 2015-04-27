@@ -4,7 +4,7 @@ using System.Collections;
 public class GizmoWorldDrag : MonoBehaviour {
 
 	public const string BUILD_AREA_TAG = "BuildArea";
-	private const int SELECTED_Z_POS = -1;
+	private const int SELECTED_SORTING_ORDER = 100;
 
 	KiteBuilder buildArea;
 	bool inBuildArea = false;
@@ -18,6 +18,8 @@ public class GizmoWorldDrag : MonoBehaviour {
 	HingeJoint2D hinge;
 	Rigidbody2D rigidBody;
 
+	SpriteRenderer renderer;
+
 //	LineRenderer lineRenderer;
 
 	// Use this for initialization
@@ -26,6 +28,7 @@ public class GizmoWorldDrag : MonoBehaviour {
 		rigidBody = GetComponent<Rigidbody2D> ();
 
 		buildArea = GameObject.FindGameObjectWithTag(BUILD_AREA_TAG).GetComponent<KiteBuilder>();
+		renderer = gameObject.GetComponent<SpriteRenderer>();
 //		lineRenderer = GetComponent<LineRenderer> ();
 //
 //		lineRenderer.SetVertexCount(3);
@@ -156,7 +159,7 @@ public class GizmoWorldDrag : MonoBehaviour {
 	void BeginDragObject(Vector3 position) {
 		draggingObject = true;
 		rigidBody.isKinematic = false;
-		transform.position = new Vector3(transform.position.x, transform.position.y, SELECTED_Z_POS);
+		renderer.sortingOrder = SELECTED_SORTING_ORDER;
 		hinge.anchor = transform.InverseTransformPoint(hitPoint);
 	}
 
@@ -167,7 +170,7 @@ public class GizmoWorldDrag : MonoBehaviour {
 	void EndDragObject(Vector3 position){
 		draggingObject = false;
 		rigidBody.isKinematic = true;
-		transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+		renderer.sortingOrder = 0;
 
 		if(inBuildArea) {
 			buildArea.TryAttachGizmo(gameObject);
