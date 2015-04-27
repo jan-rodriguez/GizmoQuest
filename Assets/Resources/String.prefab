@@ -12,7 +12,7 @@ GameObject:
   - 50: {fileID: 5036312}
   - 233: {fileID: 23303440}
   - 114: {fileID: 11476506}
-  - 61: {fileID: 6115476}
+  - 61: {fileID: 6107944}
   m_Layer: 0
   m_Name: String
   m_TagString: string
@@ -47,7 +47,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!61 &6115476
+--- !u!61 &6107944
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -57,7 +57,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: .0398632735, y: -.378700852}
+  m_Offset: {x: -.0761025399, y: .0036239624}
   serializedVersion: 2
   m_Size: {x: .419999987, y: 1.05999994}
 --- !u!114 &11476506
