@@ -6,10 +6,10 @@ public class KiteBuilder : MonoBehaviour {
 
 	private Dictionary<string, bool> partsDict = new Dictionary<string,bool> ();
 
-	private const string STRING = "string";
-	private const string CLOTH = "cloth";
-	private const string LONG_ROD = "long_rod";
-	private const string SHORT_ROD = "short_rod";
+	public const string STRING = "string";
+	public const string CLOTH = "cloth";
+	public const string LONG_ROD = "long_rod";
+	public const string SHORT_ROD = "short_rod";
 	public enum LAYER {
 		STRING = 6,
 		CLOTH = 10,
