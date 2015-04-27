@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class GizmoUIItem : MonoBehaviour {
 
-	public Transform gizmoPrefab;
+	public Object gizmoPrefab;
 
 	// Use this for initialization
 	void Start () {
