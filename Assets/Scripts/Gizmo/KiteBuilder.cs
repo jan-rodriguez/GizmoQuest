@@ -10,14 +10,10 @@ public class KiteBuilder : MonoBehaviour {
 	private const string CLOTH = "cloth";
 	private const string LONG_ROD = "long_rod";
 	private const string SHORT_ROD = "short_rod";
-	public enum LAYER {
-		STRING = 6,
-		CLOTH = 10,
-		TAIL = 9,
-		LONG_ROD = 8,
-		SHORT_ROD = 7
-	}
-
+	private const int STRING_LAYER = 0;
+	private const int CLOTH_LAYER = 1;
+	private const int LONG_ROD_LAYER = 2;
+	private const int SHORT_ROD_LAYER = 3;
 	private const float DISTANCE_THRESHOLD = .1f;
 	private const float ANGLE_THRESHOLD = 30f;
 
@@ -27,7 +23,7 @@ public class KiteBuilder : MonoBehaviour {
 	private const float clothAngle = 0f;
 	private const float shortRodAngle = 90f;
 	private Vector2 shortRodPos = Vector2.zero;
-	private Vector2 stringPos = new Vector2(0, -.83f);
+	private Vector2 stringPos = new Vector2(0.131f, -1.286f);
 	private const float stringAngle = 0f;
 
 
@@ -58,12 +54,12 @@ public class KiteBuilder : MonoBehaviour {
 			if( clothDist < DISTANCE_THRESHOLD && clothAngleDiff < ANGLE_THRESHOLD 
 			   && partsDict.TryGetValue(CLOTH, out hasCloth) && !hasCloth) {
 				//Set the kite as the parent
-				ConnectGizmo(gizmo, clothPos, clothAngle);
+				ConnectGizmo(gizmo, clothPos, clothAngle, CLOTH_LAYER);
 			}
 			break;
 		case SHORT_ROD:
 			float shortRodDist = ((Vector2)transform.InverseTransformPoint(gizmo.transform.position) - shortRodPos).magnitude;
-			float shortRodPrefabAng = gizmo.transform.eulerAngles.z > 180 ? gizmo.transform.eulerAngles.z - 180 : gizmo.transform.eulerAngles.z;
+			float shortRodPrefabAng = gizmo.transform.eulerAngles.z > 180 ? gizmo.transform.eulerAngles.z - 360 : gizmo.transform.eulerAngles.z;
 			float shortRodAngDiff = Mathf.Abs(shortRodAngle - shortRodPrefabAng);
 			
 			bool hasShortRod = false;
@@ -75,12 +71,12 @@ public class KiteBuilder : MonoBehaviour {
 			if( shortRodDist < DISTANCE_THRESHOLD && shortRodAngDiff < ANGLE_THRESHOLD 
 			   && partsDict.TryGetValue(SHORT_ROD, out hasShortRod) && !hasShortRod) {
 				//Set the kite as the parent
-				ConnectGizmo(gizmo, shortRodPos, shortRodAngle);
+				ConnectGizmo(gizmo, shortRodPos, shortRodAngle, SHORT_ROD_LAYER);
 			}
 			break;
 		case LONG_ROD:
 			float longRodDist = ((Vector2)transform.InverseTransformPoint(gizmo.transform.position) - longRodPos).magnitude;
-			float rodAngle = gizmo.transform.eulerAngles.z > 180 ? gizmo.transform.eulerAngles.z - 180 : gizmo.transform.eulerAngles.z;
+			float rodAngle = gizmo.transform.eulerAngles.z > 180 ? gizmo.transform.eulerAngles.z - 360 : gizmo.transform.eulerAngles.z;
 			float longRodAngleDiff = Mathf.Abs(longRodAngle - rodAngle);
 
 			bool hasLongRod = false;
@@ -92,7 +88,7 @@ public class KiteBuilder : MonoBehaviour {
 			if( longRodDist < DISTANCE_THRESHOLD && longRodAngleDiff < ANGLE_THRESHOLD 
 			   && partsDict.TryGetValue(LONG_ROD, out hasLongRod) && !hasLongRod) {
 				//Set the kite as the parent
-				ConnectGizmo(gizmo, longRodPos, longRodAngle);
+				ConnectGizmo(gizmo, longRodPos, longRodAngle, LONG_ROD_LAYER);
 			}
 			break;
 		case STRING:
@@ -107,7 +103,7 @@ public class KiteBuilder : MonoBehaviour {
 			if( stringDist < DISTANCE_THRESHOLD && stringAngleDiff < ANGLE_THRESHOLD 
 			   && partsDict.TryGetValue(STRING, out hasString) && !hasString) {
 				//TODO: CAHNGE FOR STRING
-				ConnectGizmo(gizmo, stringPos, stringAngle);
+				ConnectGizmo(gizmo, stringPos, stringAngle, STRING_LAYER);
 				
 			}
 			break;
@@ -119,13 +115,14 @@ public class KiteBuilder : MonoBehaviour {
 
 	}
 
-	void ConnectGizmo (GameObject gizmo, Vector3 pos, float angle) {
+	void ConnectGizmo (GameObject gizmo, Vector3 pos, float angle, int sortingOrder) {
 		//Set the kite as the parent
 		gizmo.transform.parent = this.transform;
 		gizmo.transform.localPosition = pos;
 		gizmo.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, angle));
 		gizmo.GetComponent<GizmoWorldDrag>().enabled = false;
 		gizmo.GetComponent<Collider2D>().enabled = false;
+		gizmo.GetComponent<SpriteRenderer>().sortingOrder = sortingOrder;
 		partsDict[gizmo.tag] = true;
 	}
 
