@@ -8,7 +8,6 @@ public class InventoryBuilder : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		BuildSlot(GizmoPrefabs.LongStickName);
 		BuildSlot(GizmoPrefabs.ClothName);
 		BuildSlot(GizmoPrefabs.PenName);
 		BuildSlot(GizmoPrefabs.StrawName);

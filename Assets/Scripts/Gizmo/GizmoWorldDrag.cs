@@ -11,24 +11,20 @@ public class GizmoWorldDrag : MonoBehaviour {
 
 	Vector2 originalTouch0Pos;
 	Vector2 originalTouch1Pos;
-	Vector3 hitPoint;
+	Vector3 clickOffset;
 	float orgRotAngleDeg;
 	bool draggingObject = false;
 	bool rotatingObject = false;
-	HingeJoint2D hinge;
-	Rigidbody2D rigidBody;
 
-	SpriteRenderer renderer;
+	SpriteRenderer spriteRenderer;
 
 //	LineRenderer lineRenderer;
 
 	// Use this for initialization
 	void Start () {
-		hinge = GetComponent<HingeJoint2D> ();
-		rigidBody = GetComponent<Rigidbody2D> ();
 
 		buildArea = GameObject.FindGameObjectWithTag(BUILD_AREA_TAG).GetComponent<KiteBuilder>();
-		renderer = gameObject.GetComponent<SpriteRenderer>();
+		spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 //		lineRenderer = GetComponent<LineRenderer> ();
 //
 //		lineRenderer.SetVertexCount(3);
@@ -45,18 +41,11 @@ public class GizmoWorldDrag : MonoBehaviour {
 	
 	}
 
-	void FixedUpdate() {
-		if (draggingObject) {
-			DragObject(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-		}
-	}
-
 	bool TouchingObject(Vector2 touchPos) {
 
 		RaycastHit2D hitInfo = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touchPos), Vector2.zero);
 
 		if (hitInfo) {
-			hitPoint = hitInfo.point;
 			return hitInfo.collider.gameObject == gameObject;
 		}
 		return false;
@@ -64,29 +53,31 @@ public class GizmoWorldDrag : MonoBehaviour {
 
 	void HandleMobileInput(){
 		if (!draggingObject) {
-			if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began){
+			if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began){
 					
 				Vector2 touchPos = Input.GetTouch(0).position;
 
 				//Clicked object
 				if(TouchingObject(touchPos)){
-					BeginDragObject(touchPos);
+					BeginDragObject(Camera.main.ScreenToWorldPoint(touchPos));
 				}
 
 			}
 		}else{
 			if(Input.GetTouch(0).phase == TouchPhase.Ended) {
 				Vector2 touchPos = Input.GetTouch(0).position;
-				EndDragObject(touchPos);
+				EndDragObject();
 				return;
 			}
 
 			//Two finger rotation
-			if(Input.touchCount == 2 && Input.GetTouch(1).phase == TouchPhase.Began){
+			if(Input.touchCount == 2 && Input.GetTouch(1).phase == TouchPhase.Began && draggingObject){
+
 				rotatingObject = true;
 
+
 				//Set original rotation from original positions
-				orgRotAngleDeg =  transform.eulerAngles.z;
+//				orgRotAngleDeg =  transform.eulerAngles.z;
 			}
 			//Lifted second finger up, no longer rotating object
 			else if(rotatingObject && Input.touchCount == 2 && Input.GetTouch(1).phase == TouchPhase.Ended){
@@ -95,47 +86,45 @@ public class GizmoWorldDrag : MonoBehaviour {
 
 		}
 
+		if(draggingObject) {
+			DragObject(Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position));
+		}
+
+		if(rotatingObject) {
+			RotateObject();
+		}
+
 	}
 
 	void HandleRegularInput(){
 		if (!draggingObject) {
 			if(Input.GetMouseButtonDown(0) && TouchingObject(Input.mousePosition)){
 
-				BeginDragObject(Input.mousePosition);
+				BeginDragObject(Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
 			}
 		}else{
 			//No longer dragging object
 			if(Input.GetMouseButtonUp(0)){
-				EndDragObject(Input.mousePosition);
+				EndDragObject();
 				return;
 			}
+		}
+
+		if(draggingObject) {
+			DragObject(Camera.main.ScreenToWorldPoint(Input.mousePosition));
 		}
 	}
 
 	void RotateObject(){
-
+		draggingObject = false;
+		EndDragObject();
 		//Make sure to have atleast two touches
 		if (Input.touchCount == 2) {
-			Vector2 curTouch0Pos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-			Vector2 curTouch1Pos = Camera.main.ScreenToWorldPoint(Input.GetTouch(1).position);
-			Vector2 vertex = transform.position;
 
-//			lineRenderer.SetPosition(0, curTouch0Pos);
-//			lineRenderer.SetPosition(1, vertex);
-//			lineRenderer.SetPosition(2, curTouch1Pos);
-
-			Vector2 a = curTouch0Pos - vertex;
-			Vector2 b = vertex - curTouch1Pos;
-
-			float theta = Mathf.Acos(Vector2.Dot(a, b)/(a.magnitude * b.magnitude));
-
-			float curAngle = Mathf.Rad2Deg * theta;
-
-			float deltaAngle = curAngle - orgRotAngleDeg;
-
+			DetectTouchMovement.Calculate();
 			//Rotate the object
-			transform.rotation = Quaternion.Euler(new Vector3(0, 0, deltaAngle));
+			transform.rotation = Quaternion.Euler(new Vector3(0, 0, transform.rotation.eulerAngles.z + DetectTouchMovement.turnAngleDelta * 2));
 		} 
 		//Not touching with two fingers, stop rotation and return
 		else {
@@ -158,19 +147,20 @@ public class GizmoWorldDrag : MonoBehaviour {
 
 	void BeginDragObject(Vector3 position) {
 		draggingObject = true;
-		rigidBody.isKinematic = false;
-		renderer.sortingOrder = SELECTED_SORTING_ORDER;
-		hinge.anchor = transform.InverseTransformPoint(hitPoint);
+		position.z = 0;
+		clickOffset = transform.position - position;
+		transform.position = position + clickOffset;
+		spriteRenderer.sortingOrder = SELECTED_SORTING_ORDER;
 	}
 
 	void DragObject(Vector3 position){
-		hinge.connectedAnchor = position;
+		position.z = 0;	
+		transform.position = position + clickOffset;
 	}
 
-	void EndDragObject(Vector3 position){
+	void EndDragObject(){
 		draggingObject = false;
-		rigidBody.isKinematic = true;
-		renderer.sortingOrder = 0;
+		spriteRenderer.sortingOrder = 10;
 
 		if(inBuildArea) {
 			buildArea.TryAttachGizmo(gameObject);
