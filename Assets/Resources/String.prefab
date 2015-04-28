@@ -11,6 +11,7 @@ GameObject:
   - 212: {fileID: 21248684}
   - 114: {fileID: 11476506}
   - 61: {fileID: 6107944}
+  - 111: {fileID: 11194802}
   m_Layer: 0
   m_Name: String
   m_TagString: string
@@ -43,6 +44,21 @@ BoxCollider2D:
   m_Offset: {x: -.0761025399, y: .0036239624}
   serializedVersion: 2
   m_Size: {x: .419999987, y: 1.05999994}
+--- !u!111 &11194802
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141454}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: c481f7439c1cf4b7d96b847b7b5c0513, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: c481f7439c1cf4b7d96b847b7b5c0513, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &11476506
 MonoBehaviour:
   m_ObjectHideFlags: 1

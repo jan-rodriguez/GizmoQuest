@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class KiteBuilder : MonoBehaviour {
 
+	public GameObject finishedGizmo;
+
 	private Dictionary<string, bool> partsDict = new Dictionary<string,bool> ();
 
 	public const string STRING = "string";
@@ -27,9 +29,12 @@ public class KiteBuilder : MonoBehaviour {
 	private Vector2 stringPos = new Vector2(0.131f, -1.286f);
 	private const float stringAngle = 0f;
 
+	private Animation hideAnimation;
 
 	// Use this for initialization
 	void Start () {
+		hideAnimation = gameObject.GetComponent<Animation>();
+
 		partsDict.Add (CLOTH, false);
 		partsDict.Add (LONG_ROD, false);
 		partsDict.Add (SHORT_ROD, false);
@@ -69,11 +74,11 @@ public class KiteBuilder : MonoBehaviour {
 			print (shortRodDist);
 			print (shortRodAngDiff);
 			
-			if( shortRodDist < DISTANCE_THRESHOLD && shortRodAngDiff < ANGLE_THRESHOLD 
-			   && partsDict.TryGetValue(SHORT_ROD, out hasShortRod) && !hasShortRod) {
+//			if( shortRodDist < DISTANCE_THRESHOLD && shortRodAngDiff < ANGLE_THRESHOLD 
+//			   && partsDict.TryGetValue(SHORT_ROD, out hasShortRod) && !hasShortRod) {
 				//Set the kite as the parent
 				ConnectGizmo(gizmo, shortRodPos, shortRodAngle, SHORT_ROD_LAYER);
-			}
+//			}
 			break;
 		case LONG_ROD:
 			float longRodDist = ((Vector2)transform.InverseTransformPoint(gizmo.transform.position) - longRodPos).magnitude;
@@ -128,7 +133,16 @@ public class KiteBuilder : MonoBehaviour {
 	}
 
 	void AlertUserCompleted () {
-		print ("Congratulations on your accomplishment");
+		hideAnimation.Play();
+		foreach(Animation anim in gameObject.GetComponentsInChildren<Animation>()){
+			anim.Play ();
+		}
+
+	}
+
+	public void hideBuilderAndShowFinished() {
+		finishedGizmo.SetActive(true);
+		gameObject.SetActive(false);
 	}
 
 	bool CompletedKite () {

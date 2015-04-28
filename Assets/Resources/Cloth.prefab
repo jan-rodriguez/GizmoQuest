@@ -11,6 +11,7 @@ GameObject:
   - 212: {fileID: 21226644}
   - 114: {fileID: 11414408}
   - 60: {fileID: 6082860}
+  - 111: {fileID: 11144248}
   m_Layer: 0
   m_Name: Cloth
   m_TagString: cloth
@@ -67,6 +68,21 @@ PolygonCollider2D:
       - {x: .100000001, y: -.754999995}
       - {x: .180000007, y: -.605000019}
       - {x: .360000014, y: -.264999986}
+--- !u!111 &11144248
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185082}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: c481f7439c1cf4b7d96b847b7b5c0513, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: c481f7439c1cf4b7d96b847b7b5c0513, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &11414408
 MonoBehaviour:
   m_ObjectHideFlags: 1

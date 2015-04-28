@@ -11,6 +11,7 @@ GameObject:
   - 212: {fileID: 21266472}
   - 114: {fileID: 11425308}
   - 61: {fileID: 6103986}
+  - 111: {fileID: 11167616}
   m_Layer: 0
   m_Name: Colored-Stick
   m_TagString: long_rod
@@ -43,6 +44,21 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 5.42999983, y: 24}
+--- !u!111 &11167616
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 129962}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 4d970baa0666347e9bcca5cc85d5b026, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 4d970baa0666347e9bcca5cc85d5b026, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &11425308
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -11,6 +11,7 @@ GameObject:
   - 212: {fileID: 21206456}
   - 61: {fileID: 6101646}
   - 114: {fileID: 11408298}
+  - 111: {fileID: 11194250}
   m_Layer: 0
   m_Name: Pen
   m_TagString: short_rod
@@ -43,6 +44,21 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: .119999997, y: .850000024}
+--- !u!111 &11194250
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160506}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: c481f7439c1cf4b7d96b847b7b5c0513, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: c481f7439c1cf4b7d96b847b7b5c0513, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &11408298
 MonoBehaviour:
   m_ObjectHideFlags: 1

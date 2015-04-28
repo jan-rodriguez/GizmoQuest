@@ -25,13 +25,11 @@ public class InventoryBuilder : MonoBehaviour {
 						BuildSlot(name);
 					}
 				}else{//Didn't find parts
+					BuildSlot (null);
 					print ("Didn't find any parts for " + type);
 				}
-
 			}
-
 		}
-
 	}
 
 	void BuildSlot (string itemName) {
@@ -56,6 +54,8 @@ public class InventoryBuilder : MonoBehaviour {
 			break;
 		case GizmoPrefabs.StringName:
 			actualSlot.GetComponent<GizmoSlot>().SetGizmoPrefab(GizmoPrefabs.StringPrefab);
+			break;
+		default:
 			break;
 		}
 

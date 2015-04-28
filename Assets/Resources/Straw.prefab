@@ -11,6 +11,7 @@ GameObject:
   - 212: {fileID: 21249596}
   - 114: {fileID: 11475386}
   - 61: {fileID: 6197726}
+  - 111: {fileID: 11172480}
   m_Layer: 0
   m_Name: Straw
   m_TagString: long_rod
@@ -43,6 +44,21 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: .180000007, y: 1.52999997}
+--- !u!111 &11172480
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148386}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: c481f7439c1cf4b7d96b847b7b5c0513, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: c481f7439c1cf4b7d96b847b7b5c0513, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &11475386
 MonoBehaviour:
   m_ObjectHideFlags: 1
