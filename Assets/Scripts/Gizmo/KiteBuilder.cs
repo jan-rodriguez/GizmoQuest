@@ -6,10 +6,11 @@ public class KiteBuilder : MonoBehaviour {
 
 	private Dictionary<string, bool> partsDict = new Dictionary<string,bool> ();
 
-	private const string STRING = "string";
-	private const string CLOTH = "cloth";
-	private const string LONG_ROD = "long_rod";
-	private const string SHORT_ROD = "short_rod";
+	public const string STRING = "string";
+	public const string CLOTH = "cloth";
+	public const string LONG_ROD = "long_rod";
+	public const string SHORT_ROD = "short_rod";
+	public static string[] PARTS_LIST = {STRING, CLOTH, LONG_ROD, SHORT_ROD};
 	private const int STRING_LAYER = 0;
 	private const int CLOTH_LAYER = 1;
 	private const int LONG_ROD_LAYER = 2;

@@ -6,12 +6,32 @@ public class InventoryBuilder : MonoBehaviour {
 
 	public GameObject slotPrefab;
 
+	private GameObject gameManager;
+	private ForestProgression progression;
+
 	// Use this for initialization
 	void Start () {
-		BuildSlot(GizmoPrefabs.ClothName);
-		BuildSlot(GizmoPrefabs.PenName);
-		BuildSlot(GizmoPrefabs.StrawName);
-		BuildSlot(GizmoPrefabs.StringName);
+		gameManager = GameObject.Find ("_GameManager");
+		if (gameManager == null) {
+			Debug.LogError ("Starting workbench without game manager. Can't populate inventory");
+		} else {
+			progression = gameManager.GetComponent<ForestProgression>();
+			foreach(string type in KiteBuilder.PARTS_LIST){
+				//Get all parts of a type in your inventory
+				List<string> partsList = progression.inventory.GetParts(type);
+				if(partsList != null) { //Found parts
+					foreach(string name in progression.inventory.GetParts(type)) {
+						//Create the part
+						BuildSlot(name);
+					}
+				}else{//Didn't find parts
+					print ("Didn't find any parts for " + type);
+				}
+
+			}
+
+		}
+
 	}
 
 	void BuildSlot (string itemName) {
