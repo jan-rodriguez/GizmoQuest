@@ -3,11 +3,13 @@ using System.Collections;
 
 public class SavannahProgression : MonoBehaviour {
 	private ForestProgression storyManager;
+	private SwipeCamera cameraMover;
 	private GameObject toCliff;
 
 	// Use this for initialization
 	void Start () {
 		storyManager = GameObject.Find ("_GameManager").GetComponent<ForestProgression>();
+		cameraMover = Camera.main.GetComponent<SwipeCamera> ();
 		toCliff = GameObject.Find ("Savannah to Cliff");
 	}
 	
