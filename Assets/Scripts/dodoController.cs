@@ -3,6 +3,7 @@ using System.Collections;
 
 public class dodoController : MonoBehaviour {
 	private Animator animator;
+	public Sprite defaultSprite;
 
 	// Use this for initialization
 	void Start () {
@@ -20,5 +21,6 @@ public class dodoController : MonoBehaviour {
 
 	public void dodoStopTalking() {
 		animator.SetBool ("dodoIsTalking", false);
+		this.GetComponent<SpriteRenderer> ().sprite = defaultSprite;
 	}
 }

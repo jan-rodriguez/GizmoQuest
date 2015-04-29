@@ -253,18 +253,23 @@ public class ForestProgression : MonoBehaviour {
 		}
 	}
 
-	private void ShowFinishedGizmos() {
-		string[] gizmos = new string[]{"Kite"};
-		foreach (string gizmo in gizmos) {
-			GameObject go = GameObject.Find (gizmo);
-			if (go != null) {
-				go.GetComponent<SpriteRenderer>().enabled = true;
+	private void FinishLevel() {
+		if (kite) {
+			GameObject kiteObject = GameObject.Find ("Kite");
+			if (kiteObject != null) {
+				kiteObject.GetComponent<SpriteRenderer>().enabled = true;
+			}
+			
+			GameObject progressArrow = GameObject.Find ("Airfield to Savannah");
+			if (progressArrow != null) {
+				progressArrow.GetComponent<SpriteRenderer> ().enabled = true;
+				progressArrow.GetComponent<BoxCollider2D> ().enabled = true;
 			}
 		}
 	}
 
 	void OnLevelWasLoaded(int level) {
 		HideCollectedItems();
-		ShowFinishedGizmos();
+		FinishLevel();
 	}
 }

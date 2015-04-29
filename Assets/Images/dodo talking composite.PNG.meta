@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 2f3554253b89e21429e42494da7c97f4
-timeCreated: 1430331244
+timeCreated: 1430344198
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
@@ -57,7 +57,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 3300
         width: 2550
         height: 3300
       alignment: 0
@@ -66,7 +66,7 @@ TextureImporter:
     - name: dodo talking composite_1
       rect:
         serializedVersion: 2
-        x: 0
+        x: 2550
         y: 3300
         width: 2550
         height: 3300
@@ -76,7 +76,7 @@ TextureImporter:
     - name: dodo talking composite_2
       rect:
         serializedVersion: 2
-        x: 2550
+        x: 0
         y: 0
         width: 2550
         height: 3300
@@ -87,7 +87,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2550
-        y: 3300
+        y: 0
         width: 2550
         height: 3300
       alignment: 0

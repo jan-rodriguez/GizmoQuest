@@ -1,35 +1,45 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class AirfieldProgression : MonoBehaviour {
 	private GameObject kaPow;
 	private ForestProgression storyManager;
-	private GameObject toSavannah;
 	private SwipeCamera cameraMover;
-	
+	public static bool itemsCollectible = true;
+	private int wiggleTimer;
+	private IEnumerator wiggling;
+
 	// Use this for initialization
 	void Start () {
 		storyManager = GameObject.Find ("_GameManager").GetComponent<ForestProgression>();
-		toSavannah = GameObject.Find ("Airfield to Savannah");
 		cameraMover = Camera.main.GetComponent<SwipeCamera> ();
 		kaPow = GameObject.Find ("KAPOW");
+		wiggleTimer = 1;
+		wiggling = wiggleAround ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		wiggleTimer = (wiggleTimer + 1) % 600;
+		if (wiggleTimer == 0) {
+			if (this.name != "Dodo") {
+				StartCoroutine (wiggling);
+			}
+		}
 	}
-	
-	void tempKiteMaker() {
-		if (storyManager.inventory.HaveAllKiteParts ()) {
-			print ("Built kite.");
-			storyManager.makeKite ();
-			toSavannah.GetComponent<SpriteRenderer>().enabled = true;
-			toSavannah.GetComponent<BoxCollider2D>().enabled = true;
+
+	IEnumerator wiggleAround() {
+		int i = 1;
+		for (int j = 0; j < 10; j++) {
+			this.transform.Rotate (0, 0, i * 10);
+			i *= -1;
+			yield return new WaitForSeconds(0.5f);
 		}
 	}
 
 	IEnumerator acquireThisPart() {
+		StopCoroutine (wiggling);
 		this.GetComponent<BoxCollider2D>().enabled = false;
 		cameraMover.cameraCanMove = false;
 		Vector3 centerCam = Camera.main.ScreenToWorldPoint (new Vector3 (Screen.width / 2, Screen.height / 2, 0));
@@ -49,42 +59,47 @@ public class AirfieldProgression : MonoBehaviour {
 			kaPow.transform.localScale += scaleUp;
 			yield return null;
 		}
-		yield return new WaitForSeconds (2);
+		yield return new WaitForSeconds (1);
 		kaPow.transform.localScale = new Vector3 (0, 0, 0);
 		this.GetComponent<SpriteRenderer> ().enabled = false;
+		itemsCollectible = true;
 		cameraMover.cameraCanMove = true;
 	}
 	
 	// Good lord.
 	void OnMouseDown() {
-		switch (this.name) {
-		case "Dodo":
-			if (storyManager.getKitePrint ()) {
-				print ("Acquired kite print.");
-			} else {
-				tempKiteMaker ();
+		if (itemsCollectible) {
+			switch (this.name) {
+			case "Dodo":
+				if (storyManager.getKitePrint ()) {
+					print ("Acquired kite print.");
+				}
+				break;
+			case GizmoPrefabs.StringName:
+				print ("Acquired wire.");
+				itemsCollectible = false;
+				storyManager.inventory.AddPart (KiteBuilder.STRING, GizmoPrefabs.StringName);
+				StartCoroutine (acquireThisPart ());
+				break;
+			case GizmoPrefabs.ClothName:
+				print ("Acquired cloth.");
+				itemsCollectible = false;
+				storyManager.inventory.AddPart (KiteBuilder.CLOTH, GizmoPrefabs.ClothName);
+				StartCoroutine (acquireThisPart ());
+				break;
+			case GizmoPrefabs.StrawName:
+				print ("Acquired straw.");
+				itemsCollectible = false;
+				storyManager.inventory.AddPart (KiteBuilder.LONG_ROD, GizmoPrefabs.StrawName);
+				StartCoroutine (acquireThisPart ());
+				break;
+			case GizmoPrefabs.PenName:
+				print ("Acquired pen.");
+				itemsCollectible = false;
+				storyManager.inventory.AddPart (KiteBuilder.SHORT_ROD, GizmoPrefabs.PenName);
+				StartCoroutine (acquireThisPart ());
+				break;
 			}
-			break;
-		case GizmoPrefabs.StringName:
-			print ("Acquired wire.");
-			storyManager.inventory.AddPart (KiteBuilder.STRING, GizmoPrefabs.StringName);
-			StartCoroutine(acquireThisPart ());
-			break;
-		case GizmoPrefabs.ClothName:
-			print ("Acquired cloth.");
-			storyManager.inventory.AddPart (KiteBuilder.CLOTH, GizmoPrefabs.ClothName);
-			StartCoroutine(acquireThisPart ());
-			break;
-		case GizmoPrefabs.StrawName:
-			print ("Acquired straw.");
-			storyManager.inventory.AddPart (KiteBuilder.LONG_ROD, GizmoPrefabs.StrawName);
-			StartCoroutine(acquireThisPart ());
-			break;
-		case GizmoPrefabs.PenName:
-			print ("Acquired pen.");
-			storyManager.inventory.AddPart (KiteBuilder.SHORT_ROD, GizmoPrefabs.PenName);
-			StartCoroutine(acquireThisPart ());
-			break;
 		}
 	}
 }
