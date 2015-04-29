@@ -4,6 +4,7 @@ using System.Collections;
 public class SwipeCamera : MonoBehaviour {
 
 	public SpriteRenderer backgroundRenderer;
+	public bool cameraCanMove = true;
 
 	private const float minSwipeDist  = 10.0f;
 	private const float maxSwipeTime = 0.5f;
@@ -59,51 +60,53 @@ public class SwipeCamera : MonoBehaviour {
 	}
 
 	void HandleMobileInput () {
-		
-		if (Input.touchCount == 1){
-			
-			Touch touch = Input.GetTouch(0);
-			{
-				switch (touch.phase)
+		if (cameraCanMove) {
+
+			if (Input.touchCount == 1) {
+				
+				Touch touch = Input.GetTouch (0);
 				{
-				case TouchPhase.Began :
-					/* this is a new touch */
-					BeginSwipe(touch.position);
-					break;
-					
-				case TouchPhase.Canceled :
-					/* The touch is being canceled */
-					EndSwipe(touch.position);
-					break;
-
-				case TouchPhase.Ended :
-					EndSwipe(touch.position);
-					break;
-
-				case TouchPhase.Moved :					
-//					Vector3 touchPosVec3 = touch.position;
-					if (ShouldSwipe (touch.position)) {
-						SwipeToPosition (touch.position);
+					switch (touch.phase) {
+					case TouchPhase.Began:
+						/* this is a new touch */
+						BeginSwipe (touch.position);
+						break;
 						
+					case TouchPhase.Canceled:
+						/* The touch is being canceled */
+						EndSwipe (touch.position);
+						break;
+
+					case TouchPhase.Ended:
+						EndSwipe (touch.position);
+						break;
+
+					case TouchPhase.Moved:					
+						//Vector3 touchPosVec3 = touch.position;
+						if (ShouldSwipe (touch.position)) {
+							SwipeToPosition (touch.position);
+							
+						}
+						break;
 					}
-					break;
 				}
 			}
-		}	
+		}
 	}
 
 	void HandleRegularInput () {
-		
-		Vector3 mousePos = Input.mousePosition;
-		if (Input.GetMouseButtonDown (0)) {
-			BeginSwipe (Input.mousePosition);
-		} else if (Input.GetMouseButton (0)) {
+		if (cameraCanMove) {
+			Vector3 mousePos = Input.mousePosition;
+			if (Input.GetMouseButtonDown (0)) {
+				BeginSwipe (Input.mousePosition);
+			} else if (Input.GetMouseButton (0)) {
 			
-			if (ShouldSwipe (mousePos)) {
-				SwipeToPosition (mousePos);	
+				if (ShouldSwipe (mousePos)) {
+					SwipeToPosition (mousePos);	
+				}
+			} else if (Input.GetMouseButtonUp (0)) {
+				EndSwipe (mousePos);
 			}
-		} else if (Input.GetMouseButtonUp (0)) {
-			EndSwipe(mousePos);
 		}
 	}
 
