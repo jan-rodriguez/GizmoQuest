@@ -18,24 +18,20 @@ public class AirfieldProgression : MonoBehaviour {
 		wiggleTimer = 1;
 		wiggling = wiggleAround ();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		wiggleTimer = (wiggleTimer + 1) % 600;
-		if (wiggleTimer == 0) {
-			if (this.name != "Dodo") {
-				StartCoroutine (wiggling);
-			}
-		}
-	}
 
 	IEnumerator wiggleAround() {
 		int i = 1;
-		for (int j = 0; j < 10; j++) {
-			this.transform.Rotate (0, 0, i * 10);
-			i *= -1;
-			yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds (Random.Range(0, 2));
+
+		while(true){
+			for (int j = 0; j < 10; j++) {
+				this.transform.Rotate (0, 0, i * 10);
+				i *= -1;
+				yield return new WaitForSeconds(0.5f);
+			}
+			yield return new WaitForSeconds(5);
 		}
+
 	}
 
 	IEnumerator acquireThisPart() {
@@ -64,6 +60,10 @@ public class AirfieldProgression : MonoBehaviour {
 		this.GetComponent<SpriteRenderer> ().enabled = false;
 		itemsCollectible = true;
 		cameraMover.cameraCanMove = true;
+	}
+
+	public void StartWiggle(){
+		StartCoroutine (wiggling);
 	}
 	
 	// Good lord.
