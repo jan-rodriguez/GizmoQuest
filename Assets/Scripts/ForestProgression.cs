@@ -247,14 +247,17 @@ public class ForestProgression : MonoBehaviour {
 	}
 
 	private void HideCollectedItems() {
-		foreach(List<string> listOfParts in inventory.GetPartsHeld().Values){
-			foreach(string part in listOfParts) {
-				GameObject go = GameObject.Find(part);
-				if(go != null) {
-					DestroyObject(go);
+		if(inventory.GetPartsHeld().Values != null){
+			foreach(List<string> listOfParts in inventory.GetPartsHeld().Values){
+				foreach(string part in listOfParts) {
+					GameObject go = GameObject.Find(part);
+					if(go != null) {
+						DestroyObject(go);
+					}
 				}
 			}
 		}
+
 	}
 
 	private void FinishLevel() {

@@ -12,9 +12,7 @@ public class SceneManager: MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		if (updatePreviousLevel) {
-			previousLevel = Application.loadedLevelName;
-		}
+
 	}
 
 	public void GoToWorkshop () {
@@ -46,6 +44,10 @@ public class SceneManager: MonoBehaviour {
 			updatePreviousLevel = false;
 		} else {
 			updatePreviousLevel = true;
+		}
+
+		if (updatePreviousLevel) {
+			previousLevel = Application.loadedLevelName;
 		}
 	}
 }
