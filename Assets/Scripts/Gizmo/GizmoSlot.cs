@@ -18,18 +18,21 @@ public class GizmoSlot : MonoBehaviour {
 	}
 
 	public void CreateNewChildGizmo () {
-		if (remainingGizmos > 0) {
-			Instantiate(gizmoPrefab);
-			remainingGizmos--;
-		}
-
-		if (remainingGizmos == 0) {
-			gizmoImage.color = outOfGizmoColor;
+		if(gizmoPrefab != null){
+			if (remainingGizmos > 0) {
+				Instantiate(gizmoPrefab);
+				remainingGizmos--;
+			}
+			
+			if (remainingGizmos == 0) {
+				gizmoImage.color = outOfGizmoColor;
+			}
 		}
 	}
 
 	public void SetGizmoPrefab (GameObject gzPrefab) {
 		gizmoPrefab = gzPrefab;
-		gizmoImage.sprite = gizmoPrefab.GetComponent<SpriteRenderer>().sprite;
+		gizmoImage.sprite = gzPrefab.GetComponent<SpriteRenderer>().sprite;
+		gizmoImage.color = Color.white;
 	}
 }

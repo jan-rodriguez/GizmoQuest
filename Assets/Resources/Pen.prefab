@@ -10,12 +10,11 @@ GameObject:
   - 4: {fileID: 482842}
   - 212: {fileID: 21206456}
   - 61: {fileID: 6101646}
-  - 50: {fileID: 5056706}
-  - 233: {fileID: 23309874}
   - 114: {fileID: 11408298}
+  - 111: {fileID: 11194250}
   m_Layer: 0
   m_Name: Pen
-  m_TagString: long_rod
+  m_TagString: short_rod
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,25 +27,10 @@ Transform:
   m_GameObject: {fileID: 160506}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.5, y: 3.5, z: 2}
+  m_LocalScale: {x: 4, y: 4, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!50 &5056706
-Rigidbody2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 160506}
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 1
-  m_GravityScale: 1
-  m_FixedAngle: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
 --- !u!61 &6101646
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -60,6 +44,21 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: .119999997, y: .850000024}
+--- !u!111 &11194250
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160506}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: c481f7439c1cf4b7d96b847b7b5c0513, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: c481f7439c1cf4b7d96b847b7b5c0513, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &11408298
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -94,28 +93,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: c5b30ad7075194e1c87ee74f63d3966f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!233 &23309874
-HingeJoint2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 160506}
-  m_Enabled: 1
-  m_CollideConnected: 0
-  m_ConnectedRigidBody: {fileID: 0}
-  m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: 0}
-  m_UseMotor: 0
-  m_Motor:
-    m_MotorSpeed: 0
-    m_MaximumMotorForce: 10000
-  m_UseLimits: 0
-  m_AngleLimits:
-    m_LowerAngle: 0
-    m_UpperAngle: 359
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
