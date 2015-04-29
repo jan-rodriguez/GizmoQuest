@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: MovePostcard
+  m_Name: RiverPulsate
   serializedVersion: 6
   m_Legacy: 1
   m_Compressed: 0
@@ -17,29 +17,14 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: {x: 3, y: -35, z: 15}
-        inSlope: {x: 0, y: 20.9634094, z: 0}
-        outSlope: {x: 0, y: 20.9634094, z: 0}
-        tangentMode: 0
-      - time: 1.5
-        value: {x: 3, y: -3.5548861, z: 15}
-        inSlope: {x: 0, y: -.0469897613, z: 0}
-        outSlope: {x: 0, y: -.0469897613, z: 0}
-        tangentMode: 0
-      - time: 3
-        value: {x: 3, y: -3.5, z: 15}
+        value: {x: -9.64999962, y: 1.28999996, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
-      - time: 4.5
-        value: {x: 3, y: -3.49751711, z: 15}
+      - time: 1
+        value: {x: -9.64999962, y: 1.28999996, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - time: 6
-        value: {x: 3, y: -35, z: 15}
-        inSlope: {x: 0, y: -21.0016556, z: 0}
-        outSlope: {x: 0, y: -21.0016556, z: 0}
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -48,7 +33,7 @@ AnimationClip:
   m_FloatCurves: []
   m_PPtrCurves: []
   m_SampleRate: 60
-  m_WrapMode: 0
+  m_WrapMode: 2
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
@@ -58,7 +43,7 @@ AnimationClip:
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: 6
+    m_StopTime: 1
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -77,46 +62,12 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: -35
-        inSlope: 20.9634094
-        outSlope: 20.9634094
-        tangentMode: 10
-      - time: 1.5
-        value: -3.5548861
-        inSlope: -.0469897613
-        outSlope: -.0469897613
-        tangentMode: 0
-      - time: 3
-        value: -3.5
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      - time: 4.5
-        value: -3.49751711
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      - time: 6
-        value: -35
-        inSlope: -21.0016556
-        outSlope: -21.0016556
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalPosition.y
-    path: 
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 3
+        value: -9.64999962
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 6
-        value: 3
+      - time: 1
+        value: -9.64999962
         inSlope: 0
         outSlope: 0
         tangentMode: 10
@@ -130,12 +81,31 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 15
+        value: 1.28999996
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 6
-        value: 15
+      - time: 1
+        value: 1.28999996
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalPosition.y
+    path: 
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 10
@@ -146,14 +116,7 @@ AnimationClip:
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves: []
-  m_HasGenericRootTransform: 1
+  m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
-  m_Events:
-  - time: 6
-    functionName: LetCameraMove
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []
