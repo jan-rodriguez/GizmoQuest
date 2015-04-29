@@ -1947,13 +1947,14 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1865019646}
+  - 114: {fileID: 1865019647}
   m_Layer: 0
   m_Name: BanjoBuilder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1865019646
 Transform:
   m_ObjectHideFlags: 0
@@ -1966,3 +1967,14 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+--- !u!114 &1865019647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1865019645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6a9405dc74584fb39872909901d9148, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
