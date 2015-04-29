@@ -53,10 +53,6 @@ public class KiteBuilder : MonoBehaviour {
 
 			bool hasCloth = false;
 
-			print (CLOTH);
-			print (clothDist);
-			print (clothAngleDiff);
-
 			if( clothDist < DISTANCE_THRESHOLD && clothAngleDiff < ANGLE_THRESHOLD 
 			   && partsDict.TryGetValue(CLOTH, out hasCloth) && !hasCloth) {
 				//Set the kite as the parent
@@ -70,10 +66,7 @@ public class KiteBuilder : MonoBehaviour {
 			
 			bool hasShortRod = false;
 
-			print (SHORT_ROD);
-			print (shortRodDist);
-			print (shortRodAngDiff);
-			
+			//TODO: ADD THIS BACK TO MAKE SHORT ROD
 //			if( shortRodDist < DISTANCE_THRESHOLD && shortRodAngDiff < ANGLE_THRESHOLD 
 //			   && partsDict.TryGetValue(SHORT_ROD, out hasShortRod) && !hasShortRod) {
 				//Set the kite as the parent
@@ -87,9 +80,6 @@ public class KiteBuilder : MonoBehaviour {
 
 			bool hasLongRod = false;
 
-			print (LONG_ROD);
-			print (longRodDist);
-			print (longRodAngleDiff);
 
 			if( longRodDist < DISTANCE_THRESHOLD && longRodAngleDiff < ANGLE_THRESHOLD 
 			   && partsDict.TryGetValue(LONG_ROD, out hasLongRod) && !hasLongRod) {
@@ -103,9 +93,6 @@ public class KiteBuilder : MonoBehaviour {
 			float stringAngleDiff = Mathf.Abs(stringAngle - strAngle);
 			bool hasString = false;
 
-			print (STRING);
-			print (stringDist);
-			print (stringAngleDiff);
 			if( stringDist < DISTANCE_THRESHOLD && stringAngleDiff < ANGLE_THRESHOLD 
 			   && partsDict.TryGetValue(STRING, out hasString) && !hasString) {
 				//TODO: CAHNGE FOR STRING
