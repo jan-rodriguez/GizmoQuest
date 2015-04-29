@@ -253,7 +253,18 @@ public class ForestProgression : MonoBehaviour {
 		}
 	}
 
+	private void ShowFinishedGizmos() {
+		string[] gizmos = new string[]{"Kite"};
+		foreach (string gizmo in gizmos) {
+			GameObject go = GameObject.Find (gizmo);
+			if (go != null) {
+				go.GetComponent<SpriteRenderer>().enabled = true;
+			}
+		}
+	}
+
 	void OnLevelWasLoaded(int level) {
 		HideCollectedItems();
+		ShowFinishedGizmos();
 	}
 }
