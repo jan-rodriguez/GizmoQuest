@@ -16,6 +16,7 @@ public class GizmoWorldDrag : MonoBehaviour {
 	bool draggingObject = false;
 	bool rotatingObject = false;
 
+	AudioSource audioSource;	
 	SpriteRenderer spriteRenderer;
 
 //	LineRenderer lineRenderer;
@@ -25,6 +26,7 @@ public class GizmoWorldDrag : MonoBehaviour {
 
 		buildArea = GameObject.FindGameObjectWithTag(BUILD_AREA_TAG).GetComponent<KiteBuilder>();
 		spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+		audioSource = gameObject.GetComponent<AudioSource>();
 //		lineRenderer = GetComponent<LineRenderer> ();
 //
 //		lineRenderer.SetVertexCount(3);
@@ -151,6 +153,10 @@ public class GizmoWorldDrag : MonoBehaviour {
 		clickOffset = transform.position - position;
 		transform.position = position + clickOffset;
 		spriteRenderer.sortingOrder = SELECTED_SORTING_ORDER;
+
+		if(audioSource != null) {
+			audioSource.Play();
+		}
 	}
 
 	void DragObject(Vector3 position){
@@ -165,5 +171,6 @@ public class GizmoWorldDrag : MonoBehaviour {
 		if(inBuildArea) {
 			buildArea.TryAttachGizmo(gameObject);
 		}
+
 	}
 }

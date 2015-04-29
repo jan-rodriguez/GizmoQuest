@@ -30,10 +30,12 @@ public class KiteBuilder : MonoBehaviour {
 	private const float stringAngle = 0f;
 
 	private Animation hideAnimation;
+	private AudioSource correctDropSource;
 
 	// Use this for initialization
 	void Start () {
 		hideAnimation = gameObject.GetComponent<Animation>();
+		correctDropSource = gameObject.GetComponent<AudioSource>();
 
 		partsDict.Add (CLOTH, false);
 		partsDict.Add (LONG_ROD, false);
@@ -117,6 +119,10 @@ public class KiteBuilder : MonoBehaviour {
 		gizmo.GetComponent<Collider2D>().enabled = false;
 		gizmo.GetComponent<SpriteRenderer>().sortingOrder = sortingOrder;
 		partsDict[gizmo.tag] = true;
+		if(correctDropSource != null) {
+			correctDropSource.Play();
+		}
+
 	}
 
 	void AlertUserCompleted () {
