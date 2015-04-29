@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
+using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 
 public class ForestProgression : MonoBehaviour {
+
+	public static string previousLevelName;
+
 	public class GizmoBuilder {
 		private Dictionary<string, List<string>> partsHeld;
 		private readonly string[] kiteParts = {KiteBuilder.CLOTH, KiteBuilder.STRING, KiteBuilder.LONG_ROD, KiteBuilder.SHORT_ROD};
@@ -254,6 +258,10 @@ public class ForestProgression : MonoBehaviour {
 	}
 
 	void OnLevelWasLoaded(int level) {
+		if(level != 1) {
+			previousLevelName = EditorApplication.currentScene;
+		}
+
 		HideCollectedItems();
 	}
 }
