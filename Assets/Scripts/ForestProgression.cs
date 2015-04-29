@@ -253,7 +253,23 @@ public class ForestProgression : MonoBehaviour {
 		}
 	}
 
+	private void FinishLevel() {
+		if (kite) {
+			GameObject kiteObject = GameObject.Find ("Kite");
+			if (kiteObject != null) {
+				kiteObject.GetComponent<SpriteRenderer>().enabled = true;
+			}
+			
+			GameObject progressArrow = GameObject.Find ("Airfield to Savannah");
+			if (progressArrow != null) {
+				progressArrow.GetComponent<SpriteRenderer> ().enabled = true;
+				progressArrow.GetComponent<BoxCollider2D> ().enabled = true;
+			}
+		}
+	}
+
 	void OnLevelWasLoaded(int level) {
 		HideCollectedItems();
+		FinishLevel();
 	}
 }
