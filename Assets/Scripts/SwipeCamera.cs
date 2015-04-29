@@ -28,9 +28,6 @@ public class SwipeCamera : MonoBehaviour {
 
 		camMinXPos = backgroundRenderer.bounds.min.x + .5f * frustumWidth;
 		camMaxXPos = backgroundRenderer.bounds.max.x - .5f * frustumWidth;
-
-		print (transform.position);
-		print (Camera.main.transform.position);
 	}
 
 	// Update is called once per frame

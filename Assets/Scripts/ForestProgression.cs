@@ -43,6 +43,10 @@ public class ForestProgression : MonoBehaviour {
 			}
 			return null;
 		}
+
+		public Dictionary<string, List<string>> GetPartsHeld() {
+			return partsHeld;
+		}
 	}
 
 	public GizmoBuilder inventory;
@@ -236,5 +240,20 @@ public class ForestProgression : MonoBehaviour {
 
 	public void clearBoulder() {
 		boulderCleared = true;
+	}
+
+	private void HideCollectedItems() {
+		foreach(List<string> listOfParts in inventory.GetPartsHeld().Values){
+			foreach(string part in listOfParts) {
+				GameObject go = GameObject.Find(part);
+				if(go != null) {
+					DestroyObject(go);
+				}
+			}
+		}
+	}
+
+	void OnLevelWasLoaded(int level) {
+		HideCollectedItems();
 	}
 }

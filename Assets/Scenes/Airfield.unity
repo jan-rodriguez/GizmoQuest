@@ -917,7 +917,7 @@ GameObject:
   - 61: {fileID: 1302374760}
   - 82: {fileID: 1302374762}
   m_Layer: 0
-  m_Name: Wire
+  m_Name: String
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

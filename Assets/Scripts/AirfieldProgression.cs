@@ -65,24 +65,24 @@ public class AirfieldProgression : MonoBehaviour {
 				tempKiteMaker ();
 			}
 			break;
-		case "Wire":
+		case GizmoPrefabs.StringName:
 			print ("Acquired wire.");
-			storyManager.inventory.AddPart (KiteBuilder.STRING, "String");
+			storyManager.inventory.AddPart (KiteBuilder.STRING, GizmoPrefabs.StringName);
 			StartCoroutine(acquireThisPart ());
 			break;
-		case "Cloth":
+		case GizmoPrefabs.ClothName:
 			print ("Acquired cloth.");
-			storyManager.inventory.AddPart (KiteBuilder.CLOTH, "Cloth");
+			storyManager.inventory.AddPart (KiteBuilder.CLOTH, GizmoPrefabs.ClothName);
 			StartCoroutine(acquireThisPart ());
 			break;
-		case "Straw":
+		case GizmoPrefabs.StrawName:
 			print ("Acquired straw.");
-			storyManager.inventory.AddPart (KiteBuilder.LONG_ROD, "Straw");
+			storyManager.inventory.AddPart (KiteBuilder.LONG_ROD, GizmoPrefabs.StrawName);
 			StartCoroutine(acquireThisPart ());
 			break;
-		case "Pen":
+		case GizmoPrefabs.PenName:
 			print ("Acquired pen.");
-			storyManager.inventory.AddPart (KiteBuilder.SHORT_ROD, "Pen");
+			storyManager.inventory.AddPart (KiteBuilder.SHORT_ROD, GizmoPrefabs.PenName);
 			StartCoroutine(acquireThisPart ());
 			break;
 		}
