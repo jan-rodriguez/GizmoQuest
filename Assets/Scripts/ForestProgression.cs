@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
-using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 
 public class ForestProgression : MonoBehaviour {
 
-	public static string previousLevelName;
+	public static int previousLevel;
 
 	public class GizmoBuilder {
 		private Dictionary<string, List<string>> partsHeld;
@@ -277,7 +276,7 @@ public class ForestProgression : MonoBehaviour {
 
 	void OnLevelWasLoaded(int level) {
 		if(level != 1) {
-			previousLevelName = EditorApplication.currentScene;
+			previousLevel = level;
 		}
 
 		HideCollectedItems();
