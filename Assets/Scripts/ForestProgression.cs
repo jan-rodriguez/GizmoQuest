@@ -56,6 +56,7 @@ public class ForestProgression : MonoBehaviour {
 	public GizmoBuilder inventory;
 
 	//Scene 1: Dodo
+	private bool metDodo = false;
 	private bool kitePrint = false;
 	private bool kite = false;
 
@@ -90,6 +91,14 @@ public class ForestProgression : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	public void meetDodo() {
+		metDodo = true;
+	}
+
+	public bool haveMetDodo() {
+		return metDodo;
 	}
 
 	// Kite-related getters/setters/accessers

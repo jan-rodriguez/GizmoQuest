@@ -1098,6 +1098,7 @@ GameObject:
   - 212: {fileID: 1395848963}
   - 95: {fileID: 1395848962}
   - 114: {fileID: 1395848964}
+  - 82: {fileID: 1395848965}
   m_Layer: 0
   m_Name: Dodo
   m_TagString: Untagged
@@ -1196,6 +1197,89 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultSprite: {fileID: 21300000, guid: 2f3554253b89e21429e42494da7c97f4, type: 3}
+  sadClips:
+  - {fileID: 8300000, guid: ebbee009013be284ea64bd9c03243d2e, type: 3}
+  - {fileID: 8300000, guid: b730dd648ea9bc44fbb0e67b20b74e66, type: 3}
+  - {fileID: 8300000, guid: 48d8709e647c401448e609adbd28608a, type: 3}
+  speechClips:
+  - {fileID: 8300000, guid: dd423f54749c56c4fabd34eccc5386ae, type: 3}
+  - {fileID: 8300000, guid: cd9aca65767534d478977ccbf1024269, type: 3}
+  - {fileID: 8300000, guid: ea894f4e9bb7c8f4391b267103def1a1, type: 3}
+  - {fileID: 8300000, guid: 1304c04e81e2e6340b4ca90e096d718b, type: 3}
+  yesClips:
+  - {fileID: 8300000, guid: f1f7bcfdb9d58994283cd59bf5b292bd, type: 3}
+  - {fileID: 8300000, guid: f3c2e3f7c65c5b042829b38d5a3894c4, type: 3}
+  - {fileID: 8300000, guid: bd890fff33a95084a8af541202db8536, type: 3}
+  - {fileID: 8300000, guid: 6cc0eddf9c7dd7343b00e73dadf72ae0, type: 3}
+--- !u!82 &1395848965
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1395848958}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &1439071380
 GameObject:
   m_ObjectHideFlags: 0
