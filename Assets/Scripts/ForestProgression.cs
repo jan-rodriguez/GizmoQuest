@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -55,6 +56,7 @@ public class ForestProgression : MonoBehaviour {
 	public GizmoBuilder inventory;
 
 	//Scene 1: Dodo
+	private bool metDodo = false;
 	private bool kitePrint = false;
 	private bool kite = false;
 
@@ -89,6 +91,14 @@ public class ForestProgression : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	public void meetDodo() {
+		metDodo = true;
+	}
+
+	public bool haveMetDodo() {
+		return metDodo;
 	}
 
 	// Kite-related getters/setters/accessers
@@ -265,11 +275,12 @@ public class ForestProgression : MonoBehaviour {
 			if (kiteObject != null) {
 				kiteObject.GetComponent<SpriteRenderer>().enabled = true;
 			}
-			
+
 			GameObject progressArrow = GameObject.Find ("Airfield to Savannah");
-			if (progressArrow != null) {
-				progressArrow.GetComponent<SpriteRenderer> ().enabled = true;
-				progressArrow.GetComponent<BoxCollider2D> ().enabled = true;
+
+			GameObject dodo = GameObject.Find ("Dodo");
+			if (dodo != null && progressArrow != null) {
+				dodo.GetComponent<DodoController>().startDodoKite(progressArrow);
 			}
 		}
 	}

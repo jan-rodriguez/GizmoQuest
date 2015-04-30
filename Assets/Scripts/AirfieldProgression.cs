@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,9 +7,9 @@ public class AirfieldProgression : MonoBehaviour {
 	private GameObject kaPow;
 	private ForestProgression storyManager;
 	private SwipeCamera cameraMover;
-	public static bool itemsCollectible = true;
-	private int wiggleTimer;
+	public static bool itemsCollectible = false;
 	private IEnumerator wiggling;
+	private DodoController dodo;
 	private GameObject goToBenchBtn;
 
 	// Use this for initialization
@@ -17,13 +18,13 @@ public class AirfieldProgression : MonoBehaviour {
 		cameraMover = Camera.main.GetComponent<SwipeCamera> ();
 		goToBenchBtn = GameObject.Find("ToWorkshop");
 		kaPow = GameObject.Find ("KAPOW");
-		wiggleTimer = 1;
+		dodo = GameObject.Find ("Dodo").GetComponent<DodoController> ();
 		wiggling = wiggleAround ();
 	}
 
 	IEnumerator wiggleAround() {
 		int i = 1;
-		yield return new WaitForSeconds (Random.Range(0, 2));
+		yield return new WaitForSeconds (Random.Range(0f, 2f));
 
 		while(true){
 			for (int j = 0; j < 10; j++) {
@@ -57,6 +58,7 @@ public class AirfieldProgression : MonoBehaviour {
 			kaPow.transform.localScale += scaleUp;
 			yield return null;
 		}
+		dodo.dodoApproval ();
 		yield return new WaitForSeconds (1);
 		kaPow.transform.localScale = new Vector3 (0, 0, 0);
 		this.GetComponent<SpriteRenderer> ().enabled = false;
@@ -74,7 +76,7 @@ public class AirfieldProgression : MonoBehaviour {
 			switch (this.name) {
 			case "Dodo":
 				if (storyManager.getKitePrint ()) {
-					print ("Acquired kite print.");
+					this.GetComponent<DodoController>().startDodoSpeech ();
 				}
 				break;
 			case GizmoPrefabs.StringName:
@@ -103,9 +105,17 @@ public class AirfieldProgression : MonoBehaviour {
 				break;
 			}
 
-			print ("Hello there");
 			if(storyManager.inventory.HaveAllKiteParts()){
+				goToBenchBtn.GetComponent<Image>().enabled = true;
+				goToBenchBtn.GetComponent<Button>().interactable = true;
 				WiggleButton();
+			}
+		}
+
+		if (this.name == "Dodo") {
+			if (storyManager.getKitePrint ()) {
+				storyManager.meetDodo ();
+				this.GetComponent<DodoController> ().startDodoSpeech ();
 			}
 		}
 	}
