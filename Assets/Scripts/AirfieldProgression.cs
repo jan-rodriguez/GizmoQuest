@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -9,11 +10,13 @@ public class AirfieldProgression : MonoBehaviour {
 	public static bool itemsCollectible = false;
 	private IEnumerator wiggling;
 	private DodoController dodo;
+	private GameObject goToBenchBtn;
 
 	// Use this for initialization
 	void Start () {
 		storyManager = GameObject.Find ("_GameManager").GetComponent<ForestProgression>();
 		cameraMover = Camera.main.GetComponent<SwipeCamera> ();
+		goToBenchBtn = GameObject.Find("ToWorkshop");
 		kaPow = GameObject.Find ("KAPOW");
 		dodo = GameObject.Find ("Dodo").GetComponent<DodoController> ();
 		wiggling = wiggleAround ();
@@ -101,12 +104,23 @@ public class AirfieldProgression : MonoBehaviour {
 				StartCoroutine (acquireThisPart ());
 				break;
 			}
+
+			if(storyManager.inventory.HaveAllKiteParts()){
+				goToBenchBtn.GetComponent<Image>().enabled = true;
+				goToBenchBtn.GetComponent<Button>().interactable = true;
+				WiggleButton();
+			}
 		}
 
 		if (this.name == "Dodo") {
 			if (storyManager.getKitePrint ()) {
+				storyManager.meetDodo ();
 				this.GetComponent<DodoController> ().startDodoSpeech ();
 			}
 		}
+	}
+
+	void WiggleButton () {
+		goToBenchBtn.GetComponent<Animation>().Play();
 	}
 }

@@ -47,5 +47,9 @@ public class SceneManager: MonoBehaviour {
 		} else {
 			updatePreviousLevel = true;
 		}
+
+		if (updatePreviousLevel) {
+			previousLevel = Application.loadedLevelName;
+		}
 	}
 }

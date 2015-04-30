@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class ForestProgression : MonoBehaviour {
 
-	public static string previousLevelName;
+	public static int previousLevel;
 
 	public class GizmoBuilder {
 		private Dictionary<string, List<string>> partsHeld;
@@ -256,14 +256,17 @@ public class ForestProgression : MonoBehaviour {
 	}
 
 	private void HideCollectedItems() {
-		foreach(List<string> listOfParts in inventory.GetPartsHeld().Values){
-			foreach(string part in listOfParts) {
-				GameObject go = GameObject.Find(part);
-				if(go != null) {
-					DestroyObject(go);
+		if(inventory.GetPartsHeld().Values != null){
+			foreach(List<string> listOfParts in inventory.GetPartsHeld().Values){
+				foreach(string part in listOfParts) {
+					GameObject go = GameObject.Find(part);
+					if(go != null) {
+						DestroyObject(go);
+					}
 				}
 			}
 		}
+
 	}
 
 	private void FinishLevel() {
@@ -272,18 +275,19 @@ public class ForestProgression : MonoBehaviour {
 			if (kiteObject != null) {
 				kiteObject.GetComponent<SpriteRenderer>().enabled = true;
 			}
-			
+
 			GameObject progressArrow = GameObject.Find ("Airfield to Savannah");
-			if (progressArrow != null) {
-				progressArrow.GetComponent<SpriteRenderer> ().enabled = true;
-				progressArrow.GetComponent<BoxCollider2D> ().enabled = true;
+
+			GameObject dodo = GameObject.Find ("Dodo");
+			if (dodo != null && progressArrow != null) {
+				dodo.GetComponent<DodoController>().startDodoKite(progressArrow);
 			}
 		}
 	}
 
 	void OnLevelWasLoaded(int level) {
 		if(level != 1) {
-			previousLevelName = EditorApplication.currentScene;
+			previousLevel = level;
 		}
 
 		HideCollectedItems();
