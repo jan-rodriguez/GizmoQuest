@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -20,6 +21,8 @@ public class KiteBuilder : MonoBehaviour {
 	private const float DISTANCE_THRESHOLD = .1f;
 	private const float ANGLE_THRESHOLD = 30f;
 
+	private GameObject backToPrevBtn;
+
 	private Vector2 longRodPos = Vector2.zero;
 	private const float longRodAngle = 0f;
 	private Vector2 clothPos = Vector2.zero;
@@ -34,6 +37,8 @@ public class KiteBuilder : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		backToPrevBtn = GameObject.Find ("LoadPreviousLevel");
+
 		hideAnimation = gameObject.GetComponent<Animation>();
 		correctDropSource = gameObject.GetComponent<AudioSource>();
 
@@ -134,6 +139,8 @@ public class KiteBuilder : MonoBehaviour {
 	}
 
 	public void hideBuilderAndShowFinished() {
+		backToPrevBtn.GetComponent<Button>().interactable = true;
+		backToPrevBtn.GetComponent<Image>().enabled = true;
 		finishedGizmo.SetActive(true);
 		gameObject.SetActive(false);
 	}
