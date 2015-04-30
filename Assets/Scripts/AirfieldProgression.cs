@@ -9,11 +9,13 @@ public class AirfieldProgression : MonoBehaviour {
 	public static bool itemsCollectible = true;
 	private int wiggleTimer;
 	private IEnumerator wiggling;
+	private GameObject goToBenchBtn;
 
 	// Use this for initialization
 	void Start () {
 		storyManager = GameObject.Find ("_GameManager").GetComponent<ForestProgression>();
 		cameraMover = Camera.main.GetComponent<SwipeCamera> ();
+		goToBenchBtn = GameObject.Find("ToWorkshop");
 		kaPow = GameObject.Find ("KAPOW");
 		wiggleTimer = 1;
 		wiggling = wiggleAround ();
@@ -100,6 +102,15 @@ public class AirfieldProgression : MonoBehaviour {
 				StartCoroutine (acquireThisPart ());
 				break;
 			}
+
+			print ("Hello there");
+			if(storyManager.inventory.HaveAllKiteParts()){
+				WiggleButton();
+			}
 		}
+	}
+
+	void WiggleButton () {
+		goToBenchBtn.GetComponent<Animation>().Play();
 	}
 }
