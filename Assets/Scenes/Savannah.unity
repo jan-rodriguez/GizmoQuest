@@ -249,8 +249,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 205859519}
   - 212: {fileID: 205859518}
-  - 61: {fileID: 205859521}
   - 114: {fileID: 205859520}
+  - 95: {fileID: 205859521}
+  - 82: {fileID: 205859522}
   m_Layer: 0
   m_Name: Dodo
   m_TagString: Untagged
@@ -282,7 +283,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 10857d7ebbe17b54a994935318a41b4e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2f3554253b89e21429e42494da7c97f4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &205859519
 Transform:
@@ -292,7 +293,7 @@ Transform:
   m_GameObject: {fileID: 205859517}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.04999995, y: -2.6400001, z: 0}
-  m_LocalScale: {x: .800000012, y: .800000012, z: 1}
+  m_LocalScale: {x: .200000003, y: .200000003, z: 1}
   m_Children: []
   m_Father: {fileID: 558550656}
   m_RootOrder: 0
@@ -304,22 +305,99 @@ MonoBehaviour:
   m_GameObject: {fileID: 205859517}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 532d467633074e5438fec77b647d473e, type: 3}
+  m_Script: {fileID: 11500000, guid: e4cc866ea845aaf48ac24be03ee2b87a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &205859521
-BoxCollider2D:
+  defaultSprite: {fileID: 21300000, guid: 2f3554253b89e21429e42494da7c97f4, type: 3}
+  clips:
+  - {fileID: 8300000, guid: 7721780d725dc0742828c7fece13b9d0, type: 3}
+  - {fileID: 8300000, guid: 0cad19e13122f054aa43c5cbcd2f11d3, type: 3}
+--- !u!95 &205859521
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 205859517}
   m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Size: {x: 3.5, y: 6}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3967954a2969c964f913c8309fd39fa9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!82 &205859522
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 205859517}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &314282354
 GameObject:
   m_ObjectHideFlags: 0
@@ -737,7 +815,7 @@ GameObject:
   - 111: {fileID: 1212696863}
   - 225: {fileID: 1212696864}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: FadeToBlack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -800,7 +878,7 @@ Animation:
   m_Animations:
   - {fileID: 7400000, guid: d1f6404fc8e144e5b9ec8f522b734c91, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!225 &1212696864
@@ -826,7 +904,7 @@ GameObject:
   - 114: {fileID: 1281208137}
   - 114: {fileID: 1281208136}
   m_Layer: 5
-  m_Name: FadeToBlack
+  m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

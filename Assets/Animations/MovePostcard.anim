@@ -31,15 +31,20 @@ AnimationClip:
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
-      - time: 4.5
+      - time: 6
+        value: {x: 3, y: -3.49762583, z: 15}
+        inSlope: {x: 0, y: .000478526927, z: 0}
+        outSlope: {x: 0, y: .000478526927, z: 0}
+        tangentMode: 0
+      - time: 6.4333334
         value: {x: 3, y: -3.49751711, z: 15}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
-      - time: 6
-        value: {x: 3, y: -35, z: 15}
-        inSlope: {x: 0, y: -21.0016556, z: 0}
-        outSlope: {x: 0, y: -21.0016556, z: 0}
+      - time: 7.9333334
+        value: {x: 3, y: -42.0098419, z: 15}
+        inSlope: {x: 0, y: -25.6748829, z: 0}
+        outSlope: {x: 0, y: -25.6748829, z: 0}
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -58,7 +63,7 @@ AnimationClip:
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: 6
+    m_StopTime: 7.9666667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -91,15 +96,15 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 0
-      - time: 4.5
+      - time: 6.4333334
         value: -3.49751711
         inSlope: 0
         outSlope: 0
         tangentMode: 0
-      - time: 6
-        value: -35
-        inSlope: -21.0016556
-        outSlope: -21.0016556
+      - time: 7.9333334
+        value: -42.0098419
+        inSlope: -25.6748829
+        outSlope: -25.6748829
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -150,7 +155,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: 6
+  - time: 7.9666667
     functionName: LetCameraMove
     data: 
     objectReferenceParameter: {fileID: 0}
