@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class SceneManager: MonoBehaviour {
@@ -10,18 +11,29 @@ public class SceneManager: MonoBehaviour {
 	public static string SAVANNAH = "Savannah";
 	public static string CLIFF = "Cliff";
 
+	private CanvasGroup loadingPanelCanvas;
+
 	// Use this for initialization
 	void Start () {
+		GameObject loadingPanel = GameObject.Find ("LoadingPanel");
+		if (loadingPanel != null) {
+			loadingPanelCanvas = loadingPanel.GetComponent<CanvasGroup>();
+		}
+		 
 		if (updatePreviousLevel) {
 			previousLevel = Application.loadedLevelName;
 		}
 	}
 
 	public void GoToWorkshop () {
+
 		Application.LoadLevel (WORKBENCH);
 	}
 
-	public void GoToAirfield () {
+	public IEnumerator GoToAirfield () {
+		AsyncOperation loadingLvl = Application.LoadLevelAsync (AIRFIELD);
+		loadingPanelCanvas.alpha = 1;
+		yield return loadingLvl;
 		Application.LoadLevel (AIRFIELD);
 	}
 
