@@ -816,6 +816,7 @@ GameObject:
   - 114: {fileID: 1014093531}
   - 50: {fileID: 1014093530}
   - 61: {fileID: 1014093529}
+  - 233: {fileID: 1014093532}
   m_Layer: 0
   m_Name: SavannahClouds_1
   m_TagString: Untagged
@@ -858,7 +859,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1518977995
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300002, guid: 404e5a073736d0d4b852c419b3dab1a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!61 &1014093529
@@ -900,6 +901,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a48f185580ae44d4bb5e2bb41ec49847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!233 &1014093532
+HingeJoint2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1014093526}
+  m_Enabled: 0
+  m_CollideConnected: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_UseMotor: 0
+  m_Motor:
+    m_MotorSpeed: 0
+    m_MaximumMotorForce: 10000
+  m_UseLimits: 0
+  m_AngleLimits:
+    m_LowerAngle: 0
+    m_UpperAngle: 359
 --- !u!1 &1056610287
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,6 +932,7 @@ GameObject:
   - 114: {fileID: 1056610292}
   - 50: {fileID: 1056610291}
   - 61: {fileID: 1056610290}
+  - 233: {fileID: 1056610293}
   m_Layer: 0
   m_Name: SavannahClouds_6
   m_TagString: Untagged
@@ -954,7 +975,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1518977995
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300010, guid: 404e5a073736d0d4b852c419b3dab1a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!61 &1056610290
@@ -996,6 +1017,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a48f185580ae44d4bb5e2bb41ec49847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!233 &1056610293
+HingeJoint2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1056610287}
+  m_Enabled: 0
+  m_CollideConnected: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_UseMotor: 0
+  m_Motor:
+    m_MotorSpeed: 0
+    m_MaximumMotorForce: 10000
+  m_UseLimits: 0
+  m_AngleLimits:
+    m_LowerAngle: 0
+    m_UpperAngle: 359
 --- !u!1 &1134290013
 GameObject:
   m_ObjectHideFlags: 0
@@ -1257,6 +1297,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 1380910454}
   - 212: {fileID: 1380910455}
+  - 61: {fileID: 1380910456}
+  - 50: {fileID: 1380910457}
   m_Layer: 0
   m_Name: SavannahMiddle
   m_TagString: Untagged
@@ -1299,9 +1341,37 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1518977995
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 25ea13dd10c2b4c8fbc9dcdc01e9ea0d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!61 &1380910456
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1380910453}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 101.760002, y: 10}
+--- !u!50 &1380910457
+Rigidbody2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1380910453}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_FixedAngle: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
 --- !u!1 &1489042402
 GameObject:
   m_ObjectHideFlags: 0
@@ -1340,7 +1410,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1518977995
+  m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9d87f356e9c5d4a97ac4b87c2afc7dca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1564,6 +1634,7 @@ GameObject:
   - 114: {fileID: 1761305075}
   - 50: {fileID: 1761305074}
   - 61: {fileID: 1761305073}
+  - 233: {fileID: 1761305076}
   m_Layer: 0
   m_Name: SavannahClouds_0
   m_TagString: Untagged
@@ -1607,7 +1678,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1518977995
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 404e5a073736d0d4b852c419b3dab1a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!61 &1761305073
@@ -1649,6 +1720,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a48f185580ae44d4bb5e2bb41ec49847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!233 &1761305076
+HingeJoint2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1761305070}
+  m_Enabled: 0
+  m_CollideConnected: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_UseMotor: 0
+  m_Motor:
+    m_MotorSpeed: 0
+    m_MaximumMotorForce: 10000
+  m_UseLimits: 0
+  m_AngleLimits:
+    m_LowerAngle: 0
+    m_UpperAngle: 359
 --- !u!1 &1896603531
 GameObject:
   m_ObjectHideFlags: 0
@@ -3195,6 +3285,7 @@ GameObject:
   - 114: {fileID: 2106986837}
   - 50: {fileID: 2106986836}
   - 61: {fileID: 2106986835}
+  - 233: {fileID: 2106986838}
   m_Layer: 0
   m_Name: SavannahClouds_2
   m_TagString: Untagged
@@ -3237,7 +3328,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1518977995
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300004, guid: 404e5a073736d0d4b852c419b3dab1a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!61 &2106986835
@@ -3279,6 +3370,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a48f185580ae44d4bb5e2bb41ec49847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!233 &2106986838
+HingeJoint2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2106986832}
+  m_Enabled: 0
+  m_CollideConnected: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_UseMotor: 0
+  m_Motor:
+    m_MotorSpeed: 0
+    m_MaximumMotorForce: 10000
+  m_UseLimits: 0
+  m_AngleLimits:
+    m_LowerAngle: 0
+    m_UpperAngle: 359
 --- !u!1 &2139119986
 GameObject:
   m_ObjectHideFlags: 0
@@ -3291,6 +3401,7 @@ GameObject:
   - 114: {fileID: 2139119991}
   - 61: {fileID: 2139119989}
   - 50: {fileID: 2139119990}
+  - 233: {fileID: 2139119992}
   m_Layer: 0
   m_Name: SavannahClouds_7
   m_TagString: Untagged
@@ -3333,7 +3444,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1518977995
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300012, guid: 404e5a073736d0d4b852c419b3dab1a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!61 &2139119989
@@ -3375,3 +3486,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a48f185580ae44d4bb5e2bb41ec49847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!233 &2139119992
+HingeJoint2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2139119986}
+  m_Enabled: 0
+  m_CollideConnected: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_UseMotor: 0
+  m_Motor:
+    m_MotorSpeed: 0
+    m_MaximumMotorForce: 10000
+  m_UseLimits: 0
+  m_AngleLimits:
+    m_LowerAngle: 0
+    m_UpperAngle: 359
