@@ -63,6 +63,14 @@ public class SceneManager: MonoBehaviour {
 
 	}
 
+	private void ResetLoadingPanel () {
+		
+		GameObject loadingPanel = GameObject.Find ("LoadingPanel");
+		if (loadingPanel != null) {
+			loadingPanelCanvas = loadingPanel.GetComponent<CanvasGroup>();
+		}
+	}
+
 	void OnLevelWasLoaded(int level) {
 		//Only allow the previous level to be updated if we're not going to the workbench
 		if (level == 1) {
@@ -74,5 +82,6 @@ public class SceneManager: MonoBehaviour {
 		if (updatePreviousLevel) {
 			previousLevel = Application.loadedLevelName;
 		}
+		ResetLoadingPanel ();
 	}
 }
