@@ -25,8 +25,7 @@ public class InventoryBuilder : MonoBehaviour {
 						BuildSlot(name);
 					}
 				}else{//Didn't find parts
-					BuildSlot (null);
-					print ("Didn't find any parts for " + type);
+//					BuildSlot (null);
 				}
 			}
 		}

@@ -25,8 +25,10 @@ public class SceneManager: MonoBehaviour {
 		}
 	}
 
-	public void GoToWorkshop () {
-
+	public IEnumerator GoToWorkShop () {
+		AsyncOperation loadingLvl = Application.LoadLevelAsync (WORKBENCH);
+		loadingPanelCanvas.alpha = 1;
+		yield return loadingLvl;
 		Application.LoadLevel (WORKBENCH);
 	}
 
@@ -37,17 +39,26 @@ public class SceneManager: MonoBehaviour {
 		Application.LoadLevel (AIRFIELD);
 	}
 
-	public void GoToSavannah () {
+	public IEnumerator GoToSavannah () {
+		AsyncOperation loadingLvl = Application.LoadLevelAsync (SAVANNAH);
+		loadingPanelCanvas.alpha = 1;
+		yield return loadingLvl;
 		Application.LoadLevel (SAVANNAH);
 	}
 
-	public void GoToCliff () {
+	public IEnumerator GoToCliff () {
+		AsyncOperation loadingLvl = Application.LoadLevelAsync (CLIFF);
+		loadingPanelCanvas.alpha = 1;
+		yield return loadingLvl;
 		Application.LoadLevel (CLIFF);
 	}
 
-	public void LoadPreviousLevel () {
+	public IEnumerator LoadPreviousLevel () {
 		if (previousLevel != Application.loadedLevelName) {
-			Application.LoadLevel (previousLevel);
+			AsyncOperation loadingLvl = Application.LoadLevelAsync (previousLevel);
+			loadingPanelCanvas.alpha = 1;
+			yield return loadingLvl;
+			Application.LoadLevel (CLIFF);
 		}
 
 	}

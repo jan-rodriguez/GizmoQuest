@@ -8,6 +8,6 @@ public class SetClickWorkshop : MonoBehaviour {
 	void Start () {
 		Button b = gameObject.GetComponent<Button>();
 		SceneManager scenes = GameManagerManager.manager.GetComponent<SceneManager>();
-		b.onClick.AddListener(() => scenes.GoToWorkshop());
+		b.onClick.AddListener(() => StartCoroutine(scenes.GoToWorkShop()));
 	}
 }

@@ -147,12 +147,15 @@ public class GizmoWorldDrag : MonoBehaviour {
 		}
 	}
 
-	void BeginDragObject(Vector3 position) {
+	public void BeginDragObject(Vector3 position) {
 		draggingObject = true;
 		position.z = 0;
 		clickOffset = transform.position - position;
 		transform.position = position + clickOffset;
-		spriteRenderer.sortingOrder = SELECTED_SORTING_ORDER;
+		if (spriteRenderer != null) {
+			spriteRenderer.sortingOrder = SELECTED_SORTING_ORDER;
+		}
+
 
 		if(audioSource != null) {
 			audioSource.Play();
