@@ -4,21 +4,32 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class AirfieldProgression : MonoBehaviour {
-	private GameObject kaPow;
-	private ForestProgression storyManager;
-	private SwipeCamera cameraMover;
-	public static bool itemsCollectible = false;
+	private static GameObject kaPow;
+	private static ForestProgression storyManager;
+	private static SwipeCamera cameraMover;
+	public static bool itemsCollectible = true;
 	private IEnumerator wiggling;
-	private DodoController dodo;
-	private GameObject goToBenchBtn;
+	private static DodoController dodo;
+	private static GameObject goToBenchBtn;
 
 	// Use this for initialization
 	void Start () {
-		storyManager = GameObject.Find ("_GameManager").GetComponent<ForestProgression>();
-		cameraMover = Camera.main.GetComponent<SwipeCamera> ();
-		goToBenchBtn = GameObject.Find("ToWorkshop");
-		kaPow = GameObject.Find ("KAPOW");
-		dodo = GameObject.Find ("Dodo").GetComponent<DodoController> ();
+		if (storyManager == null) {
+			storyManager = GameObject.Find ("_GameManager").GetComponent<ForestProgression>();
+		}
+		if (cameraMover == null) {
+			cameraMover = Camera.main.GetComponent<SwipeCamera> ();
+		}
+		if (goToBenchBtn == null) {
+			goToBenchBtn = GameObject.Find("ToWorkshop");
+		}
+		if (kaPow == null) {
+			kaPow = GameObject.Find ("KAPOW");
+		}
+		if (dodo == null) {
+			dodo = GameObject.Find ("Dodo").GetComponent<DodoController> ();
+		}
+
 		wiggling = wiggleAround ();
 	}
 
