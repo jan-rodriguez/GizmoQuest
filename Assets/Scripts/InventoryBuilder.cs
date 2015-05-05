@@ -16,7 +16,23 @@ public class InventoryBuilder : MonoBehaviour {
 			Debug.LogError ("Starting workbench without game manager. Can't populate inventory");
 		} else {
 			progression = gameManager.GetComponent<ForestProgression>();
-			foreach(string type in KiteBuilder.PARTS_LIST){
+
+			string[] partsToBuildList = null;
+
+			//TODO: GET CORRECT PART TO BUILD HERE
+			string partToBuild = GizmoPrefabs.KITE;
+
+			switch (partToBuild) {
+			case GizmoPrefabs.KITE:
+				partsToBuildList = KiteBuilder.PARTS_LIST;
+				break;
+			case GizmoPrefabs.BANJO:
+				partsToBuildList = BanjoBuilder.PARTS_LIST;
+				break;
+			case GizmoPrefabs.SHOVEL:
+				break;
+			}
+			foreach(string type in partsToBuildList){
 				//Get all parts of a type in your inventory
 				List<string> partsList = progression.inventory.GetParts(type);
 				if(partsList != null) { //Found parts
@@ -28,6 +44,13 @@ public class InventoryBuilder : MonoBehaviour {
 //					BuildSlot (null);
 				}
 			}
+
+			//TODO: REMOVE THIS
+			BuildSlot(GizmoPrefabs.PaperTowelRollName);
+			BuildSlot(GizmoPrefabs.Vine1Name);
+			BuildSlot(GizmoPrefabs.Vine2Name);
+			BuildSlot(GizmoPrefabs.Vine3Name);
+			BuildSlot(GizmoPrefabs.TissueBoxName);
 		}
 	}
 
@@ -36,12 +59,6 @@ public class InventoryBuilder : MonoBehaviour {
 		GameObject actualSlot =  Instantiate(slotPrefab);
 
 		switch(itemName){
-		case GizmoPrefabs.DiamonClothName:
-			actualSlot.GetComponent<GizmoSlot>().SetGizmoPrefab(GizmoPrefabs.DiamondClothPrefab);
-			break;
-		case GizmoPrefabs.LongStickName:
-			actualSlot.GetComponent<GizmoSlot>().SetGizmoPrefab(GizmoPrefabs.LongStickPrefab);
-			break;
 		case GizmoPrefabs.ClothName:
 			actualSlot.GetComponent<GizmoSlot>().SetGizmoPrefab(GizmoPrefabs.ClothPrefab);
 			break;
@@ -53,6 +70,21 @@ public class InventoryBuilder : MonoBehaviour {
 			break;
 		case GizmoPrefabs.StringName:
 			actualSlot.GetComponent<GizmoSlot>().SetGizmoPrefab(GizmoPrefabs.StringPrefab);
+			break;
+		case GizmoPrefabs.PaperTowelRollName:
+			actualSlot.GetComponent<GizmoSlot>().SetGizmoPrefab(GizmoPrefabs.PaperTowelRollPrefab);
+			break;
+		case GizmoPrefabs.Vine1Name:
+			actualSlot.GetComponent<GizmoSlot>().SetGizmoPrefab(GizmoPrefabs.Vine1Prefab);
+			break;
+		case GizmoPrefabs.Vine2Name:
+			actualSlot.GetComponent<GizmoSlot>().SetGizmoPrefab(GizmoPrefabs.Vine2Prefab);
+			break;
+		case GizmoPrefabs.Vine3Name:
+			actualSlot.GetComponent<GizmoSlot>().SetGizmoPrefab(GizmoPrefabs.Vine3Prefab);
+			break;
+		case GizmoPrefabs.TissueBoxName:
+			actualSlot.GetComponent<GizmoSlot>().SetGizmoPrefab(GizmoPrefabs.TissueBoxPrefab);
 			break;
 		default:
 			break;

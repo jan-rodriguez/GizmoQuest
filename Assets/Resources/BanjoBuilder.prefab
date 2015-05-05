@@ -1,55 +1,71 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &129962
+--- !u!1 &146178
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 425338}
-  - 212: {fileID: 21266472}
-  - 114: {fileID: 11425308}
-  - 61: {fileID: 6103986}
-  - 111: {fileID: 11167616}
+  - 4: {fileID: 418950}
+  - 212: {fileID: 21209562}
+  - 114: {fileID: 11414370}
+  - 61: {fileID: 6177946}
+  - 50: {fileID: 5044866}
+  - 111: {fileID: 11102366}
   m_Layer: 0
-  m_Name: Colored-Stick
-  m_TagString: long_rod
+  m_Name: BanjoBuilder
+  m_TagString: BuildArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &425338
+--- !u!4 &418950
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 129962}
+  m_GameObject: {fileID: 146178}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .100000001, y: .100000001, z: .100000001}
+  m_LocalPosition: {x: 0, y: -1.11000001, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!61 &6103986
+--- !u!50 &5044866
+Rigidbody2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 146178}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_FixedAngle: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+--- !u!61 &6177946
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 129962}
+  m_GameObject: {fileID: 146178}
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 1.79999995}
   serializedVersion: 2
-  m_Size: {x: 5.42999983, y: 24}
---- !u!111 &11167616
+  m_Size: {x: 3.05999994, y: 7.73999977}
+--- !u!111 &11102366
 Animation:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 129962}
+  m_GameObject: {fileID: 146178}
   m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: 4d970baa0666347e9bcca5cc85d5b026, type: 2}
@@ -59,23 +75,24 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &11425308
+--- !u!114 &11414370
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 129962}
+  m_GameObject: {fileID: 146178}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aa1e5bacd0d9844ea291eab0100af22, type: 3}
+  m_Script: {fileID: 11500000, guid: da420252665e5b54d82f4be7fc557315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!212 &21266472
+  finishedGizmo: {fileID: 0}
+--- !u!212 &21209562
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 129962}
+  m_GameObject: {fileID: 146178}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -93,9 +110,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 522d9e62ad3b128409590ef2e1307f3f, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 10
+  m_Sprite: {fileID: 21300000, guid: 2a29fe544a03d0547b7bceab99cf71c9, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: .568627477}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -105,5 +122,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 129962}
+  m_RootGameObject: {fileID: 146178}
   m_IsPrefabParent: 1
