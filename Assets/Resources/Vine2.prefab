@@ -14,7 +14,7 @@ GameObject:
   - 82: {fileID: 8250810}
   - 111: {fileID: 11103074}
   m_Layer: 0
-  m_Name: vine2
+  m_Name: Vine2
   m_TagString: rubberband
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
