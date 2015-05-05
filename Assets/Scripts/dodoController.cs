@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class DodoController : MonoBehaviour {
@@ -18,9 +19,13 @@ public class DodoController : MonoBehaviour {
 
 	private ForestProgression storyManager;
 
+	private GameObject skipButton;
+	private bool skip = false;
+
 	// Use this for initialization
 	void Start () {
 		storyManager = GameObject.Find ("_GameManager").GetComponent<ForestProgression>();
+		skipButton = GameObject.Find ("SkipButton");
 		animator = this.GetComponent<Animator> ();
 		source = this.GetComponent<AudioSource> ();
 		sadDodo = dodoSadRoutine ();
@@ -35,8 +40,27 @@ public class DodoController : MonoBehaviour {
 		
 	}
 
+	public void skipTalking() {
+		skip = true;
+		source.Stop ();
+		dodoStopTalking ();
+	}
+
+	void enableSkipButton() {
+		skipButton.GetComponent<Button> ().enabled = true;
+		skipButton.GetComponent<Image> ().enabled = true;
+		skipButton.transform.GetChild (0).GetComponent<Text> ().enabled = true;
+	}
+
+	void disableSkipButton() {
+		skipButton.GetComponent<Button> ().enabled = false;
+		skipButton.GetComponent<Image> ().enabled = false;
+		skipButton.transform.GetChild (0).GetComponent<Text> ().enabled = false;
+	}
+
 	public void startDodoSpeech() {
 		StopCoroutine (sadDodo);
+		enableSkipButton ();
 		StartCoroutine (speechDodo);
 	}
 
@@ -46,6 +70,7 @@ public class DodoController : MonoBehaviour {
 
 	public void startDodoKite(GameObject progressArrow) {
 		StartCoroutine (dodoKiteRoutine (progressArrow));
+		enableSkipButton ();
 	}
 
 	IEnumerator dodoYesRoutine() {
@@ -60,9 +85,9 @@ public class DodoController : MonoBehaviour {
 	IEnumerator dodoKiteRoutine(GameObject progressArrow) {
 		yield return new WaitForSeconds (1);
 		for (int i = 0; i < kiteClips.Length; i++) {
-			if (i == kiteClips.Length - 1) {
-				progressArrow.GetComponent<SpriteRenderer>().enabled = true;
-				progressArrow.GetComponent<BoxCollider2D>().enabled = true;
+			if (skip) {
+				skip = false;
+				break;
 			}
 			source.clip = kiteClips[i];
 			dodoStartTalking ();
@@ -70,6 +95,14 @@ public class DodoController : MonoBehaviour {
 			yield return new WaitForSeconds(kiteClips[i].length);
 			dodoStopTalking ();
 			yield return new WaitForSeconds(1);
+		}
+		disableSkipButton ();
+
+		progressArrow.GetComponent<SpriteRenderer>().enabled = true;
+		progressArrow.GetComponent<BoxCollider2D>().enabled = true;
+		Animation arrowAnimation = progressArrow.GetComponent<Animation> ();
+		if (arrowAnimation != null) {
+			arrowAnimation.Play ();
 		}
 	}
 
@@ -87,6 +120,10 @@ public class DodoController : MonoBehaviour {
 
 	IEnumerator dodoSpeechRoutine() {
 		for (int i = 0; i < speechClips.Length; i++) {
+			if (skip) {
+				skip = false;
+				break;
+			}
 			source.clip = speechClips[i];
 			dodoStartTalking ();
 			source.Play ();
@@ -94,6 +131,8 @@ public class DodoController : MonoBehaviour {
 			dodoStopTalking ();
 			yield return new WaitForSeconds(1);
 		}
+
+		disableSkipButton ();
 
 		string[] wigglableParts = new string[]{"String", "Pen", "Straw", "Cloth"};
 
