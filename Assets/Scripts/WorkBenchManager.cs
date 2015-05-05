@@ -3,24 +3,26 @@ using System.Collections;
 
 public class WorkBenchManager : MonoBehaviour {
 
-	public static RectTransform Inventory;
-	public static RectTransform WorkBenchUI;
+	private GameObject kiteBuilderPrefab;
+	private GameObject banjoBuilderPrefab;
 
-	public static GizmoMovementHandler selectedGizmoHandler;
-
-	void Start()
+	void Awake()
 	{
-		Inventory = GameObject.Find ("Inventory").GetComponent<RectTransform>();
-		WorkBenchUI = gameObject.GetComponent<RectTransform> ();
+		kiteBuilderPrefab = Resources.Load ("KiteBuilder") as GameObject;
+		banjoBuilderPrefab = Resources.Load ("BanjoBuilder") as GameObject;
+
+		SetupBuildArea (GizmoPrefabs.BANJO);
 	}
 
-	public static void SetSelectedGizmo (GizmoMovementHandler newHandler) 
-	{
-		if(selectedGizmoHandler != null && selectedGizmoHandler != newHandler)
-		{
-			selectedGizmoHandler.DeselectGizmo();
+	void SetupBuildArea (string partToBuild) {
+		switch (partToBuild) {
+		case GizmoPrefabs.KITE:
+			Instantiate(kiteBuilderPrefab);
+			break;
+		case GizmoPrefabs.BANJO:
+			Instantiate(banjoBuilderPrefab);
+			break;
 		}
-		selectedGizmoHandler = newHandler;
 	}
 	
 }
