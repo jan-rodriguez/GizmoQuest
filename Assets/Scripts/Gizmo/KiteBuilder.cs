@@ -24,13 +24,9 @@ public class KiteBuilder : MonoBehaviour {
 	private GameObject backToPrevBtn;
 
 	private Vector2 longRodPos = Vector2.zero;
-	private const float longRodAngle = 0f;
 	private Vector2 clothPos = Vector2.zero;
-	private const float clothAngle = 0f;
-	private const float shortRodAngle = 90f;
 	private Vector2 shortRodPos = Vector2.zero;
 	private Vector2 stringPos = new Vector2(0.131f, -1.286f);
-	private const float stringAngle = 0f;
 
 	private Animation hideAnimation;
 	private AudioSource correctDropSource;
@@ -63,7 +59,7 @@ public class KiteBuilder : MonoBehaviour {
 			if( clothDist < DISTANCE_THRESHOLD
 			   && partsDict.TryGetValue(CLOTH, out hasCloth) && !hasCloth) {
 				//Set the kite as the parent
-				ConnectGizmo(gizmo, clothPos, clothAngle, CLOTH_LAYER);
+				ConnectGizmo(gizmo, clothPos, CLOTH_LAYER);
 			}
 			break;
 		case SHORT_ROD:
@@ -75,7 +71,7 @@ public class KiteBuilder : MonoBehaviour {
 			if( shortRodDist < DISTANCE_THRESHOLD
 			   && partsDict.TryGetValue(SHORT_ROD, out hasShortRod) && !hasShortRod) {
 				//Set the kite as the parent
-				ConnectGizmo(gizmo, shortRodPos, shortRodAngle, SHORT_ROD_LAYER);
+				ConnectGizmo(gizmo, shortRodPos, SHORT_ROD_LAYER);
 			}
 			break;
 		case LONG_ROD:
@@ -87,7 +83,7 @@ public class KiteBuilder : MonoBehaviour {
 			if( longRodDist < DISTANCE_THRESHOLD 
 			   && partsDict.TryGetValue(LONG_ROD, out hasLongRod) && !hasLongRod) {
 				//Set the kite as the parent
-				ConnectGizmo(gizmo, longRodPos, longRodAngle, LONG_ROD_LAYER);
+				ConnectGizmo(gizmo, longRodPos, LONG_ROD_LAYER);
 			}
 			break;
 		case STRING:
@@ -97,7 +93,7 @@ public class KiteBuilder : MonoBehaviour {
 			if( stringDist < DISTANCE_THRESHOLD 
 			   && partsDict.TryGetValue(STRING, out hasString) && !hasString) {
 				//TODO: CAHNGE FOR STRING
-				ConnectGizmo(gizmo, stringPos, stringAngle, STRING_LAYER);
+				ConnectGizmo(gizmo, stringPos, STRING_LAYER);
 				
 			}
 			break;
@@ -109,11 +105,10 @@ public class KiteBuilder : MonoBehaviour {
 
 	}
 
-	void ConnectGizmo (GameObject gizmo, Vector3 pos, float angle, int sortingOrder) {
+	void ConnectGizmo (GameObject gizmo, Vector3 pos, int sortingOrder) {
 		//Set the kite as the parent
 		gizmo.transform.parent = this.transform;
 		gizmo.transform.localPosition = pos;
-		gizmo.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, angle));
 		gizmo.GetComponent<GizmoWorldDrag>().enabled = false;
 		gizmo.GetComponent<Collider2D>().enabled = false;
 		gizmo.GetComponent<SpriteRenderer>().sortingOrder = sortingOrder;

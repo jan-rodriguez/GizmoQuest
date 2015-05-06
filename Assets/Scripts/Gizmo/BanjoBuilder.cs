@@ -49,8 +49,7 @@ public class BanjoBuilder : MonoBehaviour {
 	public void TryAttachGizmo (GameObject gizmo) {
 		
 		switch(gizmo.tag) {
-			
-			//TODO: MAKE SYMMETRIC CHANGES
+
 		case BOX:
 			float boxDist = ((Vector2)transform.InverseTransformPoint(gizmo.transform.position) - boxPos).magnitude;
 
