@@ -54,6 +54,8 @@ public class ForestProgression : MonoBehaviour {
 
 	public GizmoBuilder inventory;
 
+	public string gizmoToBuild;
+
 	//Scene 1: Dodo
 	private bool metDodo = false;
 	private bool kitePrint = false;

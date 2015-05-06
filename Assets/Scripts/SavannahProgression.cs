@@ -8,7 +8,7 @@ public class SavannahProgression : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		storyManager = GameObject.Find ("_GameManager").GetComponent<ForestProgression>();
+		storyManager = GameManagerManager.forestProgression;
 		cameraMover = Camera.main.GetComponent<SwipeCamera> ();
 		toCliff = GameObject.Find ("Savannah to Cliff");
 	}

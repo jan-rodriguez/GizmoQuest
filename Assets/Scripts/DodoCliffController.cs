@@ -14,7 +14,7 @@ public class DodoCliffController : MonoBehaviour {
 		GameObject tissueBox = transform.GetChild(0).gameObject;
 		tissueBoxRenderer = tissueBox.GetComponent<SpriteRenderer>();
 		tissueBoxProgression = tissueBox.GetComponent<CliffProgression> ();
-		progression = GameManagerManager.manager.GetComponent<ForestProgression>();
+		progression = GameManagerManager.forestProgression;
 		if(progression.haveTissueBox()) {
 			clicked = true;
 			animator.SetBool("hasBox", false);

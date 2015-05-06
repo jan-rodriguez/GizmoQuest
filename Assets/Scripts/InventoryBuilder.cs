@@ -11,11 +11,11 @@ public class InventoryBuilder : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		gameManager = GameObject.Find ("_GameManager");
+		gameManager = GameManagerManager.manager;
 		if (gameManager == null) {
 			Debug.LogError ("Starting workbench without game manager. Can't populate inventory");
 		} else {
-			progression = gameManager.GetComponent<ForestProgression>();
+			progression = GameManagerManager.forestProgression;
 
 			string[] partsToBuildList = null;
 
