@@ -57,7 +57,7 @@ public class CliffProgression : MonoBehaviour {
 
 	// Good lord.
 	void OnMouseDown() {
-		if (itemsCollectible) {
+		if (itemsCollectible && GameManagerManager.forestProgression.haveBanjoPrint()) {
 			switch (this.name) {
 			case GizmoPrefabs.Vine1Name:
 				itemsCollectible = false;
@@ -97,7 +97,7 @@ public class CliffProgression : MonoBehaviour {
 
 	public void CollectTissueBox () {
 		if(name == GizmoPrefabs.PaperTowelRollName) {
-			if(itemsCollectible) {
+			if(itemsCollectible && GameManagerManager.forestProgression.haveBanjoPrint()) {
 				itemsCollectible = false;
 				storyManager.inventory.AddPart (BanjoBuilder.BOX, GizmoPrefabs.TissueBoxName);
 				storyManager.collectTissueBox();
