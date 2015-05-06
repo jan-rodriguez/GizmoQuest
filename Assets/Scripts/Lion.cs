@@ -24,6 +24,7 @@ public class Lion : MonoBehaviour {
 	void OnMouseDown () {
 		if(!clicked && !GameManagerManager.forestProgression.haveBanjo()) {
 			StartCoroutine(bubbleScript.MoveToCorner());
+			GameManagerManager.forestProgression.getBanjoPrint();
 			clicked = true;
 		}
 		else if (!GameManagerManager.forestProgression.haveBanjo()) {

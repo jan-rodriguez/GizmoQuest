@@ -22,7 +22,7 @@ public class DodoCliffController : MonoBehaviour {
 	}
 
 	void OnMouseDown() {
-		if(CliffProgression.itemsCollectible && !clicked){
+		if(CliffProgression.itemsCollectible && !clicked && GameManagerManager.forestProgression.haveBanjoPrint()){
 			clicked = true;
 			animator.SetBool("hasBox", false);
 			tissueBoxRenderer.enabled = true;
