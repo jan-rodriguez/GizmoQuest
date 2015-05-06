@@ -20,18 +20,25 @@ public class DodoController : MonoBehaviour {
 	private ForestProgression storyManager;
 
 	private GameObject skipButton;
+	private GameObject savannahButton;
 	private bool skip = false;
+
+	public GameObject bubble;
 
 	// Use this for initialization
 	void Start () {
-		storyManager = GameObject.Find ("_GameManager").GetComponent<ForestProgression>();
+		storyManager = GameManagerManager.forestProgression;
 		skipButton = GameObject.Find ("SkipButton");
+		savannahButton = GameObject.Find ("Airfield to Savannah");
 		animator = this.GetComponent<Animator> ();
 		source = this.GetComponent<AudioSource> ();
 		sadDodo = dodoSadRoutine ();
 		speechDodo = dodoSpeechRoutine ();
 		if (!storyManager.haveMetDodo ()) {
 			StartCoroutine (sadDodo);
+		} else {
+			//Remove kite bubbles
+			Destroy(transform.GetChild(0).gameObject);
 		}
 	}
 	
@@ -44,9 +51,22 @@ public class DodoController : MonoBehaviour {
 		skip = true;
 		source.Stop ();
 		dodoStopTalking ();
+		StopCoroutine (speechDodo);
+		StopCoroutine (sadDodo);
+		if (!storyManager.haveKite ()) {
+			AirfieldProgression.itemsCollectible = true;
+			StartButtonWiggles ();
+		} else {
+			ShowSavannaButton();
+		}
+
+		disableSkipButton ();
 	}
 
 	void enableSkipButton() {
+		if (skipButton == null) {
+			skipButton = GameObject.Find ("SkipButton");
+		}
 		skipButton.GetComponent<Button> ().enabled = true;
 		skipButton.GetComponent<Image> ().enabled = true;
 		skipButton.transform.GetChild (0).GetComponent<Text> ().enabled = true;
@@ -59,6 +79,10 @@ public class DodoController : MonoBehaviour {
 	}
 
 	public void startDodoSpeech() {
+		storyManager.meetDodo ();
+		if (bubble != null) {
+			StartCoroutine(bubble.GetComponent<ThoughtBubble>().MoveToCorner ());
+		}
 		StopCoroutine (sadDodo);
 		enableSkipButton ();
 		StartCoroutine (speechDodo);
@@ -68,8 +92,8 @@ public class DodoController : MonoBehaviour {
 		StartCoroutine (dodoYesRoutine ());
 	}
 
-	public void startDodoKite(GameObject progressArrow) {
-		StartCoroutine (dodoKiteRoutine (progressArrow));
+	public void startDodoKite() {
+		StartCoroutine (dodoKiteRoutine ());
 		enableSkipButton ();
 	}
 
@@ -82,7 +106,7 @@ public class DodoController : MonoBehaviour {
 		affirmationNumber = (affirmationNumber + 1) % yesClips.Length;
 	}
 
-	IEnumerator dodoKiteRoutine(GameObject progressArrow) {
+	IEnumerator dodoKiteRoutine() {
 		yield return new WaitForSeconds (1);
 		for (int i = 0; i < kiteClips.Length; i++) {
 			if (skip) {
@@ -98,9 +122,13 @@ public class DodoController : MonoBehaviour {
 		}
 		disableSkipButton ();
 
-		progressArrow.GetComponent<SpriteRenderer>().enabled = true;
-		progressArrow.GetComponent<BoxCollider2D>().enabled = true;
-		Animation arrowAnimation = progressArrow.GetComponent<Animation> ();
+		ShowSavannaButton ();
+	}
+
+	void ShowSavannaButton() {
+		savannahButton.GetComponent<SpriteRenderer>().enabled = true;
+		savannahButton.GetComponent<BoxCollider2D>().enabled = true;
+		Animation arrowAnimation = savannahButton.GetComponent<Animation> ();
 		if (arrowAnimation != null) {
 			arrowAnimation.Play ();
 		}
@@ -134,18 +162,18 @@ public class DodoController : MonoBehaviour {
 
 		disableSkipButton ();
 
-		GameObject bubble = GameObject.Find ("BigThoughtBubble");
-		if (bubble != null) {
-			StartCoroutine(bubble.GetComponent<ThoughtBubble>().MoveToCorner ());
-		}
+		StartButtonWiggles ();
 
+		yield return new WaitForSeconds (1);
+	}
+
+	void StartButtonWiggles() {
 		string[] wigglableParts = new string[]{"String", "Pen", "Straw", "Cloth"};
-
+		
 		AirfieldProgression.itemsCollectible = true;
 		foreach (string part in wigglableParts) {
 			GameObject.Find (part).GetComponent<AirfieldProgression>().StartWiggle();
 		}
-		yield return new WaitForSeconds (1);
 	}
 
 	public void dodoStartTalking() {
