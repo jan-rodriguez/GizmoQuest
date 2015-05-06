@@ -79,9 +79,6 @@ public class BanjoBuilder : MonoBehaviour {
 			float rubberband2Dist = ((Vector2)transform.InverseTransformPoint(gizmo.transform.position) - rubberband2Pos).magnitude;
 			float rubberband3Dist = ((Vector2)transform.InverseTransformPoint(gizmo.transform.position) - rubberband3Pos).magnitude;
 
-			print (rubberband1Dist);
-			print (rubberband2Dist);
-			print (rubberband3Dist);
 			bool hasRubberband1 = false;
 			bool hasRubberband2 = false;
 			bool hasRubberband3 = false;

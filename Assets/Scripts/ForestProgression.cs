@@ -62,17 +62,13 @@ public class ForestProgression : MonoBehaviour {
 	//Scene 2: Lake
 	private bool seenLake = false;
 
-	//Scene 3: Crossing the Swamp
-	private bool boatPrint = false;
-	private bool bridgePrint = false;
-	private bool boat = false;
-	private bool bridge = false;
-
 	//Scene 4: Passing the Lion
 	private bool banjoPrint = false;
 	private bool ladderPrint = false;
 	private bool ladder = false;
 	private bool banjo = false;
+	private bool collectedTissueBox = false;
+	private bool collectedPaperTowelRoll = false;
 
 	//Scene 5: Dropping the Ball
 	private bool slingshotPrint = false;
@@ -125,47 +121,6 @@ public class ForestProgression : MonoBehaviour {
 		seenLake = true;
 	}
 
-	//Boat-related getters/setters/accessors
-	public bool getBoatPrint() {
-		if (boatPrint) {
-			return false;
-		}
-		boatPrint = true;
-		return true;
-	}
-
-	public bool haveBoatPrint() {
-		return boatPrint;
-	}
-
-	public void makeBoat() {
-		boat = true;
-	}
-	
-	public bool haveBoat() {
-		return boat;
-	}
-
-	//Bridge-related getters/setters/accessors
-	public bool getBridgePrint() {
-		if (bridgePrint) {
-			return false;
-		}
-		bridgePrint = true;
-		return true;
-	}
-
-	public bool haveBridgePrint() {
-		return bridgePrint;
-	}
-	public void makeBridge() {
-		bridge = true;
-	}
-	
-	public bool haveBridge() {
-		return bridge;
-	}
-
 	//Ladder-related getters/setters/accessors
 	public bool getLadderPrint() {
 		if (ladderPrint) {
@@ -206,6 +161,22 @@ public class ForestProgression : MonoBehaviour {
 	
 	public bool haveBanjo() {
 		return banjo;
+	}
+
+	public void collectTissueBox () {
+		collectedTissueBox = true;
+	}
+
+	public bool haveTissueBox () {
+		return collectedTissueBox;
+	}
+
+	public void collectPaperTowelRoll () {
+		collectedPaperTowelRoll = true;
+	}
+
+	public bool havePaperTowelRoll () {
+		return collectedPaperTowelRoll;
 	}
 
 	//Shovel-related getters/setters/accessors

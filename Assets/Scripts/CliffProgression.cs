@@ -9,7 +9,7 @@ public class CliffProgression : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		if (storyManager == null) {
-			storyManager = GameObject.Find ("_GameManager").GetComponent<ForestProgression>();
+			storyManager = GameManagerManager.forestProgression;
 		}
 		if (cameraMover == null) {
 			cameraMover = Camera.main.GetComponent<SwipeCamera> ();
@@ -73,6 +73,7 @@ public class CliffProgression : MonoBehaviour {
 			case GizmoPrefabs.PaperTowelRollName:
 				itemsCollectible = false;
 				storyManager.inventory.AddPart (BanjoBuilder.POLE, GizmoPrefabs.PaperTowelRollName);
+				storyManager.collectPaperTowelRoll();
 				StartCoroutine (acquireThisPart ());
 				break;
 			case GizmoPrefabs.TissueBoxName:
@@ -83,6 +84,17 @@ public class CliffProgression : MonoBehaviour {
 			}
 			
 			if(storyManager.inventory.HaveAllKiteParts()){
+			}
+		}
+	}
+
+	public void CollectTissueBox () {
+		if(name == GizmoPrefabs.PaperTowelRollName) {
+			if(itemsCollectible) {
+				itemsCollectible = false;
+				storyManager.inventory.AddPart (BanjoBuilder.BOX, GizmoPrefabs.TissueBoxName);
+				storyManager.collectTissueBox();
+				StartCoroutine (acquireThisPart ());
 			}
 		}
 	}
