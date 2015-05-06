@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -30,12 +31,14 @@ public class BanjoBuilder : MonoBehaviour {
 	
 	private Animation hideAnimation;
 	private AudioSource correctDropSource;
+	private GameObject backToPrevBtn;
 	
 	// Use this for initialization
 	void Start () {
 		hideAnimation = gameObject.GetComponent<Animation>();
 		correctDropSource = gameObject.GetComponent<AudioSource>();
 		finishedGizmo = Resources.Load ("FinishedBanjo") as GameObject;
+		backToPrevBtn = GameObject.Find ("LoadPreviousLevel");
 		partsDict.Add (BOX, false);
 		partsDict.Add (POLE, false);
 		partsDict.Add (RUBBERBAND1, false);
@@ -51,7 +54,6 @@ public class BanjoBuilder : MonoBehaviour {
 		case BOX:
 			float boxDist = ((Vector2)transform.InverseTransformPoint(gizmo.transform.position) - boxPos).magnitude;
 
-			print (boxDist);
 			bool hasBox = false;
 			
 			if( boxDist < DISTANCE_THRESHOLD 
@@ -63,7 +65,6 @@ public class BanjoBuilder : MonoBehaviour {
 			break;
 		case POLE:
 			float poleDist = ((Vector2)transform.InverseTransformPoint(gizmo.transform.position) - polePos).magnitude;
-			print (poleDist);
 			bool hasPole = false;
 			
 			//TODO: ADD THIS BACK TO MAKE SHORT ROD
@@ -129,11 +130,14 @@ public class BanjoBuilder : MonoBehaviour {
 		foreach(Animation anim in gameObject.GetComponentsInChildren<Animation>()){
 			anim.Play ();
 		}
-		GameManagerManager.forestProgression.makeKite();
+		GameManagerManager.forestProgression.makeBanjo();
 		
 	}
 	
 	public void hideBuilderAndShowFinished() {
+		
+		backToPrevBtn.GetComponent<Button>().interactable = true;
+		backToPrevBtn.GetComponent<Image>().enabled = true;
 		Instantiate (finishedGizmo);
 		gameObject.SetActive(false);
 	}

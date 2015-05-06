@@ -4,11 +4,16 @@ using System.Collections.Generic;
 
 public class ForestProgression : MonoBehaviour {
 
+	public static int START_SCREEN_LVL = 0;
+	public static int WORKBENCH_LVL = 1;
+	public static int AIRFIELD_LVL = 2;
+	public static int SAVANNAH_LVL = 3;
+	public static int CLIFF_LVL = 4;
+
 	public static int previousLevel;
 
 	public class GizmoBuilder {
 		private Dictionary<string, List<string>> partsHeld;
-		private readonly string[] kiteParts = {KiteBuilder.CLOTH, KiteBuilder.STRING, KiteBuilder.LONG_ROD, KiteBuilder.SHORT_ROD};
 
 		public GizmoBuilder() {
 			partsHeld = new Dictionary<string, List<string>>();
@@ -27,9 +32,23 @@ public class ForestProgression : MonoBehaviour {
 		}
 		
 		public bool HaveAllKiteParts() {
-			foreach (string part in kiteParts) {
+			foreach (string part in KiteBuilder.PARTS_LIST) {
 				if (!partsHeld.ContainsKey (part)) {
 					return false;
+				}
+			}
+			return true;
+		}
+
+		public bool HaveAllBanjoPars() {
+			foreach (string part in BanjoBuilder.PARTS_LIST) {
+				if (!partsHeld.ContainsKey (part)) {
+					return false;
+				}else if(part == BanjoBuilder.RUBBERBAND) {
+					//Make sure we have 3 rubberbands
+					if(partsHeld[part].Count != 3){
+						return false;
+					}
 				}
 			}
 			return true;
@@ -158,6 +177,7 @@ public class ForestProgression : MonoBehaviour {
 	}
 
 	public void makeBanjo() {
+		print ("Making banjo");
 		banjo = true;
 	}
 	
@@ -241,18 +261,16 @@ public class ForestProgression : MonoBehaviour {
 
 	}
 
-	private void FinishLevel() {
+	private void FinishKiteLevel() {
 		if (kite) {
 			GameObject kiteObject = GameObject.Find ("Kite");
 			if (kiteObject != null) {
 				kiteObject.GetComponent<SpriteRenderer>().enabled = true;
 			}
 
-			GameObject progressArrow = GameObject.Find ("Airfield to Savannah");
-
 			GameObject dodo = GameObject.Find ("Dodo");
-			if (dodo != null && progressArrow != null) {
-				dodo.GetComponent<DodoController>().startDodoKite(progressArrow);
+			if (dodo != null) {
+				dodo.GetComponent<DodoController>().startDodoKite();
 			}
 		}
 	}
@@ -263,6 +281,9 @@ public class ForestProgression : MonoBehaviour {
 		}
 
 		HideCollectedItems();
-		FinishLevel();
+		if (level == AIRFIELD_LVL) {
+			FinishKiteLevel();
+		}
+
 	}
 }

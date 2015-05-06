@@ -112,7 +112,7 @@ public class Cloud : MonoBehaviour {
 
 	private IEnumerator GoToOriginalY () {
 		int direction = transform.position.y < originalY ? 1 : -1;
-		while (transform.position.y < originalY - 1 || transform.position.y > originalY + 1) {
+		while (transform.position.y < originalY - .5f || transform.position.y > originalY + .5f) {
 			rigidBod.velocity = new Vector2(0, direction);
 			yield return new WaitForSeconds(.25f);
 		}

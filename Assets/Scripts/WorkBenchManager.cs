@@ -11,7 +11,7 @@ public class WorkBenchManager : MonoBehaviour {
 		kiteBuilderPrefab = Resources.Load ("KiteBuilder") as GameObject;
 		banjoBuilderPrefab = Resources.Load ("BanjoBuilder") as GameObject;
 
-		SetupBuildArea (GizmoPrefabs.BANJO);
+		SetupBuildArea (GameManagerManager.forestProgression.gizmoToBuild);
 	}
 
 	void SetupBuildArea (string partToBuild) {

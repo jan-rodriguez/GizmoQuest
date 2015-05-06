@@ -719,6 +719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eda0495dbd1a254cb900a8e4771b4d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemToBuild: kite
 --- !u!212 &469512987
 SpriteRenderer:
   m_ObjectHideFlags: 0

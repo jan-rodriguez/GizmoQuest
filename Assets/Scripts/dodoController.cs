@@ -20,6 +20,7 @@ public class DodoController : MonoBehaviour {
 	private ForestProgression storyManager;
 
 	private GameObject skipButton;
+	private GameObject savannahButton;
 	private bool skip = false;
 
 	public GameObject bubble;
@@ -28,12 +29,16 @@ public class DodoController : MonoBehaviour {
 	void Start () {
 		storyManager = GameManagerManager.forestProgression;
 		skipButton = GameObject.Find ("SkipButton");
+		savannahButton = GameObject.Find ("Airfield to Savannah");
 		animator = this.GetComponent<Animator> ();
 		source = this.GetComponent<AudioSource> ();
 		sadDodo = dodoSadRoutine ();
 		speechDodo = dodoSpeechRoutine ();
 		if (!storyManager.haveMetDodo ()) {
 			StartCoroutine (sadDodo);
+		} else {
+			//Remove kite bubbles
+			Destroy(transform.GetChild(0).gameObject);
 		}
 	}
 	
@@ -48,11 +53,19 @@ public class DodoController : MonoBehaviour {
 		dodoStopTalking ();
 		StopCoroutine (speechDodo);
 		StopCoroutine (sadDodo);
-		StartButtonWiggles ();
+		if (!storyManager.haveKite ()) {
+			StartButtonWiggles ();
+		} else {
+			ShowSavannaButton();
+		}
+
 		disableSkipButton ();
 	}
 
 	void enableSkipButton() {
+		if (skipButton == null) {
+			skipButton = GameObject.Find ("SkipButton");
+		}
 		skipButton.GetComponent<Button> ().enabled = true;
 		skipButton.GetComponent<Image> ().enabled = true;
 		skipButton.transform.GetChild (0).GetComponent<Text> ().enabled = true;
@@ -65,6 +78,7 @@ public class DodoController : MonoBehaviour {
 	}
 
 	public void startDodoSpeech() {
+		storyManager.meetDodo ();
 		if (bubble != null) {
 			StartCoroutine(bubble.GetComponent<ThoughtBubble>().MoveToCorner ());
 		}
@@ -77,8 +91,8 @@ public class DodoController : MonoBehaviour {
 		StartCoroutine (dodoYesRoutine ());
 	}
 
-	public void startDodoKite(GameObject progressArrow) {
-		StartCoroutine (dodoKiteRoutine (progressArrow));
+	public void startDodoKite() {
+		StartCoroutine (dodoKiteRoutine ());
 		enableSkipButton ();
 	}
 
@@ -91,7 +105,7 @@ public class DodoController : MonoBehaviour {
 		affirmationNumber = (affirmationNumber + 1) % yesClips.Length;
 	}
 
-	IEnumerator dodoKiteRoutine(GameObject progressArrow) {
+	IEnumerator dodoKiteRoutine() {
 		yield return new WaitForSeconds (1);
 		for (int i = 0; i < kiteClips.Length; i++) {
 			if (skip) {
@@ -107,9 +121,13 @@ public class DodoController : MonoBehaviour {
 		}
 		disableSkipButton ();
 
-		progressArrow.GetComponent<SpriteRenderer>().enabled = true;
-		progressArrow.GetComponent<BoxCollider2D>().enabled = true;
-		Animation arrowAnimation = progressArrow.GetComponent<Animation> ();
+		ShowSavannaButton ();
+	}
+
+	void ShowSavannaButton() {
+		savannahButton.GetComponent<SpriteRenderer>().enabled = true;
+		savannahButton.GetComponent<BoxCollider2D>().enabled = true;
+		Animation arrowAnimation = savannahButton.GetComponent<Animation> ();
 		if (arrowAnimation != null) {
 			arrowAnimation.Play ();
 		}

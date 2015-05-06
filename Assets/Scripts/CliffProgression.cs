@@ -6,6 +6,7 @@ public class CliffProgression : MonoBehaviour {
 	public static bool itemsCollectible = true;
 	private static ForestProgression storyManager;
 	private static SwipeCamera cameraMover;
+	private static GameObject buildBanjo;
 	// Use this for initialization
 	void Start () {
 		if (storyManager == null) {
@@ -16,6 +17,9 @@ public class CliffProgression : MonoBehaviour {
 		}
 		if (kaPow == null) {
 			kaPow = GameObject.Find ("KAPOW");
+		}
+		if(buildBanjo == null) {
+			buildBanjo = GameObject.Find("BigThoughtBubble");
 		}
 	}
 	
@@ -83,10 +87,19 @@ public class CliffProgression : MonoBehaviour {
 				break;
 			}
 			
-			if(storyManager.inventory.HaveAllKiteParts()){
+			if(storyManager.inventory.HaveAllBanjoPars()){
+				buildBanjo.GetComponent<SpriteRenderer> ().color = Color.white;
+				buildBanjo.transform.GetChild (0).GetComponent<SpriteRenderer> ().color = Color.white;
+				buildBanjo.GetComponent<BoxCollider2D>().enabled = true;
+				WiggleButton();
 			}
+
 		}
 	}
+	void WiggleButton () {
+		buildBanjo.GetComponent<Animation>().Play();
+	}
+
 
 	public void CollectTissueBox () {
 		if(name == GizmoPrefabs.PaperTowelRollName) {
@@ -95,6 +108,12 @@ public class CliffProgression : MonoBehaviour {
 				storyManager.inventory.AddPart (BanjoBuilder.BOX, GizmoPrefabs.TissueBoxName);
 				storyManager.collectTissueBox();
 				StartCoroutine (acquireThisPart ());
+				if(storyManager.inventory.HaveAllBanjoPars()){
+					buildBanjo.GetComponent<SpriteRenderer> ().color = Color.white;
+					buildBanjo.transform.GetChild (0).GetComponent<SpriteRenderer> ().color = Color.white;
+					buildBanjo.GetComponent<BoxCollider2D>().enabled = true;
+					WiggleButton();
+				}
 			}
 		}
 	}
