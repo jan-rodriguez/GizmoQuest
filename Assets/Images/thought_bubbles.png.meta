@@ -1,9 +1,12 @@
 fileFormatVersion: 2
-guid: 40b95c79c9a457b44b61f98790f04505
-timeCreated: 1425758148
+guid: 31aff6e07eb01416f8eba9ed96f23018
+timeCreated: 1430930359
 licenseType: Pro
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: thought_bubbles_0
+    21300002: thought_bubbles_1
+    21300004: thought_bubbles_2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -30,14 +33,14 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -48,7 +51,37 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: thought_bubbles_0
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 20
+        width: 740
+        height: 581
+      alignment: 9
+      pivot: {x: .593805492, y: .522976398}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: thought_bubbles_1
+      rect:
+        serializedVersion: 2
+        x: 917
+        y: 22
+        width: 602
+        height: 577
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: thought_bubbles_2
+      rect:
+        serializedVersion: 2
+        x: 1729
+        y: 22
+        width: 601
+        height: 577
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
   assetBundleName: 

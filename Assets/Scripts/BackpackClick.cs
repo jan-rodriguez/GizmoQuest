@@ -7,9 +7,11 @@ public class BackpackClick : MonoBehaviour {
 	private SpriteRenderer paperRollRenderer;
 	private Animation paperRollAnim;
 	private Collider2D paperTowelCollider;
+	private AudioSource audSrc;
 	bool clicked = false;
 
 	void Start() {
+		audSrc = gameObject.GetComponent<AudioSource>();
 		GameObject paperRoll = transform.GetChild(0).gameObject;
 		if(paperRoll != null) {
 			paperRollRenderer = paperRoll.GetComponent<SpriteRenderer>();
@@ -30,6 +32,7 @@ public class BackpackClick : MonoBehaviour {
 			paperRollRenderer.enabled = true;
 			paperTowelCollider.enabled = true;
 			paperRollAnim.Play();
+			audSrc.Play ();
 		}
 	}
 }

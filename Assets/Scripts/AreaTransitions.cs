@@ -7,7 +7,7 @@ public class AreaTransitions : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		gameSceneManager = GameObject.Find ("_GameManager").GetComponent<SceneManager> ();
+		gameSceneManager = GameManagerManager.manager.GetComponent<SceneManager> ();
 	}
 	
 	// Update is called once per frame
