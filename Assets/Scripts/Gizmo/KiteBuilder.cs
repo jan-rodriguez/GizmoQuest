@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class KiteBuilder : MonoBehaviour {
 
-	public GameObject finishedGizmo;
+	private GameObject finishedGizmo;
 
 	private Dictionary<string, bool> partsDict = new Dictionary<string,bool> ();
 
@@ -41,6 +41,8 @@ public class KiteBuilder : MonoBehaviour {
 
 		hideAnimation = gameObject.GetComponent<Animation>();
 		correctDropSource = gameObject.GetComponent<AudioSource>();
+
+		finishedGizmo = Resources.Load ("FinishedKite") as GameObject;
 
 		partsDict.Add (CLOTH, false);
 		partsDict.Add (LONG_ROD, false);
@@ -141,7 +143,7 @@ public class KiteBuilder : MonoBehaviour {
 	public void hideBuilderAndShowFinished() {
 		backToPrevBtn.GetComponent<Button>().interactable = true;
 		backToPrevBtn.GetComponent<Image>().enabled = true;
-		finishedGizmo.SetActive(true);
+		Instantiate (finishedGizmo);
 		gameObject.SetActive(false);
 	}
 

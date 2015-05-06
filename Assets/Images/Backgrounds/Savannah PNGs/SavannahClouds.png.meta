@@ -1,0 +1,143 @@
+fileFormatVersion: 2
+guid: 404e5a073736d0d4b852c419b3dab1a3
+timeCreated: 1430633909
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: SavannahClouds_0
+    21300002: SavannahClouds_1
+    21300004: SavannahClouds_2
+    21300006: SavannahClouds_3
+    21300008: SavannahClouds_4
+    21300010: SavannahClouds_6
+    21300012: SavannahClouds_7
+    21300014: SavannahClouds_8
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: SavannahClouds_0
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 1395
+        width: 432
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SavannahClouds_1
+      rect:
+        serializedVersion: 2
+        x: 2096
+        y: 1288
+        width: 708
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SavannahClouds_2
+      rect:
+        serializedVersion: 2
+        x: 3229
+        y: 1359
+        width: 412
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SavannahClouds_3
+      rect:
+        serializedVersion: 2
+        x: 3209
+        y: 1364
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SavannahClouds_4
+      rect:
+        serializedVersion: 2
+        x: 4613
+        y: 1229
+        width: 387
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SavannahClouds_6
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 1176
+        width: 249
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SavannahClouds_7
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 1100
+        width: 242
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SavannahClouds_8
+      rect:
+        serializedVersion: 2
+        x: 2985
+        y: 1061
+        width: 253
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

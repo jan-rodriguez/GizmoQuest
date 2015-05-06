@@ -8,6 +8,6 @@ public class SetClickAirfield : MonoBehaviour {
 	void Start () {
 		Button b = gameObject.GetComponent<Button>();
 		SceneManager scenes = GameManagerManager.manager.GetComponent<SceneManager>();
-		b.onClick.AddListener(() => scenes.GoToAirfield());
+		b.onClick.AddListener(() => StartCoroutine(scenes.GoToAirfield()));
 	}
 }

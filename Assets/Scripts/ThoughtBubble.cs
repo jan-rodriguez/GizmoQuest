@@ -24,8 +24,8 @@ public class ThoughtBubble : MonoBehaviour {
 		Vector3 direction = new Vector3(destinationPoint.x - this.transform.position.x, 
 		                                destinationPoint.y - this.transform.position.y, 
 		                                0);
-		for (int i = 60 * 4; i >= 0; i--) {
-			this.transform.position += direction / (60f * 4);
+		for (int i = 60 * 2; i >= 0; i--) {
+			this.transform.position += direction / (60f * 2);
 			yield return null;
 		}
 		this.GetComponent<SpriteRenderer> ().color = new Color (1f, 1f, 1f, 0.5f);
@@ -35,6 +35,6 @@ public class ThoughtBubble : MonoBehaviour {
 
 	void OnMouseDown() {
 		GameManagerManager.manager.GetComponent<ForestProgression> ().gizmoToBuild = "Kite";
-		GameManagerManager.manager.GetComponent<SceneManager>().GoToWorkshop();
+		StartCoroutine(GameManagerManager.manager.GetComponent<SceneManager>().GoToWorkShop());
 	}
 }

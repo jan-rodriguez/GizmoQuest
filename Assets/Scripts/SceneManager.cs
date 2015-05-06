@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class SceneManager: MonoBehaviour {
@@ -10,34 +11,64 @@ public class SceneManager: MonoBehaviour {
 	public static string SAVANNAH = "Savannah";
 	public static string CLIFF = "Cliff";
 
+	private CanvasGroup loadingPanelCanvas;
+
 	// Use this for initialization
 	void Start () {
+		GameObject loadingPanel = GameObject.Find ("LoadingPanel");
+		if (loadingPanel != null) {
+			loadingPanelCanvas = loadingPanel.GetComponent<CanvasGroup>();
+		}
+		 
 		if (updatePreviousLevel) {
 			previousLevel = Application.loadedLevelName;
 		}
 	}
 
-	public void GoToWorkshop () {
+	public IEnumerator GoToWorkShop () {
+		AsyncOperation loadingLvl = Application.LoadLevelAsync (WORKBENCH);
+		loadingPanelCanvas.alpha = 1;
+		yield return loadingLvl;
 		Application.LoadLevel (WORKBENCH);
 	}
 
-	public void GoToAirfield () {
+	public IEnumerator GoToAirfield () {
+		AsyncOperation loadingLvl = Application.LoadLevelAsync (AIRFIELD);
+		loadingPanelCanvas.alpha = 1;
+		yield return loadingLvl;
 		Application.LoadLevel (AIRFIELD);
 	}
 
-	public void GoToSavannah () {
+	public IEnumerator GoToSavannah () {
+		AsyncOperation loadingLvl = Application.LoadLevelAsync (SAVANNAH);
+		loadingPanelCanvas.alpha = 1;
+		yield return loadingLvl;
 		Application.LoadLevel (SAVANNAH);
 	}
 
-	public void GoToCliff () {
+	public IEnumerator GoToCliff () {
+		AsyncOperation loadingLvl = Application.LoadLevelAsync (CLIFF);
+		loadingPanelCanvas.alpha = 1;
+		yield return loadingLvl;
 		Application.LoadLevel (CLIFF);
 	}
 
-	public void LoadPreviousLevel () {
+	public IEnumerator LoadPreviousLevel () {
 		if (previousLevel != Application.loadedLevelName) {
-			Application.LoadLevel (previousLevel);
+			AsyncOperation loadingLvl = Application.LoadLevelAsync (previousLevel);
+			loadingPanelCanvas.alpha = 1;
+			yield return loadingLvl;
+			Application.LoadLevel (CLIFF);
 		}
 
+	}
+
+	private void ResetLoadingPanel () {
+		
+		GameObject loadingPanel = GameObject.Find ("LoadingPanel");
+		if (loadingPanel != null) {
+			loadingPanelCanvas = loadingPanel.GetComponent<CanvasGroup>();
+		}
 	}
 
 	void OnLevelWasLoaded(int level) {
@@ -51,5 +82,6 @@ public class SceneManager: MonoBehaviour {
 		if (updatePreviousLevel) {
 			previousLevel = Application.loadedLevelName;
 		}
+		ResetLoadingPanel ();
 	}
 }

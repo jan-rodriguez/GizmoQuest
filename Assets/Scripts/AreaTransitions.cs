@@ -18,10 +18,10 @@ public class AreaTransitions : MonoBehaviour {
 	void OnMouseDown() {
 		switch (this.name) {
 		case "Airfield to Savannah":
-			gameSceneManager.GoToSavannah ();
+			StartCoroutine(gameSceneManager.GoToSavannah ());
 			break;
 		case "Savannah to Cliff":
-			gameSceneManager.GoToCliff ();
+			StartCoroutine(gameSceneManager.GoToCliff ());
 			break;
 		case "Cliff to Boulder":
 			//TODO: add boulder scene

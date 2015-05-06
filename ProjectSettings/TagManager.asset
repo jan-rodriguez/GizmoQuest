@@ -11,6 +11,11 @@ TagManager:
   - Landing
   - short_rod
   - string
+  - pole
+  - box
+  - rubberband
+  - cloud
+  - bounds
   layers:
   - Default
   - TransparentFX
