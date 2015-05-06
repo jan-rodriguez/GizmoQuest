@@ -31,9 +31,10 @@ public class SavannahController : MonoBehaviour {
 		}
 
 		yield return new WaitForSeconds (2);
-		GameObject blackPanel = GameObject.Find ("FadeToBlack");
-		if (blackPanel != null) {
-			blackPanel.GetComponent<Animation>().Play();
+		GameObject nextArrow = Camera.main.transform.GetChild (1).gameObject;
+		if (nextArrow != null) {
+			nextArrow.GetComponent<SpriteRenderer>().enabled = true;
+			nextArrow.GetComponent<Collider2D>().enabled = true;
 		}
 	}
 	

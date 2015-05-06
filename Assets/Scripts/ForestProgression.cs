@@ -177,7 +177,6 @@ public class ForestProgression : MonoBehaviour {
 	}
 
 	public void makeBanjo() {
-		print ("Making banjo");
 		banjo = true;
 	}
 	
