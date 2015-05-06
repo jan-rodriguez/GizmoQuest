@@ -31,10 +31,8 @@ public class GizmoPrefabs : MonoBehaviour{
 	public static GameObject Vine3Prefab;
 	public static GameObject PaperTowelRollPrefab;
 
-
-
 	void Awake () {
-		string itemToBuild = BANJO;
+		string itemToBuild = GameManagerManager.forestProgression.gizmoToBuild;
 
 		switch (itemToBuild) {
 		case KITE:

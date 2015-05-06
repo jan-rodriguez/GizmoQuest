@@ -3,29 +3,21 @@ using System.Collections;
 
 public class ThoughtBubble : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+	public string itemToBuild;
 
 	public IEnumerator MoveToCorner() {
+		GameObject thoughtBubbles = transform.parent.gameObject;
 		this.transform.parent = Camera.main.transform;
-		Destroy (GameObject.Find ("ThoughtBubbles"));
+		Destroy (thoughtBubbles);
 		Camera.main.GetComponent<SwipeCamera> ().cameraCanMove = false;
-		Vector3 destinationPoint = Camera.main.ScreenToWorldPoint (new Vector3 (Screen.width * .1f, 
-		                                                                        Screen.height * .1f, 
-		                                                                        -10));
-		print (destinationPoint);
+		Vector3 destinationPoint = Camera.main.ScreenToWorldPoint (new Vector3 (Screen.width * .9f, 
+		                                                                        Screen.height * .9f, 
+		                                                                        transform.position.z - Camera.main.transform.position.z));
 		Vector3 direction = new Vector3(destinationPoint.x - this.transform.position.x, 
 		                                destinationPoint.y - this.transform.position.y, 
 		                                0);
-		for (int i = 60 * 2; i >= 0; i--) {
-			this.transform.position += direction / (60f * 2);
+		for (int i = 60 ; i >= 0; i--) {
+			this.transform.position += direction / (60f);
 			yield return null;
 		}
 		this.GetComponent<SpriteRenderer> ().color = new Color (1f, 1f, 1f, 0.5f);
@@ -34,7 +26,7 @@ public class ThoughtBubble : MonoBehaviour {
 	}
 
 	void OnMouseDown() {
-		GameManagerManager.forestProgression.gizmoToBuild = "Kite";
+		GameManagerManager.forestProgression.gizmoToBuild = itemToBuild;
 		StartCoroutine(GameManagerManager.manager.GetComponent<SceneManager>().GoToWorkShop());
 	}
 }

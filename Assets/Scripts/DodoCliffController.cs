@@ -29,5 +29,12 @@ public class DodoCliffController : MonoBehaviour {
 			tissueBoxProgression.CollectTissueBox();
 		}
 
+		if (progression.haveBanjo ()) {
+			PlayBanjo();
+		}
+	}
+
+	void PlayBanjo() {
+		//TODO: MAKE DODO PLAY BANJO HERE
 	}
 }
