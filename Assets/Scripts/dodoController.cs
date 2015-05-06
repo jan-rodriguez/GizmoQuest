@@ -22,9 +22,11 @@ public class DodoController : MonoBehaviour {
 	private GameObject skipButton;
 	private bool skip = false;
 
+	public GameObject bubble;
+
 	// Use this for initialization
 	void Start () {
-		storyManager = GameObject.Find ("_GameManager").GetComponent<ForestProgression>();
+		storyManager = GameManagerManager.forestProgression;
 		skipButton = GameObject.Find ("SkipButton");
 		animator = this.GetComponent<Animator> ();
 		source = this.GetComponent<AudioSource> ();
@@ -44,10 +46,10 @@ public class DodoController : MonoBehaviour {
 		skip = true;
 		source.Stop ();
 		dodoStopTalking ();
-		StopCoroutine(dodoSpeechRoutine());
-		StopCoroutine(dodoYesRoutine());
-		StopCoroutine(dodoKiteRoutine(null));
-		SetUpButtons();
+		StopCoroutine (speechDodo);
+		StopCoroutine (sadDodo);
+		StartButtonWiggles ();
+		disableSkipButton ();
 	}
 
 	void enableSkipButton() {
@@ -63,6 +65,9 @@ public class DodoController : MonoBehaviour {
 	}
 
 	public void startDodoSpeech() {
+		if (bubble != null) {
+			StartCoroutine(bubble.GetComponent<ThoughtBubble>().MoveToCorner ());
+		}
 		StopCoroutine (sadDodo);
 		enableSkipButton ();
 		StartCoroutine (speechDodo);
@@ -96,7 +101,6 @@ public class DodoController : MonoBehaviour {
 			source.clip = kiteClips[i];
 			dodoStartTalking ();
 			source.Play ();
-
 			yield return new WaitForSeconds(kiteClips[i].length);
 			dodoStopTalking ();
 			yield return new WaitForSeconds(1);
@@ -139,18 +143,12 @@ public class DodoController : MonoBehaviour {
 
 		disableSkipButton ();
 
-		SetUpButtons();
+		StartButtonWiggles ();
 
 		yield return new WaitForSeconds (1);
 	}
 
-
-	private void SetUpButtons () {
-		GameObject bubble = GameObject.Find ("BigThoughtBubble");
-		if (bubble != null) {
-			StartCoroutine(bubble.GetComponent<ThoughtBubble>().MoveToCorner ());
-		}
-		
+	void StartButtonWiggles() {
 		string[] wigglableParts = new string[]{"String", "Pen", "Straw", "Cloth"};
 		
 		AirfieldProgression.itemsCollectible = true;

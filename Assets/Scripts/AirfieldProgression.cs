@@ -76,9 +76,11 @@ public class AirfieldProgression : MonoBehaviour {
 		dodo.dodoApproval ();
 		yield return new WaitForSeconds (1);
 		kaPow.transform.localScale = new Vector3 (0, 0, 0);
-		this.GetComponent<SpriteRenderer> ().enabled = false;
+
 		itemsCollectible = true;
 		cameraMover.cameraCanMove = true;
+
+		Destroy (gameObject);
 	}
 
 	public void StartWiggle(){
@@ -95,25 +97,21 @@ public class AirfieldProgression : MonoBehaviour {
 				}
 				break;
 			case GizmoPrefabs.StringName:
-				print ("Acquired wire.");
 				itemsCollectible = false;
 				storyManager.inventory.AddPart (KiteBuilder.STRING, GizmoPrefabs.StringName);
 				StartCoroutine (acquireThisPart ());
 				break;
 			case GizmoPrefabs.ClothName:
-				print ("Acquired cloth.");
 				itemsCollectible = false;
 				storyManager.inventory.AddPart (KiteBuilder.CLOTH, GizmoPrefabs.ClothName);
 				StartCoroutine (acquireThisPart ());
 				break;
 			case GizmoPrefabs.StrawName:
-				print ("Acquired straw.");
 				itemsCollectible = false;
 				storyManager.inventory.AddPart (KiteBuilder.LONG_ROD, GizmoPrefabs.StrawName);
 				StartCoroutine (acquireThisPart ());
 				break;
 			case GizmoPrefabs.PenName:
-				print ("Acquired pen.");
 				itemsCollectible = false;
 				storyManager.inventory.AddPart (KiteBuilder.SHORT_ROD, GizmoPrefabs.PenName);
 				StartCoroutine (acquireThisPart ());
