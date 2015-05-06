@@ -11,7 +11,7 @@ public class AirfieldProgression : MonoBehaviour {
 	private IEnumerator wiggling;
 	private static DodoController dodo;
 	private static GameObject goToBenchBtn;
-	private static GameObject buildKite;
+	private static ThoughtBubble buildKite;
 
 	// Use this for initialization
 	void Start () {
@@ -31,7 +31,7 @@ public class AirfieldProgression : MonoBehaviour {
 			dodo = GameObject.Find ("Dodo").GetComponent<DodoController> ();
 		}
 		if(buildKite == null) {
-			buildKite = GameObject.Find("BigThoughtBubble");
+			buildKite = GameObject.Find("BigThoughtBubble").GetComponent<ThoughtBubble>();
 		}
 
 		wiggling = wiggleAround ();
@@ -128,15 +128,9 @@ public class AirfieldProgression : MonoBehaviour {
 			}
 		} else {
 			if(storyManager.inventory.HaveAllKiteParts()){
-				buildKite.GetComponent<SpriteRenderer> ().color = Color.white;
-				buildKite.transform.GetChild (0).GetComponent<SpriteRenderer> ().color = Color.white;
-				buildKite.GetComponent<BoxCollider2D>().enabled = true;
-				WiggleButton();
+				buildKite.Activate();
 			}
 		}
 	}
-
-	void WiggleButton () {
-		buildKite.GetComponent<Animation>().Play();
-	}
+	
 }

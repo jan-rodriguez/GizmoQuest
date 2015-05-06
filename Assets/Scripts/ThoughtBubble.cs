@@ -5,6 +5,11 @@ public class ThoughtBubble : MonoBehaviour {
 
 	public string itemToBuild;
 	public Sprite finishedBubble;
+	AudioSource audSrc;
+
+	void Start () {
+		audSrc = gameObject.GetComponent<AudioSource>();
+	}
 
 	public IEnumerator MoveToCorner() {
 		Vector3 currentScale = this.transform.localScale;
@@ -37,5 +42,13 @@ public class ThoughtBubble : MonoBehaviour {
 	void OnMouseDown() {
 		GameManagerManager.forestProgression.gizmoToBuild = itemToBuild;
 		StartCoroutine(GameManagerManager.manager.GetComponent<SceneManager>().GoToWorkShop());
+	}
+
+	public void Activate () {
+		this.GetComponent<SpriteRenderer> ().color = Color.white;
+		this.transform.GetChild (0).GetComponent<SpriteRenderer> ().color = Color.white;
+		this.GetComponent<BoxCollider2D>().enabled = true;
+		this.GetComponent<Animation>().Play();
+		audSrc.Play();
 	}
 }
