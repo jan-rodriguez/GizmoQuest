@@ -54,6 +54,7 @@ public class DodoController : MonoBehaviour {
 		StopCoroutine (speechDodo);
 		StopCoroutine (sadDodo);
 		if (!storyManager.haveKite ()) {
+			AirfieldProgression.itemsCollectible = true;
 			StartButtonWiggles ();
 		} else {
 			ShowSavannaButton();

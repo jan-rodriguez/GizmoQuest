@@ -7,7 +7,7 @@ public class AirfieldProgression : MonoBehaviour {
 	private static GameObject kaPow;
 	private static ForestProgression storyManager;
 	private static SwipeCamera cameraMover;
-	public static bool itemsCollectible = true;
+	public static bool itemsCollectible = false;
 	private IEnumerator wiggling;
 	private static DodoController dodo;
 	private static GameObject goToBenchBtn;
@@ -118,18 +118,20 @@ public class AirfieldProgression : MonoBehaviour {
 				break;
 			}
 
-			if(storyManager.inventory.HaveAllKiteParts()){
-				buildKite.GetComponent<SpriteRenderer> ().color = Color.white;
-				buildKite.transform.GetChild (0).GetComponent<SpriteRenderer> ().color = Color.white;
-				buildKite.GetComponent<BoxCollider2D>().enabled = true;
-				WiggleButton();
-			}
+
 		}
 
 		if (this.name == "Dodo") {
 			if (storyManager.getKitePrint ()) {
 				storyManager.meetDodo ();
 				this.GetComponent<DodoController> ().startDodoSpeech ();
+			}
+		} else {
+			if(storyManager.inventory.HaveAllKiteParts()){
+				buildKite.GetComponent<SpriteRenderer> ().color = Color.white;
+				buildKite.transform.GetChild (0).GetComponent<SpriteRenderer> ().color = Color.white;
+				buildKite.GetComponent<BoxCollider2D>().enabled = true;
+				WiggleButton();
 			}
 		}
 	}
