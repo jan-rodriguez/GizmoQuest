@@ -12,7 +12,11 @@ public class ThoughtBubble : MonoBehaviour {
 	}
 
 	public IEnumerator MoveToCorner() {
+		SpriteRenderer sr = this.GetComponent<SpriteRenderer> ();
 		Vector3 currentScale = this.transform.localScale;
+		if(finishedBubble != null) {
+			sr.sprite = finishedBubble;
+		}
 		this.transform.localScale = new Vector3(currentScale.x * .75f, currentScale.y * .75f);
 		this.transform.parent = Camera.main.transform;
 		Camera.main.GetComponent<SwipeCamera> ().cameraCanMove = false;
@@ -27,11 +31,7 @@ public class ThoughtBubble : MonoBehaviour {
 			yield return null;
 		}
 
-		SpriteRenderer sr = this.GetComponent<SpriteRenderer> ();
 		sr.color = new Color (1f, 1f, 1f, 0.5f);
-		if(finishedBubble != null) {
-			sr.sprite = finishedBubble;
-		}
 
 		this.transform.GetChild (0).GetComponent<SpriteRenderer> ().color = new Color (1f, 1f, 1f, 0.2f);
 		Camera.main.GetComponent<SwipeCamera> ().cameraCanMove = true;
