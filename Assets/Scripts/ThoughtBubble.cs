@@ -34,7 +34,7 @@ public class ThoughtBubble : MonoBehaviour {
 	}
 
 	void OnMouseDown() {
-		GameManagerManager.manager.GetComponent<ForestProgression> ().gizmoToBuild = "Kite";
+		GameManagerManager.forestProgression.gizmoToBuild = "Kite";
 		StartCoroutine(GameManagerManager.manager.GetComponent<SceneManager>().GoToWorkShop());
 	}
 }

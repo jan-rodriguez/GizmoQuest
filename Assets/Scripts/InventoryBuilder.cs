@@ -11,16 +11,16 @@ public class InventoryBuilder : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		gameManager = GameObject.Find ("_GameManager");
+		gameManager = GameManagerManager.manager;
 		if (gameManager == null) {
 			Debug.LogError ("Starting workbench without game manager. Can't populate inventory");
 		} else {
-			progression = gameManager.GetComponent<ForestProgression>();
+			progression = GameManagerManager.forestProgression;
 
 			string[] partsToBuildList = null;
 
 			//TODO: GET CORRECT PART TO BUILD HERE
-			string partToBuild = GizmoPrefabs.KITE;
+			string partToBuild = GizmoPrefabs.BANJO;
 
 			switch (partToBuild) {
 			case GizmoPrefabs.KITE:
@@ -41,16 +41,9 @@ public class InventoryBuilder : MonoBehaviour {
 						BuildSlot(name);
 					}
 				}else{//Didn't find parts
-//					BuildSlot (null);
+					BuildSlot (null);
 				}
 			}
-
-			//TODO: REMOVE THIS
-			BuildSlot(GizmoPrefabs.PaperTowelRollName);
-			BuildSlot(GizmoPrefabs.Vine1Name);
-			BuildSlot(GizmoPrefabs.Vine2Name);
-			BuildSlot(GizmoPrefabs.Vine3Name);
-			BuildSlot(GizmoPrefabs.TissueBoxName);
 		}
 	}
 

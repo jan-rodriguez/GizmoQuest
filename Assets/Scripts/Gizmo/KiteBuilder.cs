@@ -137,7 +137,7 @@ public class KiteBuilder : MonoBehaviour {
 		foreach(Animation anim in gameObject.GetComponentsInChildren<Animation>()){
 			anim.Play ();
 		}
-		GameManagerManager.manager.GetComponent<ForestProgression>().makeKite();
+		GameManagerManager.forestProgression.makeKite();
 	}
 
 	public void hideBuilderAndShowFinished() {

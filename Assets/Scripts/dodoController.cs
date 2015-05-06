@@ -24,7 +24,7 @@ public class DodoController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		storyManager = GameObject.Find ("_GameManager").GetComponent<ForestProgression>();
+		storyManager = GameManagerManager.forestProgression;
 		skipButton = GameObject.Find ("SkipButton");
 		animator = this.GetComponent<Animator> ();
 		source = this.GetComponent<AudioSource> ();
