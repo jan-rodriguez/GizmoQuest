@@ -134,6 +134,11 @@ public class DodoController : MonoBehaviour {
 
 		disableSkipButton ();
 
+		GameObject bubble = GameObject.Find ("BigThoughtBubble");
+		if (bubble != null) {
+			StartCoroutine(bubble.GetComponent<ThoughtBubble>().MoveToCorner ());
+		}
+
 		string[] wigglableParts = new string[]{"String", "Pen", "Straw", "Cloth"};
 
 		AirfieldProgression.itemsCollectible = true;
