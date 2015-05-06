@@ -4,11 +4,12 @@ using System.Collections;
 public class ThoughtBubble : MonoBehaviour {
 
 	public string itemToBuild;
+	public Sprite finishedBubble;
 
 	public IEnumerator MoveToCorner() {
-		GameObject thoughtBubbles = transform.parent.gameObject;
+		Vector3 currentScale = this.transform.localScale;
+		this.transform.localScale = new Vector3(currentScale.x * .75f, currentScale.y * .75f);
 		this.transform.parent = Camera.main.transform;
-		Destroy (thoughtBubbles);
 		Camera.main.GetComponent<SwipeCamera> ().cameraCanMove = false;
 		Vector3 destinationPoint = Camera.main.ScreenToWorldPoint (new Vector3 (Screen.width * .9f, 
 		                                                                        Screen.height * .9f, 
@@ -20,9 +21,17 @@ public class ThoughtBubble : MonoBehaviour {
 			this.transform.position += direction / (60f);
 			yield return null;
 		}
-		this.GetComponent<SpriteRenderer> ().color = new Color (1f, 1f, 1f, 0.5f);
+
+		SpriteRenderer sr = this.GetComponent<SpriteRenderer> ();
+		sr.color = new Color (1f, 1f, 1f, 0.5f);
+		if(finishedBubble != null) {
+			sr.sprite = finishedBubble;
+		}
+
 		this.transform.GetChild (0).GetComponent<SpriteRenderer> ().color = new Color (1f, 1f, 1f, 0.2f);
 		Camera.main.GetComponent<SwipeCamera> ().cameraCanMove = true;
+
+
 	}
 
 	void OnMouseDown() {

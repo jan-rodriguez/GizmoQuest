@@ -31,7 +31,7 @@ public class SavannahController : MonoBehaviour {
 		}
 
 		yield return new WaitForSeconds (2);
-		GameObject nextArrow = Camera.main.transform.GetChild (1).gameObject;
+		GameObject nextArrow = GameObject.Find ("Savannah to Cliff");
 		if (nextArrow != null) {
 			nextArrow.GetComponent<SpriteRenderer>().enabled = true;
 			nextArrow.GetComponent<Collider2D>().enabled = true;
