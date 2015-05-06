@@ -3,16 +3,6 @@ using System.Collections;
 
 public class ThoughtBubble : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
 	public IEnumerator MoveToCorner() {
 		this.transform.parent = Camera.main.transform;
 		Destroy (GameObject.Find ("ThoughtBubbles"));
@@ -34,7 +24,7 @@ public class ThoughtBubble : MonoBehaviour {
 	}
 
 	void OnMouseDown() {
-		GameManagerManager.forestProgression.gizmoToBuild = "Kite";
+		GameManagerManager.forestProgression.gizmoToBuild = GizmoPrefabs.KITE;
 		StartCoroutine(GameManagerManager.manager.GetComponent<SceneManager>().GoToWorkShop());
 	}
 }

@@ -19,8 +19,7 @@ public class InventoryBuilder : MonoBehaviour {
 
 			string[] partsToBuildList = null;
 
-			//TODO: GET CORRECT PART TO BUILD HERE
-			string partToBuild = GizmoPrefabs.BANJO;
+			string partToBuild = GameManagerManager.forestProgression.gizmoToBuild;
 
 			switch (partToBuild) {
 			case GizmoPrefabs.KITE:
