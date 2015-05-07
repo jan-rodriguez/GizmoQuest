@@ -2116,7 +2116,7 @@ MonoBehaviour:
   speechClips:
   - {fileID: 8300000, guid: dd423f54749c56c4fabd34eccc5386ae, type: 3}
   - {fileID: 8300000, guid: cd9aca65767534d478977ccbf1024269, type: 3}
-  - {fileID: 8300000, guid: ea894f4e9bb7c8f4391b267103def1a1, type: 3}
+  - {fileID: 8300000, guid: 15443400dfa53492f94c86c5833f0a0c, type: 3}
   - {fileID: 8300000, guid: 1304c04e81e2e6340b4ca90e096d718b, type: 3}
   yesClips:
   - {fileID: 8300000, guid: f1f7bcfdb9d58994283cd59bf5b292bd, type: 3}
@@ -2209,6 +2209,7 @@ GameObject:
   - 114: {fileID: 1439071384}
   - 61: {fileID: 1439071383}
   - 111: {fileID: 1439071385}
+  - 82: {fileID: 1439071386}
   m_Layer: 0
   m_Name: Airfield to Savannah
   m_TagString: Untagged
@@ -2293,6 +2294,75 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!82 &1439071386
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1439071380}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: a1cf22c5e8b5647f5a323e2ac4c01f80, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &1489042402
 GameObject:
   m_ObjectHideFlags: 0

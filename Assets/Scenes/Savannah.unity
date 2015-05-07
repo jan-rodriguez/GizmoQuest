@@ -230,8 +230,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultSprite: {fileID: 21300000, guid: 2f3554253b89e21429e42494da7c97f4, type: 3}
   clips:
-  - {fileID: 8300000, guid: 7721780d725dc0742828c7fece13b9d0, type: 3}
-  - {fileID: 8300000, guid: 0cad19e13122f054aa43c5cbcd2f11d3, type: 3}
+  - {fileID: 8300000, guid: 670b8a31e61b04ab780d3e540d64ca50, type: 3}
+  - {fileID: 8300000, guid: 6ada3902dcb1044819001cc929451376, type: 3}
+  - {fileID: 8300000, guid: 21e51b281152e417593e63ded447b5d0, type: 3}
 --- !u!95 &205859521
 Animator:
   serializedVersion: 3
@@ -2505,7 +2506,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1945574779}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
@@ -2529,7 +2530,7 @@ SpriteRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1945574779}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
@@ -2546,7 +2547,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 20
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300002, guid: cffa643e57096411baabe14a60436a5f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &2022152382
