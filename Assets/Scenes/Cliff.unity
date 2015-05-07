@@ -1127,12 +1127,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9c283ef03be84d4498c2c75c6132fe97, type: 3}
   banjoDialogClips:
   - {fileID: 8300000, guid: ad6d9c6ba68cb3749903a13659781afc, type: 3}
+  - {fileID: 8300000, guid: fc9ca7cc2c5e24e7ead8db2eaffc6f86, type: 3}
+  - {fileID: 8300000, guid: 1360a108ee804384282d4090e2c17322, type: 3}
   lionClickAudio: {fileID: 8300000, guid: 69369180514c9914e84fe25cd8b0581b, type: 3}
   myTissuesClip: {fileID: 8300000, guid: d686724b4287ba342acd9a26e551fd08, type: 3}
   lionScript: {fileID: 905522664}
   ladderScript: {fileID: 799525077}
-  banjoClip: {fileID: 8300000, guid: fc9ca7cc2c5e24e7ead8db2eaffc6f86, type: 3}
-  greatJobClip: {fileID: 8300000, guid: 1360a108ee804384282d4090e2c17322, type: 3}
 --- !u!61 &862427584
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1873,7 +1873,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b6b3d46af3bb54e3caf69db507bf6d94, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: .75
+  m_Volume: .200000003
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2289,6 +2289,10 @@ Prefab:
       propertyPath: backgroundRenderer
       value: 
       objectReference: {fileID: 778109635}
+    - target: {fileID: 8222542, guid: 1bae721aba43d4d34b2c3ceeadd55749, type: 2}
+      propertyPath: m_Volume
+      value: .300000012
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1bae721aba43d4d34b2c3ceeadd55749, type: 2}
   m_IsPrefabParent: 0

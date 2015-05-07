@@ -19,8 +19,6 @@ public class DodoCliffController : MonoBehaviour {
 	public AudioClip myTissuesClip;
 	public Lion lionScript;
 	public Ladder ladderScript;
-	public AudioClip banjoClip;
-	public AudioClip greatJobClip;
 
 
 	void Start () {
@@ -77,11 +75,6 @@ public class DodoCliffController : MonoBehaviour {
 				StopDodoTalks();
 				StartCoroutine(PlayMyTissuesClip());
 			}
-			
-			if (progression.haveBanjo () && !clicked) {
-				clicked = true;
-				PlayBanjo();
-			}
 		}
 
 
@@ -110,29 +103,35 @@ public class DodoCliffController : MonoBehaviour {
 				stopPlaying = true;
 				break;
 			}
+			if(i == 1) {
+				StopDodoTalking();
+				animator.SetBool("playBanjo", true);
+			}
 			audSrc.clip = banjoDialogClips[i];
 			audSrc.Play ();
 			
 			yield return new WaitForSeconds(banjoDialogClips[i].length);
+
+			if(i == 1) {
+				animator.SetBool("playBanjo", false);
+				lionScript.WakeUp();
+				ladderScript.CollectLadder();
+				StartDodoTalking ();
+			}
 		}
 		StopDodoTalking();
 	}
 
 	IEnumerator PlayMyTissuesClip () {
 		audSrc.Pause ();
+		StartDodoTalking();
 		audSrc.PlayOneShot (myTissuesClip);
 
 		yield return new WaitForSeconds (myTissuesClip.length);
-
+		StopDodoTalking();
 		audSrc.UnPause ();
 
 		yield return null;
-	}
-
-	void PlayBanjo() {
-		//TODO: MAKE DODO PLAY BANJO HERE
-		StopDodoTalks ();
-		StartCoroutine(BanjoCoroutine());
 	}
 
 	void StartDodoTalking () {
@@ -143,31 +142,14 @@ public class DodoCliffController : MonoBehaviour {
 		animator.SetBool ("talking", false);
 	}
 
-	IEnumerator BanjoCoroutine () {
-		animator.SetBool("playBanjo", true);
-		audSrc.PlayOneShot(banjoClip);
-
-		yield return new WaitForSeconds(1.5f);
-
-		animator.SetBool("playBanjo", false);
-
-		audSrc.PlayOneShot (greatJobClip);
-		lionScript.WakeUp();
-		ladderScript.CollectLadder();
-
-		yield return null;
-	}
-
 	void StartTalking () {
 		animator.SetBool("talking", true);
 	}
 
 	public void StopDodoTalks () {
-//		StopCoroutine (PlayLionClickClip());
 		stopPlaying = true;
 		audSrc.Stop ();
 		StopDodoTalking ();
-		StopCoroutine (BanjoCoroutine ());
 		StopCoroutine (BeginCliffDialog());
 		StopCoroutine (FinishCliffDialog());
 	}

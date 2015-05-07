@@ -821,8 +821,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 469512984}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12, y: 17.8099995, z: 0}
-  m_LocalScale: {x: -2.5, y: 2.5, z: 1}
+  m_LocalPosition: {x: -14, y: 18.8999996, z: 0}
+  m_LocalScale: {x: -3, y: 3, z: 1}
   m_Children:
   - {fileID: 1967435180}
   m_Father: {fileID: 1395848959}
@@ -1197,6 +1197,10 @@ Prefab:
       propertyPath: swipeNotifier
       value: 
       objectReference: {fileID: 117269453}
+    - target: {fileID: 8222542, guid: 1bae721aba43d4d34b2c3ceeadd55749, type: 2}
+      propertyPath: m_Volume
+      value: .300000012
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1bae721aba43d4d34b2c3ceeadd55749, type: 2}
   m_IsPrefabParent: 0
@@ -2587,7 +2591,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 49c36f47acc2df143935cd63fb1dede8, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: .330000013
+  m_Volume: .200000003
   m_Pitch: 1
   Loop: 1
   Mute: 0

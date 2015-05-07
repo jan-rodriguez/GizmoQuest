@@ -20,11 +20,11 @@ public class ThoughtBubble : MonoBehaviour {
 		if(finishedBubble != null) {
 			sr.sprite = progressionSprites[0];
 		}
-		this.transform.localScale = new Vector3(currentScale.x * 1.2f, currentScale.y * 1.2f);
+		this.transform.localScale = new Vector3(currentScale.x * 1.5f, currentScale.y * 1.5f);
 		this.transform.parent = Camera.main.transform;
 		Camera.main.GetComponent<SwipeCamera> ().cameraCanMove = false;
-		Vector3 destinationPoint = Camera.main.ScreenToWorldPoint (new Vector3 (Screen.width * .9f, 
-		                                                                        Screen.height * .9f, 
+		Vector3 destinationPoint = Camera.main.ScreenToWorldPoint (new Vector3 (Screen.width * .85f, 
+		                                                                        Screen.height * .85f, 
 		                                                                        transform.position.z - Camera.main.transform.position.z));
 		Vector3 direction = new Vector3(destinationPoint.x - this.transform.position.x, 
 		                                destinationPoint.y - this.transform.position.y, 
