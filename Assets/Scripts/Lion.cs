@@ -4,6 +4,7 @@ using System.Collections;
 public class Lion : MonoBehaviour {
 
 	public AudioClip growl;
+	public DodoCliffController dodo;
 
 	bool clicked = false;
 	Animator anim;
@@ -21,14 +22,18 @@ public class Lion : MonoBehaviour {
 	}
 
 	void OnMouseDown () {
-		if(!clicked && !GameManagerManager.forestProgression.haveBanjo()) {
-			StartCoroutine(bubbleScript.MoveToCorner());
-			GameManagerManager.forestProgression.getBanjoPrint();
-			clicked = true;
+		if (CliffProgression.canBeginLevel) {
+			if(!clicked && !GameManagerManager.forestProgression.haveBanjo()) {
+				StartCoroutine(bubbleScript.MoveToCorner());
+				GameManagerManager.forestProgression.getBanjoPrint();
+				dodo.ClickLion();
+				clicked = true;
+			}
+			else if (!GameManagerManager.forestProgression.haveBanjo()) {
+				StartCoroutine(playGrowl());
+			}
 		}
-		else if (!GameManagerManager.forestProgression.haveBanjo()) {
-			StartCoroutine(playGrowl());
-		}
+
 	}
 
 	public void WakeUp () {

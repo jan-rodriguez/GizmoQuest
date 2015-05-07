@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: DodoSneeze
+  m_Name: DodoSickIdle
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -18,13 +18,19 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 55f7d85e8782c34428f0f401278914f0, type: 3}
+      value: {fileID: 21300000, guid: 9431f20185c6a4b93ad5c4b3652453d8, type: 3}
+    - time: .166666672
+      value: {fileID: 21300002, guid: 9431f20185c6a4b93ad5c4b3652453d8, type: 3}
     - time: .333333343
-      value: {fileID: 21300002, guid: 55f7d85e8782c34428f0f401278914f0, type: 3}
-    - time: .583333313
-      value: {fileID: 21300004, guid: 55f7d85e8782c34428f0f401278914f0, type: 3}
-    - time: .816666663
-      value: {fileID: 21300000, guid: 55f7d85e8782c34428f0f401278914f0, type: 3}
+      value: {fileID: 21300004, guid: 9431f20185c6a4b93ad5c4b3652453d8, type: 3}
+    - time: .5
+      value: {fileID: 21300006, guid: 9431f20185c6a4b93ad5c4b3652453d8, type: 3}
+    - time: .666666687
+      value: {fileID: 21300004, guid: 9431f20185c6a4b93ad5c4b3652453d8, type: 3}
+    - time: .833333313
+      value: {fileID: 21300002, guid: 9431f20185c6a4b93ad5c4b3652453d8, type: 3}
+    - time: 1
+      value: {fileID: 21300000, guid: 9431f20185c6a4b93ad5c4b3652453d8, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -43,14 +49,17 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 55f7d85e8782c34428f0f401278914f0, type: 3}
-    - {fileID: 21300002, guid: 55f7d85e8782c34428f0f401278914f0, type: 3}
-    - {fileID: 21300004, guid: 55f7d85e8782c34428f0f401278914f0, type: 3}
-    - {fileID: 21300000, guid: 55f7d85e8782c34428f0f401278914f0, type: 3}
+    - {fileID: 21300000, guid: 9431f20185c6a4b93ad5c4b3652453d8, type: 3}
+    - {fileID: 21300002, guid: 9431f20185c6a4b93ad5c4b3652453d8, type: 3}
+    - {fileID: 21300004, guid: 9431f20185c6a4b93ad5c4b3652453d8, type: 3}
+    - {fileID: 21300006, guid: 9431f20185c6a4b93ad5c4b3652453d8, type: 3}
+    - {fileID: 21300004, guid: 9431f20185c6a4b93ad5c4b3652453d8, type: 3}
+    - {fileID: 21300002, guid: 9431f20185c6a4b93ad5c4b3652453d8, type: 3}
+    - {fileID: 21300000, guid: 9431f20185c6a4b93ad5c4b3652453d8, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: .833333313
+    m_StopTime: 1.01666665
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

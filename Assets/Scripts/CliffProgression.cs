@@ -4,6 +4,7 @@ using System.Collections;
 public class CliffProgression : MonoBehaviour {
 	private static GameObject kaPow;
 	public static bool itemsCollectible = true;
+	public static bool canBeginLevel = false;
 	private static ForestProgression storyManager;
 	private static SwipeCamera cameraMover;
 	private static ThoughtBubble buildBanjo;
