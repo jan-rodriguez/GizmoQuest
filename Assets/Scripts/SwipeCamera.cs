@@ -5,7 +5,9 @@ public class SwipeCamera : MonoBehaviour {
 
 	public SpriteRenderer backgroundRenderer;
 	public bool cameraCanMove = true;
+	public GameObject swipeNotifier;
 
+	public static bool allowClicks = false;
 	private const float minSwipeDist  = 10.0f;
 	private const float maxSwipeTime = 0.5f;
 	private const float SWIPE_Z_POS = -10.0f;
@@ -14,7 +16,6 @@ public class SwipeCamera : MonoBehaviour {
 	
 	private float camMinXPos = -19.0f;
 	private float camMaxXPos = 19.0f;
-	private float fingerStartTime  = 0.0f;
 	private Vector3 fingerStartPos = Vector3.zero;
 	private Vector3 prevFingerPos = Vector3.zero;
 	private float camXVel = 0.0f;
@@ -28,6 +29,10 @@ public class SwipeCamera : MonoBehaviour {
 
 		camMinXPos = backgroundRenderer.bounds.min.x + .5f * frustumWidth;
 		camMaxXPos = backgroundRenderer.bounds.max.x - .5f * frustumWidth;
+
+		if(GameManagerManager.forestProgression.haveMetDodo() && swipeNotifier != null) {
+			Destroy (swipeNotifier);
+		}
 	}
 
 	// Update is called once per frame
@@ -81,6 +86,11 @@ public class SwipeCamera : MonoBehaviour {
 					case TouchPhase.Moved:					
 						//Vector3 touchPosVec3 = touch.position;
 						if (ShouldSwipe (touch.position)) {
+							if(swipeNotifier != null) {
+								allowClicks = true;
+								Destroy(swipeNotifier);
+								swipeNotifier = null;
+							}
 							SwipeToPosition (touch.position);
 							
 						}
@@ -99,6 +109,11 @@ public class SwipeCamera : MonoBehaviour {
 			} else if (Input.GetMouseButton (0)) {
 			
 				if (ShouldSwipe (mousePos)) {
+					if(swipeNotifier != null) {
+						allowClicks = true;
+						Destroy(swipeNotifier);
+						swipeNotifier = null;
+					}
 					SwipeToPosition (mousePos);	
 				}
 			} else if (Input.GetMouseButtonUp (0)) {
@@ -113,7 +128,6 @@ public class SwipeCamera : MonoBehaviour {
 		camXVel = 0;
 		swipeBeginPos.z = SWIPE_Z_POS;
 		isSwipe = true;
-		fingerStartTime = Time.time;
 		fingerStartPos = swipeBeginPos;
 		prevFingerPos = swipeBeginPos;
 	}

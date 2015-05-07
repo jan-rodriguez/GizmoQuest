@@ -121,7 +121,7 @@ public class AirfieldProgression : MonoBehaviour {
 
 		}
 
-		if (this.name == "Dodo") {
+		if (SwipeCamera.allowClicks && this.name == "Dodo") {
 			if (storyManager.getKitePrint ()) {
 				storyManager.meetDodo ();
 				this.GetComponent<DodoController> ().startDodoSpeech ();
