@@ -976,6 +976,7 @@ GameObject:
   - 95: {fileID: 862427581}
   - 114: {fileID: 862427583}
   - 61: {fileID: 862427584}
+  - 82: {fileID: 862427582}
   m_Layer: 0
   m_Name: Dodo
   m_TagString: Untagged
@@ -1040,6 +1041,75 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!82 &862427582
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 862427578}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!114 &862427583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1051,6 +1121,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73b2641ac944e46c180de4061f9e1233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noBanjoClips: []
+  banjoDialogClips: []
+  lionScript: {fileID: 905522664}
+  ladderScript: {fileID: 799525077}
+  banjoClip: {fileID: 8300000, guid: fc9ca7cc2c5e24e7ead8db2eaffc6f86, type: 3}
 --- !u!61 &862427584
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1514,6 +1589,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemToBuild: banjo
   finishedBubble: {fileID: 21300002, guid: 31aff6e07eb01416f8eba9ed96f23018, type: 3}
+  progressionSprites:
+  - {fileID: 21300000, guid: 072a42bc9eef54f99b3d2c8c5ff8ddbf, type: 3}
+  - {fileID: 21300000, guid: 68badbd3dc7624533a72b2be83106ee6, type: 3}
+  - {fileID: 21300000, guid: 890db89039b544bfcb2e84a918f284cb, type: 3}
+  - {fileID: 21300000, guid: 8892e98a025024850954a9ba5eecfbce, type: 3}
+  - {fileID: 21300000, guid: 6388f68abf14a497aba0a260f5f905a7, type: 3}
+  - {fileID: 21300000, guid: 3266bc36e69f24347abf40d82047f011, type: 3}
 --- !u!212 &1338904720
 SpriteRenderer:
   m_ObjectHideFlags: 0

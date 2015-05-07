@@ -17,7 +17,6 @@ public class Lion : MonoBehaviour {
 
 		if (GameManagerManager.forestProgression.haveBanjo()) {
 			Destroy(transform.GetChild(0).gameObject);
-			WakeUp();
 		}
 	}
 

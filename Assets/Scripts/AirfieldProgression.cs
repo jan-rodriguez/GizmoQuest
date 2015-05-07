@@ -99,21 +99,25 @@ public class AirfieldProgression : MonoBehaviour {
 			case GizmoPrefabs.StringName:
 				itemsCollectible = false;
 				storyManager.inventory.AddPart (KiteBuilder.STRING, GizmoPrefabs.StringName);
+				buildKite.CollectPiece();
 				StartCoroutine (acquireThisPart ());
 				break;
 			case GizmoPrefabs.ClothName:
 				itemsCollectible = false;
 				storyManager.inventory.AddPart (KiteBuilder.CLOTH, GizmoPrefabs.ClothName);
+				buildKite.CollectPiece();
 				StartCoroutine (acquireThisPart ());
 				break;
 			case GizmoPrefabs.StrawName:
 				itemsCollectible = false;
 				storyManager.inventory.AddPart (KiteBuilder.LONG_ROD, GizmoPrefabs.StrawName);
+				buildKite.CollectPiece();
 				StartCoroutine (acquireThisPart ());
 				break;
 			case GizmoPrefabs.PenName:
 				itemsCollectible = false;
 				storyManager.inventory.AddPart (KiteBuilder.SHORT_ROD, GizmoPrefabs.PenName);
+				buildKite.CollectPiece();
 				StartCoroutine (acquireThisPart ());
 				break;
 			}

@@ -62,27 +62,32 @@ public class CliffProgression : MonoBehaviour {
 			case GizmoPrefabs.Vine1Name:
 				itemsCollectible = false;
 				storyManager.inventory.AddPart (BanjoBuilder.RUBBERBAND, GizmoPrefabs.Vine1Name);
+				buildBanjo.CollectPiece();
 				StartCoroutine (acquireThisPart ());
 				break;
 			case GizmoPrefabs.Vine2Name:
 				itemsCollectible = false;
 				storyManager.inventory.AddPart (BanjoBuilder.RUBBERBAND, GizmoPrefabs.Vine2Name);
+				buildBanjo.CollectPiece();
 				StartCoroutine (acquireThisPart ());
 				break;
 			case GizmoPrefabs.Vine3Name:
 				itemsCollectible = false;
 				storyManager.inventory.AddPart (BanjoBuilder.RUBBERBAND, GizmoPrefabs.Vine3Name);
+				buildBanjo.CollectPiece();
 				StartCoroutine (acquireThisPart ());
 				break;
 			case GizmoPrefabs.PaperTowelRollName:
 				itemsCollectible = false;
 				storyManager.inventory.AddPart (BanjoBuilder.POLE, GizmoPrefabs.PaperTowelRollName);
 				storyManager.collectPaperTowelRoll();
+				buildBanjo.CollectPiece();
 				StartCoroutine (acquireThisPart ());
 				break;
 			case GizmoPrefabs.TissueBoxName:
 				itemsCollectible = false;
 				storyManager.inventory.AddPart (BanjoBuilder.BOX, GizmoPrefabs.TissueBoxName);
+				buildBanjo.CollectPiece();
 				StartCoroutine (acquireThisPart ());
 				break;
 			}
@@ -101,6 +106,7 @@ public class CliffProgression : MonoBehaviour {
 				itemsCollectible = false;
 				storyManager.inventory.AddPart (BanjoBuilder.BOX, GizmoPrefabs.TissueBoxName);
 				storyManager.collectTissueBox();
+				buildBanjo.CollectPiece();
 				StartCoroutine (acquireThisPart ());
 				if(storyManager.inventory.HaveAllBanjoPars()){
 					buildBanjo.Activate();
