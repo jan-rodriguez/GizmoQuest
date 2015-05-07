@@ -69,13 +69,11 @@ public class DodoController : MonoBehaviour {
 		}
 		skipButton.GetComponent<Button> ().enabled = true;
 		skipButton.GetComponent<Image> ().enabled = true;
-		skipButton.transform.GetChild (0).GetComponent<Text> ().enabled = true;
 	}
 
 	void disableSkipButton() {
 		skipButton.GetComponent<Button> ().enabled = false;
 		skipButton.GetComponent<Image> ().enabled = false;
-		skipButton.transform.GetChild (0).GetComponent<Text> ().enabled = false;
 	}
 
 	public void startDodoSpeech() {

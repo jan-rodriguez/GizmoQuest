@@ -5,6 +5,8 @@ public class ThoughtBubble : MonoBehaviour {
 
 	public string itemToBuild;
 	public Sprite finishedBubble;
+	public Sprite[] progressionSprites;
+	private int collectedPieces = 0;
 	AudioSource audSrc;
 
 	void Start () {
@@ -13,11 +15,12 @@ public class ThoughtBubble : MonoBehaviour {
 
 	public IEnumerator MoveToCorner() {
 		SpriteRenderer sr = this.GetComponent<SpriteRenderer> ();
+		Destroy(transform.GetChild(0).gameObject);
 		Vector3 currentScale = this.transform.localScale;
 		if(finishedBubble != null) {
-			sr.sprite = finishedBubble;
+			sr.sprite = progressionSprites[0];
 		}
-		this.transform.localScale = new Vector3(currentScale.x * .75f, currentScale.y * .75f);
+		this.transform.localScale = new Vector3(currentScale.x * 1.2f, currentScale.y * 1.2f);
 		this.transform.parent = Camera.main.transform;
 		Camera.main.GetComponent<SwipeCamera> ().cameraCanMove = false;
 		Vector3 destinationPoint = Camera.main.ScreenToWorldPoint (new Vector3 (Screen.width * .9f, 
@@ -30,10 +33,6 @@ public class ThoughtBubble : MonoBehaviour {
 			this.transform.position += direction / (60f);
 			yield return null;
 		}
-
-		sr.color = new Color (1f, 1f, 1f, 0.5f);
-
-		this.transform.GetChild (0).GetComponent<SpriteRenderer> ().color = new Color (1f, 1f, 1f, 0.2f);
 		Camera.main.GetComponent<SwipeCamera> ().cameraCanMove = true;
 
 
@@ -45,10 +44,14 @@ public class ThoughtBubble : MonoBehaviour {
 	}
 
 	public void Activate () {
-		this.GetComponent<SpriteRenderer> ().color = Color.white;
-		this.transform.GetChild (0).GetComponent<SpriteRenderer> ().color = Color.white;
 		this.GetComponent<BoxCollider2D>().enabled = true;
 		this.GetComponent<Animation>().Play();
 		audSrc.Play();
+	}
+
+	public void CollectPiece () {
+		collectedPieces ++;
+		SpriteRenderer sr = this.GetComponent<SpriteRenderer> ();
+		sr.sprite = progressionSprites[collectedPieces];
 	}
 }
