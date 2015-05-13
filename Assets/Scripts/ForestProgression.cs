@@ -53,6 +53,15 @@ public class ForestProgression : MonoBehaviour {
 			}
 			return true;
 		}
+
+		public bool HaveAllSlingshotParts () {
+			foreach (string part in SlingShotBuilder.PARTS_LIST) {
+				if (!partsHeld.ContainsKey (part)) {
+					return false;
+				}
+			}
+			return true;
+		}
 		
 		public List<string> GetParts(string partType) {
 			List<string> returnList = new List<string>();
@@ -196,7 +205,7 @@ public class ForestProgression : MonoBehaviour {
 
 	public bool havePaperTowelRoll () {
 		return collectedPaperTowelRoll;
-	}
+	} 
 
 	//Slingshot-related getters/setters/accessors
 	public bool getSlingshotPrint() {

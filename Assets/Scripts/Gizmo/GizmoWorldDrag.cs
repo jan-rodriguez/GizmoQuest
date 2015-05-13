@@ -8,6 +8,7 @@ public class GizmoWorldDrag : MonoBehaviour {
 
 	KiteBuilder kiteBuilder;
 	BanjoBuilder banjoBuilder;
+	SlingShotBuilder slingshotBuilder;
 	bool inBuildArea = false;
 
 	Vector2 originalTouch0Pos;
@@ -25,6 +26,7 @@ public class GizmoWorldDrag : MonoBehaviour {
 		GameObject buildArea = GameObject.FindGameObjectWithTag(BUILD_AREA_TAG);
 		kiteBuilder = buildArea.GetComponent<KiteBuilder> ();
 		banjoBuilder = buildArea.GetComponent<BanjoBuilder> ();
+		slingshotBuilder = buildArea.GetComponent<SlingShotBuilder> ();
 		spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 		audioSource = gameObject.GetComponent<AudioSource>();
 	}
@@ -142,6 +144,8 @@ public class GizmoWorldDrag : MonoBehaviour {
 				kiteBuilder.TryAttachGizmo(gameObject);
 			}else if(banjoBuilder != null) {
 				banjoBuilder.TryAttachGizmo(gameObject);
+			}else if(slingshotBuilder != null){
+				slingshotBuilder.TryAttachGizmo(gameObject);
 			}
 
 		}

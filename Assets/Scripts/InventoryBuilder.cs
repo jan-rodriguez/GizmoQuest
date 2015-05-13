@@ -82,6 +82,18 @@ public class InventoryBuilder : MonoBehaviour {
 		case GizmoPrefabs.TissueBoxName:
 			actualSlot.GetComponent<GizmoSlot>().SetGizmoPrefab(GizmoPrefabs.TissueBoxPrefab);
 			break;
+		case GizmoPrefabs.RopeName:
+			actualSlot.GetComponent<GizmoSlot>().SetGizmoPrefab(GizmoPrefabs.RopePrefab);
+			break;
+		case GizmoPrefabs.ElasticName:
+			actualSlot.GetComponent<GizmoSlot>().SetGizmoPrefab(GizmoPrefabs.ElasticPrefab);
+			break;
+		case GizmoPrefabs.VStickName:
+			actualSlot.GetComponent<GizmoSlot>().SetGizmoPrefab(GizmoPrefabs.VStickPrefab);
+			break;
+		case GizmoPrefabs.RulerName:
+			actualSlot.GetComponent<GizmoSlot>().SetGizmoPrefab(GizmoPrefabs.RulerPrefab);
+			break;
 		default:
 			break;
 		}

@@ -100,7 +100,6 @@ public class CliffProgression : MonoBehaviour {
 		}
 	}
 
-
 	public void CollectTissueBox () {
 		if(name == GizmoPrefabs.PaperTowelRollName) {
 			if(itemsCollectible && GameManagerManager.forestProgression.haveBanjoPrint()) {

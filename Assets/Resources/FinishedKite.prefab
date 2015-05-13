@@ -9,7 +9,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 470734}
   - 212: {fileID: 21210892}
-  - 111: {fileID: 11194082}
   - 198: {fileID: 19892148}
   - 199: {fileID: 19938042}
   - 82: {fileID: 8279632}
@@ -102,21 +101,6 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
---- !u!111 &11194082
-Animation:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141346}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 4d970baa0666347e9bcca5cc85d5b026, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 4d970baa0666347e9bcca5cc85d5b026, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!114 &11404482
 MonoBehaviour:
   m_ObjectHideFlags: 1

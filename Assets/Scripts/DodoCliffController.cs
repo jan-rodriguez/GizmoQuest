@@ -40,7 +40,7 @@ public class DodoCliffController : MonoBehaviour {
 		if(progression.haveBanjo()) {
 			int children = transform.childCount;
 			for(int i = 0; i < children; i++) {
-				Destroy(transform.GetChild(i));
+				Destroy(transform.GetChild(i).gameObject);
 			}
 			animator.SetBool("hasBanjo", true);
 			CliffProgression.canBeginLevel = true;

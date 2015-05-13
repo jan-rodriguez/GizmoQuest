@@ -28,7 +28,7 @@ public class SlingShotBuilder : MonoBehaviour {
 
 	private Vector2 vStickPos = new Vector2(-.05f, .6f);
 	private Vector2 rulerPos = new Vector2(.16f, -.88f);
-	private Vector2 ropePos = new Vector2 (.13f, -.48f);
+	private Vector2 ropePos = new Vector2 (.16f, -.5f);
 	private Vector2 elasticPos = new Vector2(0, 1.71f);
 
 	void Start () {
@@ -44,11 +44,11 @@ public class SlingShotBuilder : MonoBehaviour {
 		partsDict.Add (ELASTIC, false);
 	}
 
-	void TryAttachGizmo (GameObject gizmo) {
+	public void TryAttachGizmo (GameObject gizmo) {
 		switch (gizmo.tag) {
 		case V_STICK:
 			float vStickDist = ((Vector2)transform.InverseTransformPoint(gizmo.transform.position) - vStickPos).magnitude;
-			
+
 			bool hasVStick = false;
 			
 			if( vStickDist < DISTANCE_THRESHOLD 
@@ -60,7 +60,7 @@ public class SlingShotBuilder : MonoBehaviour {
 			break;
 		case RULER:
 			float spoonDist = ((Vector2)transform.InverseTransformPoint(gizmo.transform.position) - rulerPos).magnitude;
-			
+
 			bool hasSpoon = false;
 			
 			if( spoonDist < DISTANCE_THRESHOLD 
@@ -121,7 +121,7 @@ public class SlingShotBuilder : MonoBehaviour {
 			anim.Play ();
 		}
 		//TODO: MAKE THIS FOR THE SLINGSHOT
-		GameManagerManager.forestProgression.makeKite();
+		GameManagerManager.forestProgression.makeSlingshot();
 	}
 	
 	public void hideBuilderAndShowFinished() {

@@ -71,7 +71,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: .29411763, g: .737119436, b: 1, a: .0196078438}
+  m_BackGroundColor: {r: .800000072, g: .945098102, b: 1, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -190,6 +190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundRenderer: {fileID: 0}
   cameraCanMove: 1
+  swipeNotifier: {fileID: 0}
 --- !u!124 &12467766
 Behaviour:
   m_ObjectHideFlags: 1
@@ -220,7 +221,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: 7f57acce7a71e9d44921b89d91077e19, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
