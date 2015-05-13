@@ -17,3 +17,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Cliff.unity
   - enabled: 1
     path: Assets/Scenes/Dam.unity
+  - enabled: 1
+    path: Assets/Scenes/CompletedSavannah.unity

@@ -21,6 +21,6 @@ public class DamWall : MonoBehaviour {
 	}
 
 	void GoToSavannah () {
-		StartCoroutine(GameManagerManager.manager.GetComponent<SceneManager>().GoToSavannah());
+		StartCoroutine(GameManagerManager.manager.GetComponent<SceneManager>().GoToCompletedSavannah());
 	}
 }
