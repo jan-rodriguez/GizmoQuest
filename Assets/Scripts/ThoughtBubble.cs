@@ -6,6 +6,7 @@ public class ThoughtBubble : MonoBehaviour {
 	public string itemToBuild;
 	public Sprite finishedBubble;
 	public Sprite[] progressionSprites;
+	public DodoCliffController dodo;
 	private int collectedPieces = 0;
 	AudioSource audSrc;
 
@@ -39,8 +40,14 @@ public class ThoughtBubble : MonoBehaviour {
 	}
 
 	void OnMouseDown() {
-		GameManagerManager.forestProgression.gizmoToBuild = itemToBuild;
-		StartCoroutine(GameManagerManager.manager.GetComponent<SceneManager>().GoToWorkShop());
+		if (GameManagerManager.forestProgression.haveBanjoPrint ()) {
+			GameManagerManager.forestProgression.gizmoToBuild = itemToBuild;
+			StartCoroutine (GameManagerManager.manager.GetComponent<SceneManager> ().GoToWorkShop ());
+		} else {
+			StartCoroutine(MoveToCorner());
+			GameManagerManager.forestProgression.getBanjoPrint();
+			dodo.ClickLion();
+		}
 	}
 
 	public void Activate () {

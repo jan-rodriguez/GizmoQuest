@@ -8,6 +8,8 @@ public class CliffProgression : MonoBehaviour {
 	private static ForestProgression storyManager;
 	private static SwipeCamera cameraMover;
 	private static ThoughtBubble buildBanjo;
+	private static DodoCliffController dodo;
+
 	// Use this for initialization
 	void Start () {
 		if (storyManager == null) {
@@ -22,6 +24,9 @@ public class CliffProgression : MonoBehaviour {
 		if(buildBanjo == null) {
 			buildBanjo = GameObject.Find("BigThoughtBubble").GetComponent<ThoughtBubble>();
 		}
+		if (dodo == null) {
+			dodo = GameObject.Find ("Dodo").GetComponent<DodoCliffController>();
+		}
 	}
 	
 	// Update is called once per frame
@@ -29,7 +34,7 @@ public class CliffProgression : MonoBehaviour {
 	
 	}
 
-	IEnumerator acquireThisPart() {
+	IEnumerator acquireThisPart(bool isTissues) {
 		this.GetComponent<BoxCollider2D>().enabled = false;
 		cameraMover.cameraCanMove = false;
 		Vector3 centerCam = Camera.main.ScreenToWorldPoint (new Vector3 (Screen.width / 2, Screen.height / 2, 0));
@@ -49,6 +54,9 @@ public class CliffProgression : MonoBehaviour {
 			kaPow.transform.localScale += scaleUp;
 			yield return null;
 		}
+		if (!isTissues) {
+			dodo.DodoApproval ();
+		}
 		yield return new WaitForSeconds (1);
 		kaPow.transform.localScale = new Vector3 (0, 0, 0);
 		Destroy (gameObject);
@@ -58,42 +66,42 @@ public class CliffProgression : MonoBehaviour {
 
 	// Good lord.
 	void OnMouseDown() {
-		if (itemsCollectible && GameManagerManager.forestProgression.haveBanjoPrint()) {
+		if (itemsCollectible && GameManagerManager.forestProgression.haveBanjoPrint() && CliffProgression.canBeginLevel) {
 			switch (this.name) {
 			case GizmoPrefabs.Vine1Name:
 				itemsCollectible = false;
 				storyManager.inventory.AddPart (BanjoBuilder.RUBBERBAND, GizmoPrefabs.Vine1Name);
 				buildBanjo.CollectPiece();
-				StartCoroutine (acquireThisPart ());
+				StartCoroutine (acquireThisPart (false));
 				break;
 			case GizmoPrefabs.Vine2Name:
 				itemsCollectible = false;
 				storyManager.inventory.AddPart (BanjoBuilder.RUBBERBAND, GizmoPrefabs.Vine2Name);
 				buildBanjo.CollectPiece();
-				StartCoroutine (acquireThisPart ());
+				StartCoroutine (acquireThisPart (false));
 				break;
 			case GizmoPrefabs.Vine3Name:
 				itemsCollectible = false;
 				storyManager.inventory.AddPart (BanjoBuilder.RUBBERBAND, GizmoPrefabs.Vine3Name);
 				buildBanjo.CollectPiece();
-				StartCoroutine (acquireThisPart ());
+				StartCoroutine (acquireThisPart (false));
 				break;
 			case GizmoPrefabs.PaperTowelRollName:
 				itemsCollectible = false;
 				storyManager.inventory.AddPart (BanjoBuilder.POLE, GizmoPrefabs.PaperTowelRollName);
 				storyManager.collectPaperTowelRoll();
 				buildBanjo.CollectPiece();
-				StartCoroutine (acquireThisPart ());
+				StartCoroutine (acquireThisPart (false));
 				break;
 			case GizmoPrefabs.TissueBoxName:
 				itemsCollectible = false;
 				storyManager.inventory.AddPart (BanjoBuilder.BOX, GizmoPrefabs.TissueBoxName);
 				buildBanjo.CollectPiece();
-				StartCoroutine (acquireThisPart ());
+				StartCoroutine (acquireThisPart (false));
 				break;
 			}
 			
-			if(storyManager.inventory.HaveAllBanjoPars()){
+			if(storyManager.inventory.HaveAllBanjoParts()){
 				buildBanjo.Activate();
 			}
 
@@ -107,8 +115,8 @@ public class CliffProgression : MonoBehaviour {
 				storyManager.inventory.AddPart (BanjoBuilder.BOX, GizmoPrefabs.TissueBoxName);
 				storyManager.collectTissueBox();
 				buildBanjo.CollectPiece();
-				StartCoroutine (acquireThisPart ());
-				if(storyManager.inventory.HaveAllBanjoPars()){
+				StartCoroutine (acquireThisPart (true));
+				if(storyManager.inventory.HaveAllBanjoParts()){
 					buildBanjo.Activate();
 				}
 			}

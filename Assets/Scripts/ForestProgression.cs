@@ -40,7 +40,7 @@ public class ForestProgression : MonoBehaviour {
 			return true;
 		}
 
-		public bool HaveAllBanjoPars() {
+		public bool HaveAllBanjoParts() {
 			foreach (string part in BanjoBuilder.PARTS_LIST) {
 				if (!partsHeld.ContainsKey (part)) {
 					return false;

@@ -12,22 +12,16 @@ public class Lion : MonoBehaviour {
 
 	void Start () {
 		anim = gameObject.GetComponent<Animator>();
-		audSrc = gameObject.GetComponent<AudioSource>();		
+		audSrc = gameObject.GetComponent<AudioSource>();
 	}
 
 	void OnMouseDown () {
 		StartCoroutine(playGrowl());
 		if (CliffProgression.canBeginLevel) {
-			if(!clicked && !GameManagerManager.forestProgression.haveBanjo()) {
-
-				dodo.ClickLion();
-				clicked = true;
-			}
-			else if (!GameManagerManager.forestProgression.haveBanjo()) {
-
+			if (!GameManagerManager.forestProgression.haveBanjo()) {
+				StartCoroutine(playGrowl());
 			}
 		}
-
 	}
 
 	public void WakeUp () {

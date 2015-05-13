@@ -179,7 +179,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2ed81689b98d99142b894c7d1649432f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: .300000012
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -376,8 +376,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 117269453}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 8.9839468, y: -2, z: 10}
+  m_LocalScale: {x: .5, y: .5, z: 1}
   m_Children: []
   m_Father: {fileID: 931544520}
   m_RootOrder: 1
@@ -514,7 +514,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2ed81689b98d99142b894c7d1649432f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: .300000012
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -846,6 +846,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2bb514f28c13848de99ce8dfb566cb97, type: 3}
   - {fileID: 21300000, guid: fd4d4837fbcee4058b88cf71042b9d71, type: 3}
   - {fileID: 21300000, guid: 1d10037181aa14ee88f918c2a0b4aff0, type: 3}
+  dodo: {fileID: 0}
 --- !u!212 &469512987
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1199,8 +1200,12 @@ Prefab:
       objectReference: {fileID: 117269453}
     - target: {fileID: 8222542, guid: 1bae721aba43d4d34b2c3ceeadd55749, type: 2}
       propertyPath: m_Volume
-      value: .300000012
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8222542, guid: 1bae721aba43d4d34b2c3ceeadd55749, type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 74ce90ec25b373746a2d51de14a73a4f, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1bae721aba43d4d34b2c3ceeadd55749, type: 2}
   m_IsPrefabParent: 0
@@ -1326,7 +1331,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2ed81689b98d99142b894c7d1649432f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: .300000012
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1720,7 +1725,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2ed81689b98d99142b894c7d1649432f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: .300000012
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2211,9 +2216,9 @@ GameObject:
   - 4: {fileID: 1439071382}
   - 212: {fileID: 1439071381}
   - 114: {fileID: 1439071384}
-  - 61: {fileID: 1439071383}
   - 111: {fileID: 1439071385}
   - 82: {fileID: 1439071386}
+  - 61: {fileID: 1439071383}
   m_Layer: 0
   m_Name: Airfield to Savannah
   m_TagString: Untagged
@@ -2245,7 +2250,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 20
-  m_Sprite: {fileID: 21300000, guid: cffa643e57096411baabe14a60436a5f, type: 3}
+  m_Sprite: {fileID: 21300004, guid: 31aff6e07eb01416f8eba9ed96f23018, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1439071382
 Transform:
@@ -2254,11 +2259,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1439071380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.9499998, y: 1.86000001, z: 0}
-  m_LocalScale: {x: .600000024, y: .600000024, z: 0}
+  m_LocalPosition: {x: 7, y: -5, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
-  m_Father: {fileID: 2022152383}
-  m_RootOrder: 3
+  m_Father: {fileID: 931544520}
+  m_RootOrder: 2
 --- !u!61 &1439071383
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2269,9 +2274,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 3, y: 4}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 21, y: 15}
+  m_Size: {x: 6.00999975, y: 5.76999998}
 --- !u!114 &1439071384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3018,7 +3023,6 @@ Transform:
   - {fileID: 1380910454}
   - {fileID: 1144196409}
   - {fileID: 1288414120}
-  - {fileID: 1439071382}
   m_Father: {fileID: 1134290014}
   m_RootOrder: 1
 --- !u!1 &2137231155

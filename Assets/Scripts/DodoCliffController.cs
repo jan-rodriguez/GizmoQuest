@@ -13,14 +13,15 @@ public class DodoCliffController : MonoBehaviour {
 	bool stopPlaying = false;
 	GameObject skipButton;
 	ThoughtBubble bubbleScript;
+	int affirmationNumber = 1;
 
 	public AudioClip[] noBanjoClips;
 	public AudioClip[] banjoDialogClips;
+	public AudioClip[] yesClips;
 	public AudioClip lionClickAudio;
 	public AudioClip myTissuesClip;
 	public Lion lionScript;
 	public Ladder ladderScript;
-
 
 	void Start () {
 		bubbleScript = GetComponentInChildren<ThoughtBubble> ();
@@ -55,7 +56,7 @@ public class DodoCliffController : MonoBehaviour {
 		skipButton.GetComponent<Button> ().enabled = true;
 		skipButton.GetComponent<Image> ().enabled = true;
 	}
-	
+
 	void disableSkipButton() {
 		skipButton.GetComponent<Button> ().enabled = false;
 		skipButton.GetComponent<Image> ().enabled = false;
@@ -66,7 +67,7 @@ public class DodoCliffController : MonoBehaviour {
 		CliffProgression.canBeginLevel = true;
 		audSrc.Stop ();
 		StopDodoTalks ();
-		
+
 		disableSkipButton ();
 	}
 
@@ -74,7 +75,6 @@ public class DodoCliffController : MonoBehaviour {
 		if (!CliffProgression.canBeginLevel) {
 			StartCoroutine(bubbleScript.MoveToCorner());
 			GameManagerManager.forestProgression.getBanjoPrint();
-			CliffProgression.canBeginLevel = true;
 		}
 		else {
 			if(CliffProgression.itemsCollectible && !clicked && progression.haveBanjoPrint()
@@ -87,8 +87,6 @@ public class DodoCliffController : MonoBehaviour {
 				StartCoroutine(PlayMyTissuesClip());
 			}
 		}
-
-
 	}
 
 	IEnumerator BeginCliffDialog () {
@@ -120,7 +118,7 @@ public class DodoCliffController : MonoBehaviour {
 			}
 			audSrc.clip = banjoDialogClips[i];
 			audSrc.Play ();
-			
+
 			yield return new WaitForSeconds(banjoDialogClips[i].length);
 
 			if(i == 1) {
@@ -142,6 +140,21 @@ public class DodoCliffController : MonoBehaviour {
 		StopDodoTalking();
 		audSrc.UnPause ();
 
+		yield return null;
+	}
+
+	public void DodoApproval () {
+		StartCoroutine (PlayApproval());
+	}
+
+	IEnumerator PlayApproval() {
+		audSrc.Pause ();
+		StartDodoTalking ();
+		audSrc.PlayOneShot (yesClips [affirmationNumber]);
+		yield return new WaitForSeconds (yesClips [affirmationNumber].length);
+		StopDodoTalking ();
+		audSrc.UnPause ();
+		affirmationNumber = (affirmationNumber + 1) % yesClips.Length;
 		yield return null;
 	}
 
