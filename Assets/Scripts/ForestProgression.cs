@@ -40,7 +40,7 @@ public class ForestProgression : MonoBehaviour {
 			return true;
 		}
 
-		public bool HaveAllBanjoPars() {
+		public bool HaveAllBanjoParts() {
 			foreach (string part in BanjoBuilder.PARTS_LIST) {
 				if (!partsHeld.ContainsKey (part)) {
 					return false;
@@ -49,6 +49,15 @@ public class ForestProgression : MonoBehaviour {
 					if(partsHeld[part].Count != 3){
 						return false;
 					}
+				}
+			}
+			return true;
+		}
+
+		public bool HaveAllSlingshotParts () {
+			foreach (string part in SlingShotBuilder.PARTS_LIST) {
+				if (!partsHeld.ContainsKey (part)) {
+					return false;
 				}
 			}
 			return true;
@@ -93,8 +102,6 @@ public class ForestProgression : MonoBehaviour {
 
 	//Scene 5: Dropping the Ball
 	private bool slingshotPrint = false;
-	private bool shovelPrint = false;
-	private bool shovel = false;
 	private bool slingshot = false;
 	private bool boulderCleared = false;
 
@@ -198,28 +205,7 @@ public class ForestProgression : MonoBehaviour {
 
 	public bool havePaperTowelRoll () {
 		return collectedPaperTowelRoll;
-	}
-
-	//Shovel-related getters/setters/accessors
-	public bool getShovelPrint() {
-		if (shovelPrint) {
-			return false;
-		}
-		shovelPrint = true;
-		return true;
-	}
-	
-	public bool haveShovelPrint() {
-		return shovelPrint;
-	}
-
-	public void makeShovel() {
-		shovel = true;
-	}
-	
-	public bool haveShovel() {
-		return shovel;
-	}
+	} 
 
 	//Slingshot-related getters/setters/accessors
 	public bool getSlingshotPrint() {

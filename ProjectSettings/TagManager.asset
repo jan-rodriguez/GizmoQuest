@@ -16,6 +16,10 @@ TagManager:
   - rubberband
   - cloud
   - bounds
+  - v_stick
+  - elastic
+  - ruler
+  - rope
   layers:
   - Default
   - TransparentFX

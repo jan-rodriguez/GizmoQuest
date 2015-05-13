@@ -28,7 +28,11 @@ public class InventoryBuilder : MonoBehaviour {
 			case GizmoPrefabs.BANJO:
 				partsToBuildList = BanjoBuilder.PARTS_LIST;
 				break;
-			case GizmoPrefabs.SHOVEL:
+			case GizmoPrefabs.SLINGSHOT:
+				partsToBuildList = SlingShotBuilder.PARTS_LIST;
+				break;
+			default:
+				partsToBuildList = new string[0];
 				break;
 			}
 			foreach(string type in partsToBuildList){
@@ -77,6 +81,18 @@ public class InventoryBuilder : MonoBehaviour {
 			break;
 		case GizmoPrefabs.TissueBoxName:
 			actualSlot.GetComponent<GizmoSlot>().SetGizmoPrefab(GizmoPrefabs.TissueBoxPrefab);
+			break;
+		case GizmoPrefabs.RopeName:
+			actualSlot.GetComponent<GizmoSlot>().SetGizmoPrefab(GizmoPrefabs.RopePrefab);
+			break;
+		case GizmoPrefabs.ElasticName:
+			actualSlot.GetComponent<GizmoSlot>().SetGizmoPrefab(GizmoPrefabs.ElasticPrefab);
+			break;
+		case GizmoPrefabs.VStickName:
+			actualSlot.GetComponent<GizmoSlot>().SetGizmoPrefab(GizmoPrefabs.VStickPrefab);
+			break;
+		case GizmoPrefabs.RulerName:
+			actualSlot.GetComponent<GizmoSlot>().SetGizmoPrefab(GizmoPrefabs.RulerPrefab);
 			break;
 		default:
 			break;

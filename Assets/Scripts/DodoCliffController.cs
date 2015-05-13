@@ -12,6 +12,7 @@ public class DodoCliffController : MonoBehaviour {
 	AudioSource audSrc;
 	bool stopPlaying = false;
 	GameObject skipButton;
+	ThoughtBubble bubbleScript;
 	int affirmationNumber = 1;
 
 	public AudioClip[] noBanjoClips;
@@ -23,6 +24,7 @@ public class DodoCliffController : MonoBehaviour {
 	public Ladder ladderScript;
 
 	void Start () {
+		bubbleScript = GetComponentInChildren<ThoughtBubble> ();
 		audSrc = GetComponent<AudioSource>();
 		animator = GetComponent<Animator>();
 		GameObject tissueBox = transform.GetChild(0).gameObject;
@@ -37,6 +39,10 @@ public class DodoCliffController : MonoBehaviour {
 		}
 
 		if(progression.haveBanjo()) {
+			int children = transform.childCount;
+			for(int i = 0; i < children; i++) {
+				Destroy(transform.GetChild(i).gameObject);
+			}
 			animator.SetBool("hasBanjo", true);
 			CliffProgression.canBeginLevel = true;
 			StartCoroutine(FinishCliffDialog());
@@ -50,7 +56,7 @@ public class DodoCliffController : MonoBehaviour {
 		skipButton.GetComponent<Button> ().enabled = true;
 		skipButton.GetComponent<Image> ().enabled = true;
 	}
-	
+
 	void disableSkipButton() {
 		skipButton.GetComponent<Button> ().enabled = false;
 		skipButton.GetComponent<Image> ().enabled = false;
@@ -61,12 +67,16 @@ public class DodoCliffController : MonoBehaviour {
 		CliffProgression.canBeginLevel = true;
 		audSrc.Stop ();
 		StopDodoTalks ();
-		
+
 		disableSkipButton ();
 	}
 
 	void OnMouseDown() {
-		if (CliffProgression.canBeginLevel) {
+		if (!CliffProgression.canBeginLevel) {
+			StartCoroutine(bubbleScript.MoveToCorner());
+			GameManagerManager.forestProgression.getBanjoPrint();
+		}
+		else {
 			if(CliffProgression.itemsCollectible && !clicked && progression.haveBanjoPrint()
 			   && !progression.haveTissueBox()){
 				clicked = true;
@@ -108,7 +118,7 @@ public class DodoCliffController : MonoBehaviour {
 			}
 			audSrc.clip = banjoDialogClips[i];
 			audSrc.Play ();
-			
+
 			yield return new WaitForSeconds(banjoDialogClips[i].length);
 
 			if(i == 1) {

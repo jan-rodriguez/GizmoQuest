@@ -66,7 +66,7 @@ public class CliffProgression : MonoBehaviour {
 
 	// Good lord.
 	void OnMouseDown() {
-		if (itemsCollectible && GameManagerManager.forestProgression.haveBanjoPrint()) {
+		if (itemsCollectible && GameManagerManager.forestProgression.haveBanjoPrint() && CliffProgression.canBeginLevel) {
 			switch (this.name) {
 			case GizmoPrefabs.Vine1Name:
 				itemsCollectible = false;
@@ -101,13 +101,12 @@ public class CliffProgression : MonoBehaviour {
 				break;
 			}
 			
-			if(storyManager.inventory.HaveAllBanjoPars()){
+			if(storyManager.inventory.HaveAllBanjoParts()){
 				buildBanjo.Activate();
 			}
 
 		}
 	}
-
 
 	public void CollectTissueBox () {
 		if(name == GizmoPrefabs.PaperTowelRollName) {
@@ -117,7 +116,7 @@ public class CliffProgression : MonoBehaviour {
 				storyManager.collectTissueBox();
 				buildBanjo.CollectPiece();
 				StartCoroutine (acquireThisPart (true));
-				if(storyManager.inventory.HaveAllBanjoPars()){
+				if(storyManager.inventory.HaveAllBanjoParts()){
 					buildBanjo.Activate();
 				}
 			}

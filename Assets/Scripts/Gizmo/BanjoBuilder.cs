@@ -5,8 +5,7 @@ using System.Collections.Generic;
 
 public class BanjoBuilder : MonoBehaviour {
 
-	//TODO: SET IMAGE HERE
-	public GameObject finishedGizmo;
+	private GameObject finishedGizmo;
 	
 	private Dictionary<string, bool> partsDict = new Dictionary<string,bool> ();
 	

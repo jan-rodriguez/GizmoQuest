@@ -10,6 +10,7 @@ public class SceneManager: MonoBehaviour {
 	public static string AIRFIELD = "Airfield";
 	public static string SAVANNAH = "Savannah";
 	public static string CLIFF = "Cliff";
+	public static string COMPLETED_SAVANNAH = "CompletedSavannah";
 
 	private CanvasGroup loadingPanelCanvas;
 
@@ -44,6 +45,13 @@ public class SceneManager: MonoBehaviour {
 		loadingPanelCanvas.alpha = 1;
 		yield return loadingLvl;
 		Application.LoadLevel (SAVANNAH);
+	}
+
+	public IEnumerator GoToCompletedSavannah() {
+		AsyncOperation loadingLvl = Application.LoadLevelAsync (COMPLETED_SAVANNAH);
+		loadingPanelCanvas.alpha = 1;
+		yield return loadingLvl;
+		Application.LoadLevel (COMPLETED_SAVANNAH);
 	}
 
 	public IEnumerator GoToCliff () {

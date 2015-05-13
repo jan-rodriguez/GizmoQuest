@@ -8,20 +8,15 @@ public class Lion : MonoBehaviour {
 
 	bool clicked = false;
 	Animator anim;
-	ThoughtBubble bubbleScript;
 	AudioSource audSrc;
 
 	void Start () {
 		anim = gameObject.GetComponent<Animator>();
-		bubbleScript = GetComponentInChildren<ThoughtBubble> ();
 		audSrc = gameObject.GetComponent<AudioSource>();
-
-		if (GameManagerManager.forestProgression.haveBanjo()) {
-			Destroy(transform.GetChild(0).gameObject);
-		}
 	}
 
 	void OnMouseDown () {
+		StartCoroutine(playGrowl());
 		if (CliffProgression.canBeginLevel) {
 			if (!GameManagerManager.forestProgression.haveBanjo()) {
 				StartCoroutine(playGrowl());

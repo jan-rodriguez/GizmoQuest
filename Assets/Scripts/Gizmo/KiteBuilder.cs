@@ -18,7 +18,7 @@ public class KiteBuilder : MonoBehaviour {
 	private const int CLOTH_LAYER = 1;
 	private const int LONG_ROD_LAYER = 2;
 	private const int SHORT_ROD_LAYER = 3;
-	private const float DISTANCE_THRESHOLD = .1f;
+	private const float DISTANCE_THRESHOLD = .3f;
 	private const float ANGLE_THRESHOLD = 30f;
 
 	private GameObject backToPrevBtn;
