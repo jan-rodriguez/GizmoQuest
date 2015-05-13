@@ -8,29 +8,23 @@ public class Lion : MonoBehaviour {
 
 	bool clicked = false;
 	Animator anim;
-	ThoughtBubble bubbleScript;
 	AudioSource audSrc;
 
 	void Start () {
 		anim = gameObject.GetComponent<Animator>();
-		bubbleScript = GetComponentInChildren<ThoughtBubble> ();
-		audSrc = gameObject.GetComponent<AudioSource>();
-
-		if (GameManagerManager.forestProgression.haveBanjo()) {
-			Destroy(transform.GetChild(0).gameObject);
-		}
+		audSrc = gameObject.GetComponent<AudioSource>();		
 	}
 
 	void OnMouseDown () {
+		StartCoroutine(playGrowl());
 		if (CliffProgression.canBeginLevel) {
 			if(!clicked && !GameManagerManager.forestProgression.haveBanjo()) {
-				StartCoroutine(bubbleScript.MoveToCorner());
-				GameManagerManager.forestProgression.getBanjoPrint();
+
 				dodo.ClickLion();
 				clicked = true;
 			}
 			else if (!GameManagerManager.forestProgression.haveBanjo()) {
-				StartCoroutine(playGrowl());
+
 			}
 		}
 

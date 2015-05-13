@@ -93,8 +93,6 @@ public class ForestProgression : MonoBehaviour {
 
 	//Scene 5: Dropping the Ball
 	private bool slingshotPrint = false;
-	private bool shovelPrint = false;
-	private bool shovel = false;
 	private bool slingshot = false;
 	private bool boulderCleared = false;
 
@@ -198,27 +196,6 @@ public class ForestProgression : MonoBehaviour {
 
 	public bool havePaperTowelRoll () {
 		return collectedPaperTowelRoll;
-	}
-
-	//Shovel-related getters/setters/accessors
-	public bool getShovelPrint() {
-		if (shovelPrint) {
-			return false;
-		}
-		shovelPrint = true;
-		return true;
-	}
-	
-	public bool haveShovelPrint() {
-		return shovelPrint;
-	}
-
-	public void makeShovel() {
-		shovel = true;
-	}
-	
-	public bool haveShovel() {
-		return shovel;
 	}
 
 	//Slingshot-related getters/setters/accessors

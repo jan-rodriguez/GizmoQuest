@@ -12,6 +12,7 @@ public class DodoCliffController : MonoBehaviour {
 	AudioSource audSrc;
 	bool stopPlaying = false;
 	GameObject skipButton;
+	ThoughtBubble bubbleScript;
 
 	public AudioClip[] noBanjoClips;
 	public AudioClip[] banjoDialogClips;
@@ -22,6 +23,7 @@ public class DodoCliffController : MonoBehaviour {
 
 
 	void Start () {
+		bubbleScript = GetComponentInChildren<ThoughtBubble> ();
 		audSrc = GetComponent<AudioSource>();
 		animator = GetComponent<Animator>();
 		GameObject tissueBox = transform.GetChild(0).gameObject;
@@ -36,6 +38,10 @@ public class DodoCliffController : MonoBehaviour {
 		}
 
 		if(progression.haveBanjo()) {
+			int children = transform.childCount;
+			for(int i = 0; i < children; i++) {
+				Destroy(transform.GetChild(i));
+			}
 			animator.SetBool("hasBanjo", true);
 			CliffProgression.canBeginLevel = true;
 			StartCoroutine(FinishCliffDialog());
@@ -65,7 +71,12 @@ public class DodoCliffController : MonoBehaviour {
 	}
 
 	void OnMouseDown() {
-		if (CliffProgression.canBeginLevel) {
+		if (!CliffProgression.canBeginLevel) {
+			StartCoroutine(bubbleScript.MoveToCorner());
+			GameManagerManager.forestProgression.getBanjoPrint();
+			CliffProgression.canBeginLevel = true;
+		}
+		else {
 			if(CliffProgression.itemsCollectible && !clicked && progression.haveBanjoPrint()
 			   && !progression.haveTissueBox()){
 				clicked = true;

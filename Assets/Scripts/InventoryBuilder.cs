@@ -28,7 +28,11 @@ public class InventoryBuilder : MonoBehaviour {
 			case GizmoPrefabs.BANJO:
 				partsToBuildList = BanjoBuilder.PARTS_LIST;
 				break;
-			case GizmoPrefabs.SHOVEL:
+			case GizmoPrefabs.SLINGSHOT:
+				partsToBuildList = SlingShotBuilder.PARTS_LIST;
+				break;
+			default:
+				partsToBuildList = new string[0];
 				break;
 			}
 			foreach(string type in partsToBuildList){

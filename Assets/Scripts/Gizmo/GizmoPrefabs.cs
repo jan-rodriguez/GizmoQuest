@@ -5,7 +5,7 @@ public class GizmoPrefabs : MonoBehaviour{
 
 	public const string KITE = "kite";
 	public const string BANJO = "banjo";
-	public const string SHOVEL = "shovel";
+	public const string SLINGSHOT = "slingshot";
 
 	//KITE
 	public const string ClothName = "Cloth";
@@ -31,6 +31,17 @@ public class GizmoPrefabs : MonoBehaviour{
 	public static GameObject Vine3Prefab;
 	public static GameObject PaperTowelRollPrefab;
 
+	//SLINGSHOT
+	public const string VStickName = "v_stick";
+	public const string RulerName = "ruler";
+	public const string RopeName = "rope";
+	public const string ElasticName = "elastic";
+
+	public static GameObject VStickPrefab;
+	public static GameObject RulerPrefab;
+	public static GameObject RopePrefab;
+	public static GameObject ElasticPrefab;
+
 	void Awake () {
 		string itemToBuild = GameManagerManager.forestProgression.gizmoToBuild;
 
@@ -48,7 +59,11 @@ public class GizmoPrefabs : MonoBehaviour{
 			Vine3Prefab = Resources.Load (Vine3Name) as GameObject;
 			PaperTowelRollPrefab = Resources.Load (PaperTowelRollName) as GameObject;
 			break;
-		case SHOVEL:
+		case SLINGSHOT:
+			VStickPrefab = Resources.Load (VStickName) as GameObject;
+			RulerPrefab = Resources.Load (RulerName) as GameObject;
+			RopePrefab = Resources.Load (RopeName) as GameObject;
+			ElasticPrefab = Resources.Load (ElasticName) as GameObject;
 			break;
 		}
 

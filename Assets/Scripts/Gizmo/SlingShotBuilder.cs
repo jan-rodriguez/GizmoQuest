@@ -5,8 +5,7 @@ using System.Collections.Generic;
 
 public class SlingShotBuilder : MonoBehaviour {
 
-	//TODO: SET IMAGE HERE
-	public GameObject finishedGizmo;
+	private GameObject finishedGizmo;
 	
 	private Dictionary<string, bool> partsDict = new Dictionary<string,bool> ();
 
@@ -21,19 +20,20 @@ public class SlingShotBuilder : MonoBehaviour {
 	private AudioSource correctDropSource;
 
 	private const int V_STICK_LAYER = 1;
-	private const int SPOON_LAYER = 2;
+	private const int RULER_LAYER = 2;
 	private const int ROPE_LAYER = 3;
 	private const int ELASTIC_LAYER = 4;
 	private const float DISTANCE_THRESHOLD = .3f;
 	private const float ANGLE_THRESHOLD = 30f;
 
-	private Vector2 vStickPos = Vector2.zero;
-	private Vector2 spoonPos = Vector2.zero;
-	private Vector2 ropePos = Vector2.zero;
-	private Vector2 elasticPos = Vector2.zero;
+	private Vector2 vStickPos = new Vector2(-.05f, .6f);
+	private Vector2 rulerPos = new Vector2(.16f, -.88f);
+	private Vector2 ropePos = new Vector2 (.13f, -.48f);
+	private Vector2 elasticPos = new Vector2(0, 1.71f);
 
 	void Start () {
 		backToPrevBtn = GameObject.Find ("LoadPreviousLevel");
+		finishedGizmo = Resources.Load ("FinishedSlingshot") as GameObject;
 		
 		hideAnimation = gameObject.GetComponent<Animation>();
 		correctDropSource = gameObject.GetComponent<AudioSource>();
@@ -59,14 +59,14 @@ public class SlingShotBuilder : MonoBehaviour {
 			}
 			break;
 		case RULER:
-			float spoonDist = ((Vector2)transform.InverseTransformPoint(gizmo.transform.position) - spoonPos).magnitude;
+			float spoonDist = ((Vector2)transform.InverseTransformPoint(gizmo.transform.position) - rulerPos).magnitude;
 			
 			bool hasSpoon = false;
 			
 			if( spoonDist < DISTANCE_THRESHOLD 
 			   && partsDict.TryGetValue(RULER, out hasSpoon) && !hasSpoon) {
 				//Set the kite as the parent
-				ConnectGizmo(gizmo, spoonPos, SPOON_LAYER);
+				ConnectGizmo(gizmo, rulerPos, RULER_LAYER);
 				partsDict[RULER] = true;
 			}
 			break;
