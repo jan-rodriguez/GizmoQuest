@@ -12,14 +12,15 @@ public class DodoCliffController : MonoBehaviour {
 	AudioSource audSrc;
 	bool stopPlaying = false;
 	GameObject skipButton;
+	int affirmationNumber = 1;
 
 	public AudioClip[] noBanjoClips;
 	public AudioClip[] banjoDialogClips;
+	public AudioClip[] yesClips;
 	public AudioClip lionClickAudio;
 	public AudioClip myTissuesClip;
 	public Lion lionScript;
 	public Ladder ladderScript;
-
 
 	void Start () {
 		audSrc = GetComponent<AudioSource>();
@@ -76,8 +77,6 @@ public class DodoCliffController : MonoBehaviour {
 				StartCoroutine(PlayMyTissuesClip());
 			}
 		}
-
-
 	}
 
 	IEnumerator BeginCliffDialog () {
@@ -131,6 +130,21 @@ public class DodoCliffController : MonoBehaviour {
 		StopDodoTalking();
 		audSrc.UnPause ();
 
+		yield return null;
+	}
+
+	public void DodoApproval () {
+		StartCoroutine (PlayApproval());
+	}
+
+	IEnumerator PlayApproval() {
+		audSrc.Pause ();
+		StartDodoTalking ();
+		audSrc.PlayOneShot (yesClips [affirmationNumber]);
+		yield return new WaitForSeconds (yesClips [affirmationNumber].length);
+		StopDodoTalking ();
+		audSrc.UnPause ();
+		affirmationNumber = (affirmationNumber + 1) % yesClips.Length;
 		yield return null;
 	}
 

@@ -1022,7 +1022,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: 21300000, guid: 55f7d85e8782c34428f0f401278914f0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fc657689399714a1eb6b923fd9c1b2cf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!95 &862427581
 Animator:
@@ -1052,7 +1052,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: .899999976
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1129,6 +1129,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ad6d9c6ba68cb3749903a13659781afc, type: 3}
   - {fileID: 8300000, guid: fc9ca7cc2c5e24e7ead8db2eaffc6f86, type: 3}
   - {fileID: 8300000, guid: 1360a108ee804384282d4090e2c17322, type: 3}
+  yesClips:
+  - {fileID: 8300000, guid: bd890fff33a95084a8af541202db8536, type: 3}
+  - {fileID: 8300000, guid: 6cc0eddf9c7dd7343b00e73dadf72ae0, type: 3}
+  - {fileID: 8300000, guid: f3c2e3f7c65c5b042829b38d5a3894c4, type: 3}
+  - {fileID: 8300000, guid: f1f7bcfdb9d58994283cd59bf5b292bd, type: 3}
   lionClickAudio: {fileID: 8300000, guid: 69369180514c9914e84fe25cd8b0581b, type: 3}
   myTissuesClip: {fileID: 8300000, guid: d686724b4287ba342acd9a26e551fd08, type: 3}
   lionScript: {fileID: 905522664}
@@ -1611,7 +1616,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1338904715}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.1000004, y: 7.30000019, z: 0}
+  m_LocalPosition: {x: -9.98999977, y: 7.30000019, z: 0}
   m_LocalScale: {x: -1.20000005, y: 1.20000005, z: 1}
   m_Children:
   - {fileID: 470736573}
@@ -1638,7 +1643,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1338904715}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
@@ -1665,6 +1670,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8892e98a025024850954a9ba5eecfbce, type: 3}
   - {fileID: 21300000, guid: 6388f68abf14a497aba0a260f5f905a7, type: 3}
   - {fileID: 21300000, guid: 3266bc36e69f24347abf40d82047f011, type: 3}
+  dodo: {fileID: 862427583}
 --- !u!212 &1338904720
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1689,7 +1695,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 31aff6e07eb01416f8eba9ed96f23018, type: 3}
+  m_Sprite: {fileID: 21300004, guid: 31aff6e07eb01416f8eba9ed96f23018, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!82 &1338904721
 AudioSource:
@@ -2293,6 +2299,10 @@ Prefab:
       propertyPath: m_Volume
       value: .300000012
       objectReference: {fileID: 0}
+    - target: {fileID: 8222542, guid: 1bae721aba43d4d34b2c3ceeadd55749, type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 74ce90ec25b373746a2d51de14a73a4f, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1bae721aba43d4d34b2c3ceeadd55749, type: 2}
   m_IsPrefabParent: 0

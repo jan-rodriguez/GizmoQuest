@@ -23,17 +23,10 @@ public class Lion : MonoBehaviour {
 
 	void OnMouseDown () {
 		if (CliffProgression.canBeginLevel) {
-			if(!clicked && !GameManagerManager.forestProgression.haveBanjo()) {
-				StartCoroutine(bubbleScript.MoveToCorner());
-				GameManagerManager.forestProgression.getBanjoPrint();
-				dodo.ClickLion();
-				clicked = true;
-			}
-			else if (!GameManagerManager.forestProgression.haveBanjo()) {
+			if (!GameManagerManager.forestProgression.haveBanjo()) {
 				StartCoroutine(playGrowl());
 			}
 		}
-
 	}
 
 	public void WakeUp () {
