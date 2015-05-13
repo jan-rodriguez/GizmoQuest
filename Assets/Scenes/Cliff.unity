@@ -1670,7 +1670,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8892e98a025024850954a9ba5eecfbce, type: 3}
   - {fileID: 21300000, guid: 6388f68abf14a497aba0a260f5f905a7, type: 3}
   - {fileID: 21300000, guid: 3266bc36e69f24347abf40d82047f011, type: 3}
-  dodo: {fileID: 862427583}
 --- !u!212 &1338904720
 SpriteRenderer:
   m_ObjectHideFlags: 0
