@@ -83,6 +83,7 @@ public class DamProgression : MonoBehaviour {
 				itemsCollectible = false;
 				storyManager.inventory.AddPart (SlingShotBuilder.V_STICK, GizmoPrefabs.VStickName);
 				buildSlingshot.CollectPiece();
+				MakeBirdFly();
 				StartCoroutine (acquireThisPart ());
 				break;
 			case GizmoPrefabs.RopeName:
@@ -127,6 +128,14 @@ public class DamProgression : MonoBehaviour {
 		}
 		if(storyManager.inventory.HaveAllSlingshotParts()){
 			buildSlingshot.Activate();
+		}
+	}
+
+	void MakeBirdFly () {
+		if (transform.childCount > 0) {
+			Transform bird = transform.GetChild(0);
+			bird.parent = transform.parent;
+			bird.GetComponent<BirdFlyAway>().FlyAway();
 		}
 	}
 }
