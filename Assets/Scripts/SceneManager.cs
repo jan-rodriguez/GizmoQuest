@@ -48,7 +48,7 @@ public class SceneManager: MonoBehaviour {
 	}
 
 	public IEnumerator GoToCompletedSavannah() {
-		AsyncOperation loadingLvl = Application.LoadLevelAsync (SAVANNAH);
+		AsyncOperation loadingLvl = Application.LoadLevelAsync (COMPLETED_SAVANNAH);
 		loadingPanelCanvas.alpha = 1;
 		yield return loadingLvl;
 		Application.LoadLevel (COMPLETED_SAVANNAH);
