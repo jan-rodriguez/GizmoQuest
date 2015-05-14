@@ -16,11 +16,7 @@ public class DamWall : MonoBehaviour {
 			waterSprites[i].SetActive(true);
 			yield return new WaitForSeconds(1f);
 		}
-		GoToSavannah ();
 		yield return null;
 	}
 
-	void GoToSavannah () {
-		StartCoroutine(GameManagerManager.manager.GetComponent<SceneManager>().GoToCompletedSavannah());
-	}
 }

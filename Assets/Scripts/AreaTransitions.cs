@@ -12,11 +12,6 @@ public class AreaTransitions : MonoBehaviour {
 		audSrc = GetComponent<AudioSource>();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-
-	}
-
 	void OnMouseDown() {
 		switch (this.name) {
 		case "Airfield to Savannah":
@@ -28,8 +23,8 @@ public class AreaTransitions : MonoBehaviour {
 		case "Savannah to Cliff":
 			StartCoroutine(gameSceneManager.GoToCliff ());
 			break;
-		case "Cliff to Boulder":
-			//TODO: add boulder scene
+		case "Cliff to Dam":
+			StartCoroutine(gameSceneManager.GoToDam());
 			break;
 		}
 	}
