@@ -21,6 +21,10 @@ public class ThanksForPlaying : MonoBehaviour {
 		childAnimator.SetBool("talking", true);
 		childAudSrc.Play();
 
+		yield return new WaitForSeconds(childAudSrc.clip.length);
+
+		childAnimator.SetBool("talking", false);
+
 		yield return null;
 	}
 }
