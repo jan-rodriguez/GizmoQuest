@@ -30,7 +30,6 @@ public class SavannahController : MonoBehaviour {
 			yield return new WaitForSeconds(1);
 		}
 
-		yield return new WaitForSeconds (2);
 		GameObject nextArrow = GameObject.Find ("Savannah to Cliff");
 		if (nextArrow != null) {
 			nextArrow.GetComponent<SpriteRenderer>().enabled = true;

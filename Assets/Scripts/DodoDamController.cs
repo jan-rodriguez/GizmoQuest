@@ -104,9 +104,10 @@ public class DodoDamController : MonoBehaviour {
 
 			dodoStopTalking();
 
-			yield return new WaitForSeconds(1f);
+			yield return new WaitForSeconds(.5f);
 		}
 		dodoStopTalking();
+		disableSkipButton ();
 		DamProgression.canPlayLevel = true;
 	}
 

@@ -20,6 +20,7 @@ public class DodoCompleteController : MonoBehaviour {
 	
 
 	IEnumerator FinishGameRoutine () {
+		yield return new WaitForSeconds(4f);
 		foreach(AudioClip clip in introDialogClips) {
 			dodoStartTalking();
 			audSrc.clip = clip;
