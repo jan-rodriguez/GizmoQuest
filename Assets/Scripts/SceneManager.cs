@@ -10,6 +10,7 @@ public class SceneManager: MonoBehaviour {
 	public static string AIRFIELD = "Airfield";
 	public static string SAVANNAH = "Savannah";
 	public static string CLIFF = "Cliff";
+	public static string DAM = "Dam";
 	public static string COMPLETED_SAVANNAH = "CompletedSavannah";
 
 	private CanvasGroup loadingPanelCanvas;
@@ -59,6 +60,13 @@ public class SceneManager: MonoBehaviour {
 		loadingPanelCanvas.alpha = 1;
 		yield return loadingLvl;
 		Application.LoadLevel (CLIFF);
+	}
+
+	public IEnumerator GoToDam () {
+		AsyncOperation loadingLvl = Application.LoadLevelAsync (DAM);
+		loadingPanelCanvas.alpha = 1;
+		yield return loadingLvl;
+		Application.LoadLevel (DAM);
 	}
 
 	public IEnumerator LoadPreviousLevel () {

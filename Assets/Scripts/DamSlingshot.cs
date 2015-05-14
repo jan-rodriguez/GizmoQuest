@@ -7,9 +7,12 @@ public class DamSlingshot : MonoBehaviour {
 	void Start () {
 		if (GameManagerManager.forestProgression.haveSlingshot ()) {
 			GetComponent<SpriteRenderer>().enabled = true;
-			GetComponent<Animation>().Play ();
 			GameManagerManager.forestProgression.clearBoulder();
 		}
+	}
+
+	public void StartSlingshotAnim() {
+		GetComponent<Animation>().Play ();
 	}
 	
 	void ShootRock() {

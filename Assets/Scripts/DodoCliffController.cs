@@ -14,6 +14,7 @@ public class DodoCliffController : MonoBehaviour {
 	GameObject skipButton;
 	ThoughtBubble bubbleScript;
 	int affirmationNumber = 1;
+	GameObject damButton;
 
 	public AudioClip[] noBanjoClips;
 	public AudioClip[] banjoDialogClips;
@@ -24,6 +25,7 @@ public class DodoCliffController : MonoBehaviour {
 	public Ladder ladderScript;
 
 	void Start () {
+		damButton = GameObject.Find ("Cliff to Dam");
 		bubbleScript = GetComponentInChildren<ThoughtBubble> ();
 		audSrc = GetComponent<AudioSource>();
 		animator = GetComponent<Animator>();
@@ -46,6 +48,15 @@ public class DodoCliffController : MonoBehaviour {
 			animator.SetBool("hasBanjo", true);
 			CliffProgression.canBeginLevel = true;
 			StartCoroutine(FinishCliffDialog());
+		}
+	}
+
+	void ShowDamButton() {
+		damButton.GetComponent<SpriteRenderer>().enabled = true;
+		damButton.GetComponent<BoxCollider2D>().enabled = true;
+		Animation arrowAnimation = damButton.GetComponent<Animation> ();
+		if (arrowAnimation != null) {
+			arrowAnimation.Play ();
 		}
 	}
 
@@ -129,6 +140,8 @@ public class DodoCliffController : MonoBehaviour {
 			}
 		}
 		StopDodoTalking();
+
+		ShowDamButton();
 	}
 
 	IEnumerator PlayMyTissuesClip () {

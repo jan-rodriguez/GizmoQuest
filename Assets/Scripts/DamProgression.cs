@@ -7,6 +7,7 @@ public class DamProgression : MonoBehaviour {
 	private static ForestProgression storyManager;
 	private static SwipeCamera cameraMover;
 	public static bool itemsCollectible = true;
+	public static bool canPlayLevel = false;
 	private static DodoDamController dodo;
 	private static ThoughtBubble buildSlingshot;
 	
@@ -72,12 +73,14 @@ public class DamProgression : MonoBehaviour {
 				storyManager.inventory.AddPart (SlingShotBuilder.RULER, GizmoPrefabs.RulerName);
 				buildSlingshot.CollectPiece();
 				StartCoroutine (acquireThisPart ());
+				dodo.DodoApproval();
 				break;
 			case GizmoPrefabs.ElasticName:
 				itemsCollectible = false;
 				storyManager.inventory.AddPart (SlingShotBuilder.ELASTIC, GizmoPrefabs.ElasticName);
 				buildSlingshot.CollectPiece();
 				StartCoroutine (acquireThisPart ());
+				dodo.DodoApproval();
 				break;
 			case GizmoPrefabs.VStickName:
 				itemsCollectible = false;
@@ -85,12 +88,14 @@ public class DamProgression : MonoBehaviour {
 				buildSlingshot.CollectPiece();
 				MakeBirdFly();
 				StartCoroutine (acquireThisPart ());
+				dodo.DodoApproval();
 				break;
 			case GizmoPrefabs.RopeName:
 				itemsCollectible = false;
 				storyManager.inventory.AddPart (SlingShotBuilder.ROPE, GizmoPrefabs.RopeName);
 				buildSlingshot.CollectPiece();
 				StartCoroutine (acquireThisPart ());
+				dodo.DodoApproval();
 				break;
 			}
 			
@@ -117,12 +122,14 @@ public class DamProgression : MonoBehaviour {
 				storyManager.inventory.AddPart (SlingShotBuilder.ELASTIC, GizmoPrefabs.ElasticName);
 				buildSlingshot.CollectPiece();
 				StartCoroutine (acquireThisPart ());
+				dodo.DodoApproval();
 				break;
 			case GizmoPrefabs.RulerName:
 				itemsCollectible = false;
 				storyManager.inventory.AddPart (SlingShotBuilder.RULER, GizmoPrefabs.RulerName);
 				buildSlingshot.CollectPiece();
 				StartCoroutine (acquireThisPart ());
+				dodo.DodoApproval();
 				break;
 			}
 		}
