@@ -130,6 +130,10 @@ public class DodoController : MonoBehaviour {
 		if (arrowAnimation != null) {
 			arrowAnimation.Play ();
 		}
+		if(savannahButton.transform.childCount > 0) {
+			savannahButton.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = true;
+		}
+
 	}
 
 	IEnumerator dodoSadRoutine() {

@@ -19,5 +19,6 @@ public class DamSlingshot : MonoBehaviour {
 		GameObject rock = transform.GetChild (0).gameObject;
 		rock.GetComponent<Animation> ().Play ();
 		rock.GetComponent<SpriteRenderer> ().enabled = true;
+		rock.GetComponent<AudioSource>().Play();
 	}
 }

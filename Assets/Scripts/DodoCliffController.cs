@@ -83,21 +83,22 @@ public class DodoCliffController : MonoBehaviour {
 	}
 
 	void OnMouseDown() {
-		if (!CliffProgression.canBeginLevel) {
+		if(CliffProgression.itemsCollectible && progression.haveBanjoPrint()
+		   && !progression.haveTissueBox()){
+			animator.SetBool("hasBox", false);
+			tissueBoxRenderer.enabled = true;
+			tissueBoxProgression.CollectTissueBox();
+			StopDodoTalks();
+			StartCoroutine(PlayMyTissuesClip());
+		}
+
+		if (CliffProgression.canBeginLevel && !clicked) {
 			StartCoroutine(bubbleScript.MoveToCorner());
 			GameManagerManager.forestProgression.getBanjoPrint();
+			clicked = true;
 		}
-		else {
-			if(CliffProgression.itemsCollectible && !clicked && progression.haveBanjoPrint()
-			   && !progression.haveTissueBox()){
-				clicked = true;
-				animator.SetBool("hasBox", false);
-				tissueBoxRenderer.enabled = true;
-				tissueBoxProgression.CollectTissueBox();
-				StopDodoTalks();
-				StartCoroutine(PlayMyTissuesClip());
-			}
-		}
+
+
 	}
 
 	IEnumerator BeginCliffDialog () {

@@ -7,6 +7,7 @@ public class SlingshotRock : MonoBehaviour {
 
 	void StartOtherRockAnim () {
 		otherRock.GetComponent<Animation> ().Play ();
+		otherRock.GetComponent<AudioSource>().Play();
 		Destroy (gameObject);
 	}
 }

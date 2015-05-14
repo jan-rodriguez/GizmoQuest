@@ -5,9 +5,12 @@ public class DamWall : MonoBehaviour {
 
 	public Sprite brokenSprite;
 	public GameObject[] waterSprites;
+	public AudioClip waterSounds;
 
 	public void BreakWall () {
 		GetComponent<SpriteRenderer> ().sprite = brokenSprite;
+		GetComponent<AudioSource>().Play();
+		GetComponent<AudioSource>().PlayOneShot(waterSounds);
 		StartCoroutine (FlowWater ());
 	}
 

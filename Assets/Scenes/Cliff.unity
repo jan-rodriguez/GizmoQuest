@@ -1159,7 +1159,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 862427578}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.3900003, y: -10.8999996, z: 0}
+  m_LocalPosition: {x: -15.3900003, y: -10.8999996, z: -.00999999978}
   m_LocalScale: {x: .400000006, y: .400000006, z: 1}
   m_Children:
   - {fileID: 464504315}
@@ -2465,7 +2465,7 @@ Prefab:
       objectReference: {fileID: 778109635}
     - target: {fileID: 8222542, guid: 1bae721aba43d4d34b2c3ceeadd55749, type: 2}
       propertyPath: m_Volume
-      value: .300000012
+      value: .600000024
       objectReference: {fileID: 0}
     - target: {fileID: 8222542, guid: 1bae721aba43d4d34b2c3ceeadd55749, type: 2}
       propertyPath: m_audioClip
